@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SKILL = ROOT / "skills/gravitas/SKILL.md"
+SKILL = ROOT / "skills/progravity/SKILL.md"
 
 
 def main() -> int:
@@ -23,7 +23,7 @@ def main() -> int:
     if len(text.splitlines()) > 500:
         print("FAIL SKILL.md exceeds the 500-line skill guidance limit")
         return 1
-    print("PASS Gravitas skill structure")
+    print("PASS Progravity skill structure")
     return 0
 
 

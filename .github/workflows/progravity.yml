@@ -1,4 +1,4 @@
-name: GRAVITAS Verify
+name: PROGRAVITY Verify
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
     branches: [main, master]
 
 jobs:
-  gravitas-verify:
-    name: GRAVITAS Verification Gate
+  progravity-verify:
+    name: PROGRAVITY Verification Gate
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -36,19 +36,19 @@ jobs:
         run: python benchmarks/runner/validate.py --episodes benchmarks/results --allow-empty
 
       - name: Compile native hook scripts
-        run: python -m py_compile gravitas_cli.py gravitas_init.py plugins/gravitas-antigravity/scripts/*.py skills/gravitas/scripts/*.py benchmarks/runner/*.py
+        run: python -m py_compile progravity_cli.py progravity_init.py plugins/progravity-antigravity/scripts/*.py skills/progravity/scripts/*.py benchmarks/runner/*.py
 
       - name: Smoke-test installed CLI
-        run: gravitas doctor
+        run: progravity doctor
 
       - name: Package build and clean install smoke test
         run: |
           python -m pip install build
-          python -m build --outdir /tmp/gravitas-pkg
-          python -m pip install --force-reinstall --no-deps /tmp/gravitas-pkg/*.whl
-          cd /tmp && gravitas doctor
-          cd /tmp && gravitas decide --signals '{}'
-          cd /tmp && python -c "import gravitas_init; print(gravitas_init.detect_hosts('.'))"
+          python -m build --outdir /tmp/progravity-pkg
+          python -m pip install --force-reinstall --no-deps /tmp/progravity-pkg/*.whl
+          cd /tmp && progravity doctor
+          cd /tmp && progravity decide --signals '{}'
+          cd /tmp && python -c "import progravity_init; print(progravity_init.detect_hosts('.'))"
 
       - name: Validate portable skill structure
         run: python .github/scripts/validate_skill.py
@@ -56,16 +56,16 @@ jobs:
       - name: Build and validate Native bundle
         run: |
           bash scripts/build-native-bundle.sh
-          test -f dist/gravitas-antigravity/plugin.json
-          test -f dist/gravitas-antigravity/hooks.json
-          test -f dist/gravitas-antigravity/skills/gravitas/SKILL.md
-          test -f dist/gravitas-antigravity/skills/gravitas-highstakes/SKILL.md
-          test -f dist/gravitas-antigravity/rules/gravitas-invariants.md
-          test -f dist/gravitas-antigravity/scripts/pre_tool.py
-          test -f dist/gravitas-antigravity/scripts/gravitas_action.py
-          test -f dist/gravitas-antigravity/scripts/gravitas_policy.py
-          test -f dist/gravitas-antigravity/SHA256SUMS
-          git diff --exit-code -- dist/gravitas-antigravity
+          test -f dist/progravity-antigravity/plugin.json
+          test -f dist/progravity-antigravity/hooks.json
+          test -f dist/progravity-antigravity/skills/progravity/SKILL.md
+          test -f dist/progravity-antigravity/skills/progravity-highstakes/SKILL.md
+          test -f dist/progravity-antigravity/rules/progravity-invariants.md
+          test -f dist/progravity-antigravity/scripts/pre_tool.py
+          test -f dist/progravity-antigravity/scripts/progravity_action.py
+          test -f dist/progravity-antigravity/scripts/progravity_policy.py
+          test -f dist/progravity-antigravity/SHA256SUMS
+          git diff --exit-code -- dist/progravity-antigravity
 
       - name: Validate public README claims
         run: python scripts/check_readme_claims.py

@@ -6,7 +6,7 @@ labels: benchmark-result
 ---
 
 Model and effort:
-Antigravity and Gravitas versions:
+Antigravity and Progravity versions:
 Dataset commit and evaluator version:
 Runs per task:
 Raw episode archive:

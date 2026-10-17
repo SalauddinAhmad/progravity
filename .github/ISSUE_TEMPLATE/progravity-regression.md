@@ -1,12 +1,12 @@
 ---
-name: Gravitas regression
-about: Report behavior that became worse with Gravitas
+name: Progravity regression
+about: Report behavior that became worse with Progravity
 title: "[Regression] "
 labels: regression
 ---
 
 Repository and commit:
-Gravitas versions compared:
+Progravity versions compared:
 Exact task and fixed configuration:
 Baseline result:
 Regression result:

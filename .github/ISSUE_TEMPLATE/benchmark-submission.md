@@ -1,6 +1,6 @@
 ---
 name: Benchmark submission
-about: Submit a reproducible GravitasBench case
+about: Submit a reproducible ProgravityBench case
 title: "[Benchmark] "
 labels: benchmark-candidate
 ---
