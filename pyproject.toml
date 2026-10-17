@@ -16,7 +16,6 @@ dependencies = [
 
 [project.scripts]
 progravity = "progravity_cli:main"
-gravitas = "progravity_cli:main"
 
 # Runtime assets mirrored under sys.prefix/share/progravity/ so the installed
 # `progravity` console script works outside a repository checkout. Layout
@@ -42,4 +41,4 @@ gravitas = "progravity_cli:main"
 "share/progravity/adapters/opencode" = ["adapters/opencode/*.md", "adapters/opencode/*.json"]
 
 [tool.setuptools]
-py-modules = ["progravity_cli", "progravity_init", "gravitas_cli", "gravitas_init"]
+py-modules = ["progravity_cli", "progravity_init"]
