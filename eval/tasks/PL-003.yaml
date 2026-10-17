@@ -3,7 +3,7 @@ title: "Plan an authorization audit"
 category: plan-only
 tier: 1
 pillars_tested: [1, 2, 3, 10]
-repository: "gravitas-plan-fixture"
+repository: "progravity-plan-fixture"
 commit: "plan-only-fixture-v1"
 description: |
   A new endpoint needs role-based access rules. Produce an investigation and

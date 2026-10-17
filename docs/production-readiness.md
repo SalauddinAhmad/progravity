@@ -1,12 +1,12 @@
-# GRAVITAS production-readiness gates
+# PROGRAVITY production-readiness gates
 
 Last reviewed: 2026-10-07 (release-candidate audit; see Definition of Done below).
 
 | Gate | Status | Evidence / remaining boundary |
 |---|---|---|
 | Agent Skills format | PASS | Skill frontmatter validated in CI; OpenCode name/description rules tested. |
-| Core project install | PASS | `gravitas init` scaffolds skills without clobbering; idempotence tested. |
-| Native plugin packaging | PASS | `agy` 1.2.2 validates `dist/gravitas-antigravity` (2 skills, 3 agents, hooks); bundle drift checked in CI. |
+| Core project install | PASS | `progravity init` scaffolds skills without clobbering; idempotence tested. |
+| Native plugin packaging | PASS | `agy` 1.2.2 validates `dist/progravity-antigravity` (2 skills, 3 agents, hooks); bundle drift checked in CI. |
 | OpenCode adapter | PASS | Templates + shim + guard + init tested; capability differences documented. |
 | Wheel/sdist install | PASS | Wheel ships 60+ runtime files; CI force-reinstalls and smokes `doctor`/`decide` outside any checkout. |
 | Runtime unit tests | PASS | 159 tests: policy, action bypass/fuzz, context, verification, adapters, bench plumbing. |

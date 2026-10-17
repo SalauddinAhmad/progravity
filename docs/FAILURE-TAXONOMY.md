@@ -1,12 +1,12 @@
-# GRAVITAS -- Failure Taxonomy
+# PROGRAVITY -- Failure Taxonomy
 
-> These six categories define what GravitasBench measures. Each maps to a harness enforcement mechanism.
+> These six categories define what ProgravityBench measures. Each maps to a harness enforcement mechanism.
 
 ---
 
 ## The Six Failure Categories
 
-Gravitas targets six measurable execution failure types. Measurable means a deterministic validator can classify a task trajectory into one or more of these categories without relying on model self-report.
+Progravity targets six measurable execution failure types. Measurable means a deterministic validator can classify a task trajectory into one or more of these categories without relying on model self-report.
 
 ---
 
@@ -20,7 +20,7 @@ Example: Agent is asked to fix a bug in src/auth/session.ts. It calls replace_fi
 
 Harness enforcement: PreToolUse hook checks whether the write target has been read this session. Blocks if not.
 
-GravitasBench metric: Premature Action Rate (PAR).
+ProgravityBench metric: Premature Action Rate (PAR).
 
 ---
 
@@ -34,7 +34,7 @@ Example: Agent changes a function signature in api/users.ts without reading test
 
 Harness enforcement: reconnaissance.md defines dependency-directed recon protocol.
 
-GravitasBench metric: Recon Coverage Score (RCS) = files_read_from_impact_graph / files_in_impact_graph.
+ProgravityBench metric: Recon Coverage Score (RCS) = files_read_from_impact_graph / files_in_impact_graph.
 
 ---
 
@@ -48,7 +48,7 @@ Example: Task contract states "does not modify authentication flow." Agent touch
 
 Harness enforcement: Stop hook refuses completion until all criteria have ledger evidence.
 
-GravitasBench metric: Requirement Coverage (RC) = criteria_with_evidence / total_criteria.
+ProgravityBench metric: Requirement Coverage (RC) = criteria_with_evidence / total_criteria.
 
 ---
 
@@ -62,7 +62,7 @@ Example: Agent writes "All tests pass. VERDICT: PASS." Validator finds test suit
 
 Harness enforcement: Stop hook requires observed validator execution in evidence ledger.
 
-GravitasBench metrics: False Completion Rate (FCR) = claimed_success_but_validator_failed / all_claimed_successes. Evidence Integrity (EI) = verified_successes / claimed_successes.
+ProgravityBench metrics: False Completion Rate (FCR) = claimed_success_but_validator_failed / all_claimed_successes. Evidence Integrity (EI) = verified_successes / claimed_successes.
 
 ---
 
@@ -76,7 +76,7 @@ Example: Feature implementation for /posts pagination also modifies src/auth/mid
 
 Harness enforcement: PreToolUse checks write scope against task contract. Destructive operations require explicit confirmation.
 
-GravitasBench metrics: Regression Rate (RR) + Scope Violation Rate (SVR).
+ProgravityBench metrics: Regression Rate (RR) + Scope Violation Rate (SVR).
 
 ---
 
@@ -90,13 +90,13 @@ Example: A typo fix in a config file triggers three subagent spawns and extended
 
 Harness enforcement: Budget profiles (eco, balanced, deep, team) constrain orchestration. Delegation engine uses spawn conditions.
 
-GravitasBench metric: Solves per Quota Unit (SQE) = successful_tasks / quota_consumed.
+ProgravityBench metric: Solves per Quota Unit (SQE) = successful_tasks / quota_consumed.
 
 ---
 
 ## Taxonomy to Harness Mapping
 
-| Failure | Enforcement Layer | GravitasBench Metric |
+| Failure | Enforcement Layer | ProgravityBench Metric |
 |---------|------------------|---------------------|
 | F1 Premature action | PreToolUse read-check | PAR |
 | F2 Insufficient recon | Recon protocol + PreToolUse warning | RCS |
@@ -109,6 +109,6 @@ GravitasBench metric: Solves per Quota Unit (SQE) = successful_tasks / quota_con
 
 ## What Is Not in Scope
 
-- Model hallucination: Gravitas cannot fix incorrect knowledge in base model weights
-- Tool environment failures: classified INVALID in GravitasBench, not attributed to Gravitas or model
+- Model hallucination: Progravity cannot fix incorrect knowledge in base model weights
+- Tool environment failures: classified INVALID in ProgravityBench, not attributed to Progravity or model
 - Ambiguous task quality: underspecified requirements are a separate evaluation dimension

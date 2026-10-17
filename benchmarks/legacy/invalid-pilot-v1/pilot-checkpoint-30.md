@@ -1,4 +1,4 @@
-# GravitasBench Pilot Methodology Report
+# ProgravityBench Pilot Methodology Report
 
 **Total eligible episodes:** 30
 
@@ -14,7 +14,7 @@
 - **Median Duration:** 16.8s
 - **Median Tool Calls:** 0.0
 
-## GRAVITAS_CORE
+## PROGRAVITY_CORE
 - **Total Runs:** 10
 - **FSR (Functional Success Rate):** 90.0%
 - **FCR (False Completion Rate):** 10.0%
@@ -24,7 +24,7 @@
 - **Median Duration:** 16.7s
 - **Median Tool Calls:** 0.0
 
-## GRAVITAS_NATIVE
+## PROGRAVITY_NATIVE
 - **Total Runs:** 10
 - **FSR (Functional Success Rate):** 90.0%
 - **FCR (False Completion Rate):** 10.0%

@@ -175,4 +175,4 @@ Revised Plan:
 
 ---
 
-*This rubric is part of the GRAVITAS evaluation framework. It defines the scoring criteria for the Plan Quality metric.*
+*This rubric is part of the PROGRAVITY evaluation framework. It defines the scoring criteria for the Plan Quality metric.*

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Seeded randomization and experiment control for GravitasBench.
+"""Seeded randomization and experiment control for ProgravityBench.
 
 Implements a randomized complete-block design: every (task, run_index) pair is
 one block containing all configurations exactly once, so model drift over time

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Canonical metric computation for GravitasBench.
+"""Canonical metric computation for ProgravityBench.
 
 Metric definitions follow benchmarks/README.md and docs/FAILURE-TAXONOMY.md:
 

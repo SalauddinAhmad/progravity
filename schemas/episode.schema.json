@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "GravitasBench Episode v2",
+  "title": "ProgravityBench Episode v2",
   "type": "object",
   "properties": {
     "model": {
@@ -16,7 +16,7 @@
       "type": "string",
       "enum": ["low", "medium", "high", "provider-default", "not-configurable"]
     },
-    "gravitas": {
+    "progravity": {
       "type": "object",
       "properties": {
         "enabled": {"type": "boolean"},

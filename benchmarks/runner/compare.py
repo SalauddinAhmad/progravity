@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compare paired GravitasBench configurations without external statistics packages."""
+"""Compare paired ProgravityBench configurations without external statistics packages."""
 import argparse
 import json
 import math

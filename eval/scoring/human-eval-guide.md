@@ -1,6 +1,6 @@
 # Human Evaluation Guide
 
-Guide for human raters evaluating GRAVITAS agent responses. Covers evaluation procedure, bias prevention, and calibration.
+Guide for human raters evaluating PROGRAVITY agent responses. Covers evaluation procedure, bias prevention, and calibration.
 
 ---
 
@@ -8,7 +8,7 @@ Guide for human raters evaluating GRAVITAS agent responses. Covers evaluation pr
 
 ### 1.1 What You're Rating
 
-You are evaluating agent responses to coding tasks. Your ratings determine whether GRAVITAS improves agent behavior.
+You are evaluating agent responses to coding tasks. Your ratings determine whether PROGRAVITY improves agent behavior.
 
 ### 1.2 What You're NOT Rating
 
@@ -18,7 +18,7 @@ You are evaluating agent responses to coding tasks. Your ratings determine wheth
 
 ### 1.3 Blinding
 
-- You do not know which condition (baseline vs. GRAVITAS) produced each response.
+- You do not know which condition (baseline vs. PROGRAVITY) produced each response.
 - Responses are anonymized before rating.
 - Do not try to guess which condition produced the response.
 
@@ -108,7 +108,7 @@ Rate the depth of the adversarial self-QA pass. Did the agent try to break its o
 |------|-------------|------------|
 | **Anchoring** | First response sets the standard | Rate in random order, not sequentially |
 | **Halo effect** | One good metric inflates others | Rate each metric independently |
-| **Confirmation bias** | Expecting GRAVITAS to be better | Blind evaluation — don't know which condition |
+| **Confirmation bias** | Expecting PROGRAVITY to be better | Blind evaluation — don't know which condition |
 | **Recency bias** | Recent responses rated differently | Randomize response order |
 | **Length bias** | Longer responses rated higher | Focus on structure, not length |
 
@@ -194,4 +194,4 @@ Updated understanding:
 
 ---
 
-*This guide is part of the GRAVITAS evaluation framework. It ensures consistent, unbiased human evaluation of agent responses.*
+*This guide is part of the PROGRAVITY evaluation framework. It ensures consistent, unbiased human evaluation of agent responses.*

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate GravitasBench episode files and their derived truth fields."""
+"""Validate ProgravityBench episode files and their derived truth fields."""
 import argparse
 import json
 import sys

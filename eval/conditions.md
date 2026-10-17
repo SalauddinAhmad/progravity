@@ -1,6 +1,6 @@
 # Evaluation Conditions
 
-Experimental conditions for the GRAVITAS evaluation suite. Defines what is held constant, what varies, and how conditions map to research questions.
+Experimental conditions for the PROGRAVITY evaluation suite. Defines what is held constant, what varies, and how conditions map to research questions.
 
 ---
 
@@ -9,22 +9,22 @@ Experimental conditions for the GRAVITAS evaluation suite. Defines what is held 
 | Condition | Model | Harness | Skill | Research Question |
 |-----------|-------|---------|-------|-------------------|
 | **A: Gemini Baseline** | Gemini 3 Pro | Default Antigravity | None | What is Gemini's baseline performance without behavioral discipline? |
-| **B: Gemini + GRAVITAS** | Gemini 3 Pro | Default Antigravity | GRAVITAS loaded | How much does GRAVITAS improve Gemini's performance? |
+| **B: Gemini + PROGRAVITY** | Gemini 3 Pro | Default Antigravity | PROGRAVITY loaded | How much does PROGRAVITY improve Gemini's performance? |
 | **C: Claude Baseline** | Claude Sonnet/Opus | Claude Code default | None | What is Claude's baseline performance without behavioral discipline? |
-| **D: Claude + GRAVITAS** | Claude Sonnet/Opus | Claude Code default | GRAVITAS loaded | How much does GRAVITAS improve Claude's performance? |
+| **D: Claude + PROGRAVITY** | Claude Sonnet/Opus | Claude Code default | PROGRAVITY loaded | How much does PROGRAVITY improve Claude's performance? |
 
 ---
 
 ## 2. Primary Comparisons
 
-### 2.1 GRAVITAS Effect (Within-Model)
+### 2.1 PROGRAVITY Effect (Within-Model)
 
-**Comparison 1:** A vs. B (Gemini without vs. with GRAVITAS)
-- Research question: Does GRAVITAS improve Gemini's performance?
+**Comparison 1:** A vs. B (Gemini without vs. with PROGRAVITY)
+- Research question: Does PROGRAVITY improve Gemini's performance?
 - Expected: Significant improvement on discipline metrics (false-completion, diff-scoping, recon rate).
 
-**Comparison 2:** C vs. D (Claude without vs. with GRAVITAS)
-- Research question: Does GRAVITAS improve Claude's performance?
+**Comparison 2:** C vs. D (Claude without vs. with PROGRAVITY)
+- Research question: Does PROGRAVITY improve Claude's performance?
 - Expected: Moderate improvement (Claude already has some built-in discipline).
 
 ### 2.2 Cross-Model Comparison
@@ -33,9 +33,9 @@ Experimental conditions for the GRAVITAS evaluation suite. Defines what is held 
 - Research question: How do the models compare without behavioral discipline?
 - Expected: Claude may outperform on discipline metrics; Gemini may outperform on some task types.
 
-**Comparison 4:** B vs. D (Gemini + GRAVITAS vs. Claude + GRAVITAS)
-- Research question: Does GRAVITAS equalize performance across models?
-- Expected: GRAVITAS closes the gap on discipline metrics.
+**Comparison 4:** B vs. D (Gemini + PROGRAVITY vs. Claude + PROGRAVITY)
+- Research question: Does PROGRAVITY equalize performance across models?
+- Expected: PROGRAVITY closes the gap on discipline metrics.
 
 ---
 
@@ -56,9 +56,9 @@ Experimental conditions for the GRAVITAS evaluation suite. Defines what is held 
 
 | Factor | Variation | Purpose |
 |--------|-----------|---------|
-| Model | Gemini 3 Pro vs. Claude Sonnet/Opus | Test GRAVITAS across models |
-| Skill | None vs. GRAVITAS loaded | Test GRAVITAS effect |
-| Harness | Antigravity vs. Claude Code | Test GRAVITAS across harnesses |
+| Model | Gemini 3 Pro vs. Claude Sonnet/Opus | Test PROGRAVITY across models |
+| Skill | None vs. PROGRAVITY loaded | Test PROGRAVITY effect |
+| Harness | Antigravity vs. Claude Code | Test PROGRAVITY across harnesses |
 
 ### 3.3 Controls Not Applied (Accepted Limitations)
 
@@ -131,7 +131,7 @@ For each run, collect:
 ### 6.1 Primary Success Criteria (v1)
 
 1. **B improves over A** on false-completion rate and diff-scoping ratio, with 95% CIs excluding zero.
-2. **D improves over C** on the same metrics (Gravitas generalizes across model families).
+2. **D improves over C** on the same metrics (Progravity generalizes across model families).
 3. **B's token overhead is <3× baseline.**
 4. **No metric regresses by >10%** in any condition.
 
@@ -143,7 +143,7 @@ For each run, collect:
 
 ### 6.3 Exploratory (not success criteria)
 
-1. Reference-model delta on task success rate (Gravitas-enabled run vs. an
+1. Reference-model delta on task success rate (Progravity-enabled run vs. an
    independent reference run on the same suite -- report with exact model
    revisions and CIs; see `eval/claude-parity.md`).
 2. B's token overhead is <2× baseline.
@@ -158,9 +158,9 @@ For each run, collect:
 | Model API changes during eval | Medium | High | Pin model versions, run eval in compressed timeframe |
 | Insufficient task diversity | Medium | Medium | Include 7 task categories, 25 tasks total |
 | Rater fatigue | Medium | Medium | Limit to 20 tasks per rater, provide breaks |
-| GRAVITAS token overhead too high | Low | High | Monitor overhead during pilot runs, optimize if needed |
+| PROGRAVITY token overhead too high | Low | High | Monitor overhead during pilot runs, optimize if needed |
 | Flaky tests in task repos | Medium | Medium | Pre-verify test stability, exclude flaky tests |
 
 ---
 
-*This document is part of the GRAVITAS evaluation framework. It defines the experimental conditions for Phase 4 and ensures reproducibility of results.*
+*This document is part of the PROGRAVITY evaluation framework. It defines the experimental conditions for Phase 4 and ensures reproducibility of results.*

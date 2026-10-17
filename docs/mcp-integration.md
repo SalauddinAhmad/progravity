@@ -1,7 +1,7 @@
 # MCP Integration Guide
 
-Connect GRAVITAS agents to real tools via Model Context Protocol (MCP).
-This turns GRAVITAS from a behavioral skill into a fully-wired agent system.
+Connect PROGRAVITY agents to real tools via Model Context Protocol (MCP).
+This turns PROGRAVITY from a behavioral skill into a fully-wired agent system.
 
 ---
 
@@ -9,7 +9,7 @@ This turns GRAVITAS from a behavioral skill into a fully-wired agent system.
 
 MCP (Model Context Protocol) gives agents access to external tools:
 filesystem, git, GitHub, databases, browsers, and more.
-GRAVITAS uses MCP to give each specialized agent the right tool access.
+PROGRAVITY uses MCP to give each specialized agent the right tool access.
 
 ---
 
@@ -30,7 +30,7 @@ Gives agents read/write access to your codebase.
 }
 ```
 
-**GRAVITAS usage:**
+**PROGRAVITY usage:**
 - Explore agent: read-only (don't give write access to Explore)
 - General agent: read + write
 - Verify agent: read-only + run commands
@@ -50,7 +50,7 @@ Gives agents read/write access to your codebase.
 }
 ```
 
-**GRAVITAS usage:** All agents use for recon.
+**PROGRAVITY usage:** All agents use for recon.
 ```
 git log --oneline -10 -- [file]  → what changed recently
 git diff HEAD -- [file]           → uncommitted changes
@@ -73,7 +73,7 @@ git blame [file]                  → who changed what line
 }
 ```
 
-**GRAVITAS usage:**
+**PROGRAVITY usage:**
 - Read issue context before implementing
 - Post VERDICT as PR comment
 - Check CI status before claiming done
@@ -93,7 +93,7 @@ git blame [file]                  → who changed what line
 }
 ```
 
-**GRAVITAS usage:**
+**PROGRAVITY usage:**
 - Check schema before writing migrations
 - Verify data before/after data changes
 - EXPLAIN ANALYZE for performance work
@@ -113,13 +113,13 @@ git blame [file]                  → who changed what line
 }
 ```
 
-**GRAVITAS usage:** Verify agent runs the full verification chain.
+**PROGRAVITY usage:** Verify agent runs the full verification chain.
 
 ---
 
 ## Tool Isolation per Agent
 
-Map MCP tools to agents following GRAVITAS isolation rules:
+Map MCP tools to agents following PROGRAVITY isolation rules:
 
 ```json
 {
@@ -174,7 +174,7 @@ For Antigravity users, configure in your workspace:
         "pytest",
         "cargo test",
         "go test ./...",
-        "bash skills/gravitas/scripts/verify.sh"
+        "bash skills/progravity/scripts/verify.sh"
       ],
       "description": "Run verification commands"
     }
@@ -186,7 +186,7 @@ For Antigravity users, configure in your workspace:
 
 ## Full Wiring Example
 
-With MCP configured, the GRAVITAS Explore agent can:
+With MCP configured, the PROGRAVITY Explore agent can:
 
 ```
 1. List all TypeScript files in src/auth/

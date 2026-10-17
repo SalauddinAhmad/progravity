@@ -3,7 +3,7 @@
 > Research catalog; failure taxonomy is normative in `docs/FAILURE-TAXONOMY.md`.
 > Pillar/tier references are historical — see `docs/adr/` for the runtime model.
 
-A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars. Sourced from MAST taxonomy, Microsoft taxonomy, IJETRM taxonomy, and PING taxonomy, with coding-specific additions.
+A comprehensive catalog of known agent failure modes, mapped to PROGRAVITY pillars. Sourced from MAST taxonomy, Microsoft taxonomy, IJETRM taxonomy, and PING taxonomy, with coding-specific additions.
 
 ---
 
@@ -15,7 +15,7 @@ A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars
 
 **Frequency:** Very common — the single largest source of hallucination in agentic coding.
 
-**GRAVITAS Coverage:** Pillar 1 (Reconnaissance Before Mutation) directly addresses this. The mandatory read-only pass before any edit forces grounding in actual file state.
+**PROGRAVITY Coverage:** Pillar 1 (Reconnaissance Before Mutation) directly addresses this. The mandatory read-only pass before any edit forces grounding in actual file state.
 
 **Remaining Gap:** None — Pillar 1 is specifically designed for this failure mode.
 
@@ -31,7 +31,7 @@ A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars
 
 **Frequency:** Common, especially on tasks that seem straightforward but have hidden complexity.
 
-**GRAVITAS Coverage:** Pillar 2 (Plan + Adversarial Critique) requires explicit planning for Tier 1+ tasks. The cognitive loop mandates UNDERSTAND → PLAN → EXECUTE.
+**PROGRAVITY Coverage:** Pillar 2 (Plan + Adversarial Critique) requires explicit planning for Tier 1+ tasks. The cognitive loop mandates UNDERSTAND → PLAN → EXECUTE.
 
 **Remaining Gap:** The threshold for when planning is required is subjective. Simple tasks may not need a formal plan.
 
@@ -47,7 +47,7 @@ A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars
 
 **Frequency:** Moderate but high-impact when it occurs.
 
-**GRAVITAS Coverage:** Pillar 3 (Irreversibility-Scaled Caution) with 3-tier classification (expandable to 5) directly addresses this. The "classify up" rule provides safety margin.
+**PROGRAVITY Coverage:** Pillar 3 (Irreversibility-Scaled Caution) with 3-tier classification (expandable to 5) directly addresses this. The "classify up" rule provides safety margin.
 
 **Remaining Gap:** Current 3-tier system is too coarse — research shows 5-7 levels better capture the severity spectrum. Escalation chains (individual safe steps that compound) are not addressed.
 
@@ -63,7 +63,7 @@ A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars
 
 **Frequency:** Very common — agents tend to over-edit.
 
-**GRAVITAS Coverage:** Pillar 4 (Small, Scoped Diffs) directly addresses this with rules: smallest change, no "while I'm in here" changes, every diff traceable to a plan step.
+**PROGRAVITY Coverage:** Pillar 4 (Small, Scoped Diffs) directly addresses this with rules: smallest change, no "while I'm in here" changes, every diff traceable to a plan step.
 
 **Remaining Gap:** No quantitative thresholds for diff size by task type.
 
@@ -79,7 +79,7 @@ A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars
 
 **Frequency:** Very common — the most frequently observed failure mode in agentic coding.
 
-**GRAVITAS Coverage:** Pillar 5 (Evidence Before Completion Claims) directly addresses this with a strict rule: never claim success without independent evidence.
+**PROGRAVITY Coverage:** Pillar 5 (Evidence Before Completion Claims) directly addresses this with a strict rule: never claim success without independent evidence.
 
 **Remaining Gap:** The definition of "sufficient evidence" varies by task. Some tasks have no automated tests.
 
@@ -95,7 +95,7 @@ A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars
 
 **Frequency:** Common — models tend to rate their own outputs favorably.
 
-**GRAVITAS Coverage:** Pillar 6 (Adversarial Self-QA) requires a "structurally separate" QA pass with explicit adversarial framing: "You are a skeptical reviewer, not the author."
+**PROGRAVITY Coverage:** Pillar 6 (Adversarial Self-QA) requires a "structurally separate" QA pass with explicit adversarial framing: "You are a skeptical reviewer, not the author."
 
 **Remaining Gap:** The adversarial pass may still not catch subtle logic errors. No mechanism for truly independent verification beyond self-review.
 
@@ -111,7 +111,7 @@ A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars
 
 **Frequency:** Very common — the default reporting mode for most agents.
 
-**GRAVITAS Coverage:** Pillar 7 (Outcome-First Reporting) mandates opening with: what changed, whether it's verified, what needs user input. Tool narration goes in secondary section.
+**PROGRAVITY Coverage:** Pillar 7 (Outcome-First Reporting) mandates opening with: what changed, whether it's verified, what needs user input. Tool narration goes in secondary section.
 
 **Remaining Gap:** None — this is a well-understood communication pattern.
 
@@ -127,7 +127,7 @@ A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars
 
 **Frequency:** Common, especially when the agent doesn't explicitly track what it has tried.
 
-**GRAVITAS Coverage:** Pillar 8 (Session Memory of Failures) requires logging failed approaches and checking the log before re-attempting. "Never repeat an already-falsified approach."
+**PROGRAVITY Coverage:** Pillar 8 (Session Memory of Failures) requires logging failed approaches and checking the log before re-attempting. "Never repeat an already-falsified approach."
 
 **Remaining Gap:** Within a single session, the agent may not have persistent memory across tool calls. The failure log must be explicitly maintained.
 
@@ -143,7 +143,7 @@ A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars
 
 **Frequency:** Moderate — depends on the agent harness and model capabilities.
 
-**GRAVITAS Coverage:** Pillar 9 (Native Strengths) instructs the agent to lean into structural advantages: large context for module trees, browser for visual verification, multimodal for screenshots/PDFs.
+**PROGRAVITY Coverage:** Pillar 9 (Native Strengths) instructs the agent to lean into structural advantages: large context for module trees, browser for visual verification, multimodal for screenshots/PDFs.
 
 **Remaining Gap:** No guidance on when large context is a liability (diluted attention, higher cost).
 
@@ -159,7 +159,7 @@ A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars
 
 **Frequency:** Common — models are trained to be helpful, which can override caution.
 
-**GRAVITAS Coverage:** Pillar 10 (Calibrated Pushback) requires pushing back once on likely-bad requests, framed constructively, then deferring to user decision. Anti-sycophancy rules: no "great question!", no unnecessary praise before criticism.
+**PROGRAVITY Coverage:** Pillar 10 (Calibrated Pushback) requires pushing back once on likely-bad requests, framed constructively, then deferring to user decision. Anti-sycophancy rules: no "great question!", no unnecessary praise before criticism.
 
 **Remaining Gap:** Distinguishing between "user has considered alternatives and decided" vs. "user hasn't thought about risks."
 
@@ -175,7 +175,7 @@ A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars
 
 **Frequency:** Low frequency but very high impact when it occurs.
 
-**GRAVITAS Coverage:** Partially addressed by Pillar 3 — compound actions inherit the highest tier. However, the current spec doesn't explicitly detect escalation patterns.
+**PROGRAVITY Coverage:** Partially addressed by Pillar 3 — compound actions inherit the highest tier. However, the current spec doesn't explicitly detect escalation patterns.
 
 **Remaining Gap:** No explicit mechanism to detect when a sequence of Tier 0/1 actions produces a Tier 2+ outcome.
 
@@ -191,7 +191,7 @@ A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars
 
 **Frequency:** Moderate — increases with task complexity and context length.
 
-**GRAVITAS Coverage:** Partially addressed by Pillar 8 (failure logging) and Pillar 6 (adversarial QA). However, there's no explicit mechanism to detect when current context contains errors that may contaminate future reasoning.
+**PROGRAVITY Coverage:** Partially addressed by Pillar 8 (failure logging) and Pillar 6 (adversarial QA). However, there's no explicit mechanism to detect when current context contains errors that may contaminate future reasoning.
 
 **Remaining Gap:** No context-sanitization mechanism. The agent cannot easily detect when its own accumulated context contains errors.
 
@@ -207,7 +207,7 @@ A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars
 
 **Frequency:** Common, especially when the agent doesn't track action history.
 
-**GRAVITAS Coverage:** Partially addressed by Pillar 8 (failure logging). The "never repeat" rule applies, but step repetition may not be logged as a "failure" per se.
+**PROGRAVITY Coverage:** Partially addressed by Pillar 8 (failure logging). The "never repeat" rule applies, but step repetition may not be logged as a "failure" per se.
 
 **Remaining Gap:** The agent may not recognize that it's repeating an action because each iteration has minor differences.
 
@@ -223,7 +223,7 @@ A comprehensive catalog of known agent failure modes, mapped to GRAVITAS pillars
 
 **Frequency:** Increases with session length. Critical after 50K+ tokens.
 
-**GRAVITAS Coverage:** Partially addressed by Pillar 8 (session memory). However, the failure log captures failures, not ongoing constraints.
+**PROGRAVITY Coverage:** Partially addressed by Pillar 8 (session memory). However, the failure log captures failures, not ongoing constraints.
 
 **Remaining Gap:** No mechanism to refresh core constraints at context-length checkpoints.
 

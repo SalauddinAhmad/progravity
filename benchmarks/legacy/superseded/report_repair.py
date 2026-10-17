@@ -1,13 +1,13 @@
 import json
 import hashlib
 
-print("# GRAVITASBENCH METHODOLOGY REPAIR AUDIT")
+print("# PROGRAVITYBENCH METHODOLOGY REPAIR AUDIT")
 print("")
 print("## 1. RECLASSIFY THE PREVIOUS PILOT")
 print("The previous 90-run pilot is INVALID and has been archived to `benchmarks/legacy/invalid-pilot-v1`.")
 print("- **Fake lane diversity / ceiling effect**: Verified. `create_pilot_fixtures.py` generated `add(a,b)` for all L2-L10 lanes with tests that already passed before the agent ran.")
 print("- **Workspace replacement bug**: Verified. The previous isolation script copied `skills` into the workspace without preserving the true repository structure.")
-print("- **Recursive workspace copying**: Verified and fixed. Workspaces are now cloned directly into `/tmp/gravitasbench/<run-id>/ws`.")
+print("- **Recursive workspace copying**: Verified and fixed. Workspaces are now cloned directly into `/tmp/progravitybench/<run-id>/ws`.")
 print("- **Claimed-success bug**: Verified and fixed. Claimed completion is now strictly parsed from the final NDJSON result text.")
 print("- **Baseline contamination**: Verified and fixed. We now execute each configuration using an entirely isolated `HOME` environment with explicit symlinks for authentication, ensuring zero global plugin overlap.")
 print("- **Freeze failure**: Verified. The previous tag had uncommitted files. A true verification snapshot will be made if requested.")
@@ -45,8 +45,8 @@ for r in data:
     if 'C' not in r['task'] and r['pre_pass']: fails += 1
     if not r['ws_preserved']: fails += 1
     if r['config'] == 'BASELINE' and r['hooks'] > 0: fails += 1
-    if r['config'] == 'GRAVITAS_CORE' and r['hooks'] > 0: fails += 1
-    if r['config'] == 'GRAVITAS_NATIVE' and r['hooks'] == 0: fails += 1
+    if r['config'] == 'PROGRAVITY_CORE' and r['hooks'] > 0: fails += 1
+    if r['config'] == 'PROGRAVITY_NATIVE' and r['hooks'] == 0: fails += 1
 
 print("## HARD PASS CONDITIONS")
 print(f"Violations detected: {fails}")

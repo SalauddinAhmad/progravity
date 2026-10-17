@@ -36,13 +36,13 @@ def generate_report():
     # 1. Plugin installed through agy
     # 2. Plugin visible in agy plugin list
     # 3. Native PreToolUse fired
-    if data["GRAVITAS_NATIVE"]["hooks"]["pre"] == 0: violations.append("Native PreToolUse didn't fire")
+    if data["PROGRAVITY_NATIVE"]["hooks"]["pre"] == 0: violations.append("Native PreToolUse didn't fire")
     # 4. Native PostToolUse fired
-    if data["GRAVITAS_NATIVE"]["hooks"]["post"] == 0: violations.append("Native PostToolUse didn't fire")
+    if data["PROGRAVITY_NATIVE"]["hooks"]["post"] == 0: violations.append("Native PostToolUse didn't fire")
     # 6. Baseline has 0 hooks
     if data["BASELINE"]["hooks"]["pre"] > 0 or data["BASELINE"]["hooks"]["post"] > 0: violations.append("Baseline has hooks")
     # 7. Core has 0 hooks
-    if data["GRAVITAS_CORE"]["hooks"]["pre"] > 0 or data["GRAVITAS_CORE"]["hooks"]["post"] > 0: violations.append("Core has native hooks")
+    if data["PROGRAVITY_CORE"]["hooks"]["pre"] > 0 or data["PROGRAVITY_CORE"]["hooks"]["post"] > 0: violations.append("Core has native hooks")
     # 9. Task A starts failing for all 3
     for c in data:
         if data[c]["pre_acceptance_result"] is not False: violations.append(f"{c} didn't fail initially")

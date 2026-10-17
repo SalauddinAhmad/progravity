@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""GravitasBench reproducibility CLI (invoked via `gravitas bench ...`)."""
+"""ProgravityBench reproducibility CLI (invoked via `progravity bench ...`)."""
 import argparse
 import json
 import shutil
@@ -89,7 +89,7 @@ def cmd_report(args):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="GravitasBench reproducibility CLI")
+    parser = argparse.ArgumentParser(description="ProgravityBench reproducibility CLI")
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("doctor")
     build_corpus = sub.add_parser("build-corpus")

@@ -169,11 +169,11 @@ class BenchmarkRunnerTests(unittest.TestCase):
         import yaml
         manifest = yaml.safe_load((ROOT / "benchmarks/manifest.yaml").read_text())
         ablations = {c["id"]: c for c in manifest.get("configurations-ablation", [])}
-        for expected in ("gravitas-enforcement-flash", "gravitas-context-flash",
-                         "gravitas-verification-flash"):
+        for expected in ("progravity-enforcement-flash", "progravity-context-flash",
+                         "progravity-verification-flash"):
             self.assertIn(expected, ablations, expected)
             self.assertEqual(ablations[expected]["model"], "gemini-3.8-flash")
-            self.assertEqual(ablations[expected]["ablation_of"], "gravitas-native-flash")
+            self.assertEqual(ablations[expected]["ablation_of"], "progravity-native-flash")
             self.assertTrue(ablations[expected]["varies"])
 
     def test_bench_cli_doctor_and_build_corpus(self):

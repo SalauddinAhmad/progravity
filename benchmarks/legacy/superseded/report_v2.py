@@ -78,8 +78,8 @@ for r in results:
     if t_in == 0 and tel['status'] == "SUCCESS": fails += 1
     if r['pre_pass']: fails += 1
     if r['config'] == "BASELINE" and (hooks['pre'] > 0 or hooks['post'] > 0): fails += 1
-    if r['config'] == "GRAVITAS_CORE" and (hooks['pre'] > 0 or hooks['post'] > 0): fails += 1
-    if r['config'] == "GRAVITAS_NATIVE" and hooks['pre'] == 0: fails += 1
+    if r['config'] == "PROGRAVITY_CORE" and (hooks['pre'] > 0 or hooks['post'] > 0): fails += 1
+    if r['config'] == "PROGRAVITY_NATIVE" and hooks['pre'] == 0: fails += 1
     if tel['reads'] > 50: fails += 1 # Read explosion check
 
 print("## HARD GATE VERDICT")

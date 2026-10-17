@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
-sys.path.insert(0, str(ROOT / "plugins/gravitas-antigravity/scripts"))
+sys.path.insert(0, str(ROOT / "plugins/progravity-antigravity/scripts"))
 
 from impact_graph import _normalize_changed, build_impact_graph
 

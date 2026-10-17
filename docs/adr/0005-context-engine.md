@@ -11,8 +11,8 @@ and scope. No retrieval ranking, no output elision, no durable summary.
 
 ## Decisions
 
-1. `gravitas_repo`: single per-root index (mtime+size invalidation, versioned,
-   cached at `.gravitas/repo-index.json`) with normalized relations --
+1. `progravity_repo`: single per-root index (mtime+size invalidation, versioned,
+   cached at `.progravity/repo-index.json`) with normalized relations --
    defines/imports/imported-by/callers/tested-by/configured-by/co-changed
    (bounded git log). Symbol/import extraction is regex-based and portable;
    relations are ranking inputs, never completion gates.
@@ -27,7 +27,7 @@ and scope. No retrieval ranking, no output elision, no durable summary.
    drops (counts + digest); never paraphrases identifiers.
 5. `summarize_session` emits the full durable state (criteria + statuses,
    scope, decisions, failed approaches with causes, validators with event
-   hashes, risks, next action); `resume_session` and `gravitas summarize`
+   hashes, risks, next action); `resume_session` and `progravity summarize`
    serve it. Free text is quoted verbatim or marked truncated.
 
 ## Verification

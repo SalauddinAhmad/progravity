@@ -1,4 +1,4 @@
-# GravitasBench v1 Pilot Report
+# ProgravityBench v1 Pilot Report
 
 ## Environment
 - **Antigravity CLI Version:** 1.2.1
@@ -22,7 +22,7 @@
 - Median Time: 16.2s
 - Median Tool Calls: 0.0
 
-### GRAVITAS_CORE
+### PROGRAVITY_CORE
 - FSR: 90.0%
 - FCR: 10.0%
 - Requirement Coverage: 90.0% (simulated)
@@ -34,7 +34,7 @@
 - Median Time: 16.1s
 - Median Tool Calls: 0.0
 
-### GRAVITAS_NATIVE
+### PROGRAVITY_NATIVE
 - FSR: 90.0%
 - FCR: 10.0%
 - Requirement Coverage: 90.0% (simulated)

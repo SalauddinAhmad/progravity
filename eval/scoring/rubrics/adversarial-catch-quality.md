@@ -139,4 +139,4 @@ Root cause analysis:
 
 ---
 
-*This rubric is part of the GRAVITAS evaluation framework. It defines the scoring criteria for the Adversarial-Catch Quality metric.*
+*This rubric is part of the PROGRAVITY evaluation framework. It defines the scoring criteria for the Adversarial-Catch Quality metric.*

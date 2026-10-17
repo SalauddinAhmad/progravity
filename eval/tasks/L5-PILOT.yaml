@@ -2,7 +2,7 @@ task_id: PILOT-L5
 stratum: CONTROLLED
 lane: security-sensitive
 title: "Prevent command injection in calc eval"
-repository_url: "file:///Users/uday/Gravitas/benchmarks/fixtures/L5.bundle"
+repository_url: "file:///Users/uday/Progravity/benchmarks/fixtures/L5.bundle"
 starting_commit: HEAD
 task_provenance: Controlled synthetic fixture for pilot
 task_selection_rationale: Validates security-sensitive

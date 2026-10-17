@@ -1,4 +1,4 @@
-# GRAVITAS V5 Audit — Baseline 8a078dd011ae75b12dc319b6862d6124d385bf8e (branch v5-audit-hardening)
+# PROGRAVITY V5 Audit — Baseline 8a078dd011ae75b12dc319b6862d6124d385bf8e (branch v5-audit-hardening)
 
 Date: 2026-10-15. Host: opencode v2.0.28, agy 1.2.2, python 3.14.6 (.venv). Baseline suite: 164 tests OK.
 Prior fixes verified present: PR #1 (shell injection), PR #2 squash 297a613 (unparseable config preserve), PR #3 squash 5874c03 (newline separator), jsonc-only handling d7c82cd. No reintroduction.
@@ -6,25 +6,25 @@ Prior fixes verified present: PR #1 (shell injection), PR #2 squash 297a613 (unp
 ## Severity-ranked findings (all reproduced, temp dirs only)
 
 ### P0 — enforcement bypass
-- P0-1 `adapters/opencode/plugin/gravitas.js:74-75` wrong hook arity `(input)`; real API is `(input, output)` with args in `output.args`. Extraction always `{}` → `CommandLine:""`, `TargetFile:""` → guard allows; correct envelope denies. Repro: node toEnvelope with real shape → allow vs deny.
-- P0-2 `gravitas.js:58-70` + `gravitas_cli.py:272-280` fail-open: shim catch-all → allow; guard ModuleNotFoundError → allow. Repro: isolated dir guard → allow; ENOENT/timeout → allow.
-- P0-3 `gravitas_action.py:114,185-187` `git branch -D/-d` → none (read-only). Must be destructive.
-- P0-4 `gravitas_action.py:224` `find -execdir` (also -ok/-okdir) → none. Must be destructive.
-- P0-5 `gravitas_action.py:200-212` `python3 -` (stdin) → none. Must be mutation.
+- P0-1 `adapters/opencode/plugin/progravity.js:74-75` wrong hook arity `(input)`; real API is `(input, output)` with args in `output.args`. Extraction always `{}` → `CommandLine:""`, `TargetFile:""` → guard allows; correct envelope denies. Repro: node toEnvelope with real shape → allow vs deny.
+- P0-2 `progravity.js:58-70` + `progravity_cli.py:272-280` fail-open: shim catch-all → allow; guard ModuleNotFoundError → allow. Repro: isolated dir guard → allow; ENOENT/timeout → allow.
+- P0-3 `progravity_action.py:114,185-187` `git branch -D/-d` → none (read-only). Must be destructive.
+- P0-4 `progravity_action.py:224` `find -execdir` (also -ok/-okdir) → none. Must be destructive.
+- P0-5 `progravity_action.py:200-212` `python3 -` (stdin) → none. Must be mutation.
 - P0-6 wrappers (`env`, `sudo`, `VAR=`…) mask inner destructive as mutation/unknown. Must strip and re-dispatch.
 
 ### P1 — unsafe defaults / stale trust
-- P1-1 `gravitas_cli.py:298-304` missing/corrupt contract → `{}` → implement + empty scope → allow. Must deny mutating or warn explicitly.
-- P1-2 `gravitas_policy.py:37-41` invalid mode → implement (most permissive). Guard must reject unknown mode fail-closed.
+- P1-1 `progravity_cli.py:298-304` missing/corrupt contract → `{}` → implement + empty scope → allow. Must deny mutating or warn explicitly.
+- P1-2 `progravity_policy.py:37-41` invalid mode → implement (most permissive). Guard must reject unknown mode fail-closed.
 - P1-3 `post_invocation.py:57-71` completed_criteria seeded and only extended; stale PASS retained. Must recompute from fresh owned PASS.
 - P1-4 `stop_gate.py:121-130` circuit breaker returns continue forever → livelock. Must terminate safely without false PASS.
 - P1-5 `stop_gate.py` never calls `verify_chain`; tampered ledger still gates allow. Must verify before gate.
 - P1-6 `validator_runner.py:89` (+repro) no timeout, unbounded capture; `git_snapshot` no timeout. Must bound.
-- P1-7 `gravitas.js` vs `gravitas_cli.py:259` glob mapping divergence (list_dir vs find_by_name). Must unify.
+- P1-7 `progravity.js` vs `progravity_cli.py:259` glob mapping divergence (list_dir vs find_by_name). Must unify.
 - P1-8 `sh -c`/`xargs` inner destructive masked as mutation. Must recurse/max.
 - P1-9 `git stash drop/clear`, `worktree remove` → mutation not destructive; `git -C` scope escape + over-block. Must fix.
-- P1-10 `gravitas_init.py:96-113` profile validated after copies → partial scaffold on failure. Must preflight.
-- P1-11 `pyproject.toml:22-38` wheel omits `skills/gravitas-highstakes`, `SESSION_FAILURES.md`, `rules/`; doctor blind. Must ship + check.
+- P1-10 `progravity_init.py:96-113` profile validated after copies → partial scaffold on failure. Must preflight.
+- P1-11 `pyproject.toml:22-38` wheel omits `skills/progravity-highstakes`, `SESSION_FAILURES.md`, `rules/`; doctor blind. Must ship + check.
 - P1-12 9 hook scripts lack `from __future__ import annotations` → crash on py3.9 despite `>=3.9` claim. Must add import + CI matrix.
 
 ### P2 — docs/process
@@ -77,7 +77,7 @@ Prior fixes verified present: PR #1 (shell injection), PR #2 squash 297a613 (unp
 - `py_compile` (cli+init+scripts+skills+runner): clean
 - `.github/scripts/validate_skill.py`: PASS; `scripts/check_readme_claims.py`: PASS
 - `bash scripts/build-native-bundle.sh` + `git diff` review: dist matches canonical (diff shown, committed here)
-- Isolated venv wheel install: `gravitas doctor` mode=installed RC 0, `gravitas init --host opencode` installs both skills + opencode.json
+- Isolated venv wheel install: `progravity doctor` mode=installed RC 0, `progravity init --host opencode` installs both skills + opencode.json
 - `agy plugin validate` canonical + dist: ok, RC 0
 - No model quota spent; no comparative benchmark claims made.
 
@@ -97,7 +97,7 @@ Prior fixes verified present: PR #1 (shell injection), PR #2 squash 297a613 (unp
 
 ## Implemented
 - C1 `decide()`: high-stakes flags (destructive/security/auth/migration/broad_fanout) now override the trivial/read_only fast-path (`{trivial,destructive}` → deep, was direct); all count signals coerced via `_safe_int` (garbage strings → defaults, no traceback). Plain trivial/read_only still direct. Tests: DecideBorderlineTests.
-- C3 recovery: `pre_tool` honors `resolved:true` markers (aligned with stop_gate/post_invocation/resume); new `gravitas resolve-failure --session-dir --fingerprint --reason` appends a marker, keeping the original record. Previously the exact-fingerprint ban was permanent with no recovery path. Tests: ban → resolve → allow; unresolved still bans.
+- C3 recovery: `pre_tool` honors `resolved:true` markers (aligned with stop_gate/post_invocation/resume); new `progravity resolve-failure --session-dir --fingerprint --reason` appends a marker, keeping the original record. Previously the exact-fingerprint ban was permanent with no recovery path. Tests: ban → resolve → allow; unresolved still bans.
 - C2 measured, no change: `build_index` 200-file synthetic repo 0.22s, this repo (102 files) 0.53s; refresh/drop/add covered by existing RepoGraphTests. No caching added (correctness over marginal speed).
 - C4 verified, no change: coordinator retired to conditional delegation; agent roles conditional with quota justification; no host claims native subagents falsely (OpenCode agent frontmatter uses host `mode: subagent`, fixture-pinned).
 - C5 verified, no change: conversation isolation pinned by existing test; sessions are separate directories by construction.

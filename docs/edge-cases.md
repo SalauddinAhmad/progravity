@@ -1,7 +1,7 @@
 # Comprehensive Edge Cases
 
 > Research archive. Tier vocabulary maps to policy records
-> (`direct/compact/deep`) per `skills/gravitas/SKILL.md`.
+> (`direct/compact/deep`) per `skills/progravity/SKILL.md`.
 
 100+ edge cases organized by pillar, each with scenario, handling, and recovery. These represent situations where the standard pillar procedure encounters ambiguity, conflict, or failure.
 
@@ -1538,4 +1538,4 @@ These edge cases span multiple pillars and cannot be assigned to a single pillar
 
 ---
 
-*This document is part of the GRAVITAS protocol's supporting documentation. Edge cases are derived from pillar specifications, failure mode catalog, and real-world agentic coding scenarios.*
+*This document is part of the PROGRAVITY protocol's supporting documentation. Edge cases are derived from pillar specifications, failure mode catalog, and real-world agentic coding scenarios.*

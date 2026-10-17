@@ -25,27 +25,27 @@ class PackagingTests(unittest.TestCase):
         for pattern in patterns:
             shipped.update(str(path.relative_to(ROOT)) for path in ROOT.glob(pattern))
         for asset in [
-            "plugins/gravitas-antigravity/plugin.json",
-            "plugins/gravitas-antigravity/hooks.json",
-            "plugins/gravitas-antigravity/scripts/pre_tool.py",
-            "plugins/gravitas-antigravity/scripts/stop_gate.py",
-            "plugins/gravitas-antigravity/scripts/evidence_chain.py",
-            "plugins/gravitas-antigravity/scripts/validator_runner.py",
-            "plugins/gravitas-antigravity/scripts/gravitas_action.py",
-            "plugins/gravitas-antigravity/scripts/gravitas_policy.py",
-            "skills/gravitas/SKILL.md",
-            "skills/gravitas/SESSION_FAILURES.md",
-            "skills/gravitas-highstakes/SKILL.md",
-            "plugins/gravitas-antigravity/rules/gravitas-invariants.md",
+            "plugins/progravity-antigravity/plugin.json",
+            "plugins/progravity-antigravity/hooks.json",
+            "plugins/progravity-antigravity/scripts/pre_tool.py",
+            "plugins/progravity-antigravity/scripts/stop_gate.py",
+            "plugins/progravity-antigravity/scripts/evidence_chain.py",
+            "plugins/progravity-antigravity/scripts/validator_runner.py",
+            "plugins/progravity-antigravity/scripts/progravity_action.py",
+            "plugins/progravity-antigravity/scripts/progravity_policy.py",
+            "skills/progravity/SKILL.md",
+            "skills/progravity/SESSION_FAILURES.md",
+            "skills/progravity-highstakes/SKILL.md",
+            "plugins/progravity-antigravity/rules/progravity-invariants.md",
             "adapters/opencode/contract-template.json",
-            "adapters/opencode/plugin/gravitas.js",
+            "adapters/opencode/plugin/progravity.js",
             "adapters/opencode/permissions/balanced.json",
         ]:
             self.assertIn(asset, shipped, f"wheel data-files omit {asset}")
 
     def test_doctor_passes_in_checkout(self):
         result = subprocess.run(
-            [sys.executable, str(ROOT / "gravitas_cli.py"), "doctor"],
+            [sys.executable, str(ROOT / "progravity_cli.py"), "doctor"],
             text=True,
             capture_output=True,
             cwd=ROOT,

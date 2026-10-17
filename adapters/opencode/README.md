@@ -1,4 +1,4 @@
-# Gravitas OpenCode Adapter
+# Progravity OpenCode Adapter
 
 First-class OpenCode support via native surfaces: AGENTS.md invariants,
 Agent Skills, custom agents, `permission` configuration, and a JS plugin
@@ -7,25 +7,25 @@ Antigravity. Installed and verified against OpenCode 1.18.x (`permission`
 schema). OpenCode v2 uses a different `permissions`-array schema; see
 "Capability differences".
 
-## What `gravitas init --host opencode` installs
+## What `progravity init --host opencode` installs
 
-- `.agents/skills/gravitas/` + `gravitas-highstakes/` (shared with Antigravity discovery)
+- `.agents/skills/progravity/` + `progravity-highstakes/` (shared with Antigravity discovery)
 - `.opencode/agents/{investigator,reviewer,impact-auditor,test-adversary}.md`
-- `.opencode/plugins/gravitas.js` (enforcement shim)
+- `.opencode/plugins/progravity.js` (enforcement shim)
 - `opencode.json` permission profile (merged, never clobbered; unparseable
   configs and `opencode.jsonc`-only projects are left untouched with a
   `warnings` entry for manual merge)
 - `AGENTS.md` invariant block (idempotent markers)
-- `.gravitas/opencode-contract.json` (workspace contract for the shim)
+- `.progravity/opencode-contract.json` (workspace contract for the shim)
 
 ## Capability differences (honest)
 
 - No lifecycle hooks: OpenCode has `tool.execute.before` (block by
   throwing) but no Stop-gate equivalent. Completion gating runs manually
-  via `gravitas summarize` + validator evidence, not automatic denial.
+  via `progravity summarize` + validator evidence, not automatic denial.
 - `force_ask` resolves to hard deny in the shim (no ask channel).
-- Evidence ledger integration is manual (`gravitas validator`, `gravitas
+- Evidence ledger integration is manual (`progravity validator`, `progravity
   repro`); the shim enforces policy only, it does not record sessions.
-- The shim shells to `gravitas guard` (python3 required). If unreachable,
-  calls are allowed with a logged warning -- run `gravitas doctor`.
+- The shim shells to `progravity guard` (python3 required). If unreachable,
+  calls are allowed with a logged warning -- run `progravity doctor`.
 - Session isolation is per-workspace-contract, not per-conversation.

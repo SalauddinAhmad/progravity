@@ -9,7 +9,7 @@ from pathlib import Path
 from jsonschema import Draft7Validator
 
 ROOT = Path(__file__).parents[1]
-SCRIPTS = ROOT / "plugins/gravitas-antigravity/scripts"
+SCRIPTS = ROOT / "plugins/progravity-antigravity/scripts"
 
 
 def contract_with(command):

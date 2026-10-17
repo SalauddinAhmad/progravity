@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Gravitas Evidence Entry",
+  "title": "Progravity Evidence Entry",
   "description": "A runtime event or criterion-linked proof in the append-only evidence ledger.",
   "type": "object",
   "required": ["source", "timestamp"],

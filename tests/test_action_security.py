@@ -8,12 +8,12 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
-SCRIPTS = ROOT / "plugins/gravitas-antigravity/scripts"
+SCRIPTS = ROOT / "plugins/progravity-antigravity/scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 import test_runtime
-from gravitas_action import classify_shell, confine_cwd, normalize
-from gravitas_policy import evaluate_action, target_in_scope
+from progravity_action import classify_shell, confine_cwd, normalize
+from progravity_policy import evaluate_action, target_in_scope
 from post_tool import is_sensitive_path
 
 LEVEL_ORDER = ("none", "write", "mutation", "destructive")
@@ -334,7 +334,7 @@ class SensitiveReadTests(unittest.TestCase):
                 cwd=cwd)
             self.assertEqual(result.returncode, 0, result.stderr)
             entries = [json.loads(line) for line in
-                       (cwd / ".gravitas/sessions/t/evidence.jsonl").read_text().splitlines()]
+                       (cwd / ".progravity/sessions/t/evidence.jsonl").read_text().splitlines()]
             self.assertTrue(entries[-1].get("sensitive"))
 
 

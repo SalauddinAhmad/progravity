@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Summarize validated GravitasBench episodes by configuration."""
+"""Summarize validated ProgravityBench episodes by configuration."""
 import argparse
 import json
 import math

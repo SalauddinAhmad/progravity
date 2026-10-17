@@ -10,7 +10,7 @@ evidence.
 | `repair_runner_v2.py` | `repair_runner_v4.py` | untracked intermediate; introduced manifest-based contamination checks now living in the v4 chain |
 | `repair_runner_v3.py` | `repair_runner_v4.py` | broken at HEAD: read `fixtures/L1_simple_bug/manifest.yaml`, which never existed |
 | `report_repair.py` | `report_v3.py` | reports on v1 canary output only |
-| `report_v2.py` | `report_v3.py` | crashes at HEAD: re-derives git diffs inside deleted `/tmp/gravitasbench` workspaces |
+| `report_v2.py` | `report_v3.py` | crashes at HEAD: re-derives git diffs inside deleted `/tmp/progravitybench` workspaces |
 | `run_smoke.py` | smoke gate embedded in `repair_runner_v4.py` | evidence-counting loop was dead code (`pass`), returned True unconditionally |
 | `framework.py` | smoke gate embedded in `repair_runner_v4.py` | duplicated smoke/isolation logic; PreToolUse counter never incremented |
 | `pilot_runner.py` | `benchmarks/runner/agy_runner.py` | engine of the pilot era invalidated as `INVALID_METHODOLOGY` (`benchmarks/legacy/README.md`) |

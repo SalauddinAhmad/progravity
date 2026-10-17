@@ -7,7 +7,7 @@ from pathlib import Path
 
 def test_smoke():
     print("Running smoke test...")
-    ws = Path("/tmp/gravitas-smoke")
+    ws = Path("/tmp/progravity-smoke")
     if ws.exists(): shutil.rmtree(ws)
     ws.mkdir(parents=True)
     
@@ -21,7 +21,7 @@ def test_smoke():
         "/Users/uday/.local/bin/agy", 
         "--output-format", "stream-json", 
         "--dangerously-skip-permissions", 
-        "--json-schema", "/Users/uday/Gravitas/schemas/benchmark_output.json",
+        "--json-schema", "/Users/uday/Progravity/schemas/benchmark_output.json",
         "--print", prompt
     ]
     
@@ -57,7 +57,7 @@ def test_smoke():
     # Check plugin hook logs!
     import hashlib
     digest = hashlib.sha256(conv_id.encode("utf-8")).hexdigest()[:24]
-    session_dir = Path(os.path.expanduser(f"~/.gemini/config/plugins/gravitas/.gravitas/sessions/conversation-{digest}"))
+    session_dir = Path(os.path.expanduser(f"~/.gemini/config/plugins/progravity/.progravity/sessions/conversation-{digest}"))
     
     print(f"Looking for hooks in {session_dir}")
     if not session_dir.exists():

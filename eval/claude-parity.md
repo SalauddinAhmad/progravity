@@ -1,10 +1,10 @@
 # Comparative Evaluation Framework
 
 > **Status: design only — no Claude or Gemini baseline has been measured for this
-> repository.** Gravitas is intended to improve observable engineering behavior;
+> repository.** Progravity is intended to improve observable engineering behavior;
 > it does not impersonate, reproduce, or claim equivalence with another model.
 
-This framework compares a Gravitas-enabled configuration with a pre-registered
+This framework compares a Progravity-enabled configuration with a pre-registered
 control. It may include any model as a control, but every published comparison
 must name exact model revisions, prompts, tool environment, task revision,
 scoring rubric, raw traces, exclusions, and uncertainty.
@@ -34,7 +34,7 @@ phrases such as “feels like model X” as an outcome variable.
 
 ## Report template
 
-| Dimension | Control | Gravitas | Delta | Uncertainty | Runs |
+| Dimension | Control | Progravity | Delta | Uncertainty | Runs |
 |---|---:|---:|---:|---:|---:|
 | Recon quality | — | — | — | — | — |
 | Plan quality | — | — | — | — | — |

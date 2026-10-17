@@ -4,7 +4,7 @@
 > no longer exist. Current sources: `docs/hosts.md`, `docs/concepts.md`,
 > `docs/adr/0004-kernel-policy.md`, `docs/adr/0008-host-adapters.md`.
 
-A detailed mapping of how GRAVITAS pillars interact with Antigravity's features and toolset. For each feature: which pillars use it, integration points, permissions needed, and caveats.
+A detailed mapping of how PROGRAVITY pillars interact with Antigravity's features and toolset. For each feature: which pillars use it, integration points, permissions needed, and caveats.
 
 ---
 
@@ -16,7 +16,7 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 - Read DOM content
 - Interact with page elements
 
-### GRAVITAS Integration
+### PROGRAVITY Integration
 
 | Pillar | Usage | Integration Point |
 |--------|-------|-------------------|
@@ -56,13 +56,13 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 - Structured markdown files persisted across sessions
 - Types: task.md, implementation_plan.md, walkthrough.md
 
-### GRAVITAS Integration
+### PROGRAVITY Integration
 
 | Pillar | Usage | Integration Point |
 |--------|-------|-------------------|
 | **Pillar 2 (Plan)** | Store implementation plans | Write plan to `implementation_plan.md` for Tier 2+ tasks. |
 | **Pillar 7 (Reporting)** | Store walkthroughs | Write detailed walkthrough to `walkthrough.md` when user requests. |
-| **Pillar 8 (Session Memory)** | Persist failure logs | Write failure notes to `task.md` or `GRAVITAS_FAILURES.md`. |
+| **Pillar 8 (Session Memory)** | Persist failure logs | Write failure notes to `task.md` or `PROGRAVITY_FAILURES.md`. |
 | **Pillar 8 (Session Memory)** | Persist task state | Write current task state to `task.md` for context management. |
 
 ### Permission Required
@@ -96,7 +96,7 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 - Task delegation
 - Progress tracking
 
-### GRAVITAS Integration
+### PROGRAVITY Integration
 
 | Pillar | Usage | Integration Point |
 |--------|-------|-------------------|
@@ -111,7 +111,7 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 - Not applicable
 
 ### Caveats
-- Each subagent loads GRAVITAS independently.
+- Each subagent loads PROGRAVITY independently.
 - File locking is implicit — agents should coordinate before editing.
 - Verification is shared — agent A's changes may affect agent B's tests.
 - Failure logs should be shared across agents.
@@ -135,7 +135,7 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 - Deny/Ask/Allow settings
 - Session-level and per-action permissions
 
-### GRAVITAS Integration
+### PROGRAVITY Integration
 
 | Pillar | Usage | Integration Point |
 |--------|-------|-------------------|
@@ -144,7 +144,7 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 
 ### Permission Mapping
 
-| GRAVITAS Tier | Permission Model | Gate |
+| PROGRAVITY Tier | Permission Model | Gate |
 |--------------|-----------------|------|
 | 0 | Auto-granted | None |
 | 1 | Implicit (within task scope) | Verify step only |
@@ -156,12 +156,12 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 - Not applicable (permissions are system-level, not user-controlled)
 
 ### Caveats
-- Permission system may not map perfectly to all GRAVITAS tiers.
+- Permission system may not map perfectly to all PROGRAVITY tiers.
 - Some tiers may require custom permission rules.
 - Permission denials should be reported, not bypassed.
 
 ### When to Use
-- Always — permission integration is core to GRAVITAS tiering.
+- Always — permission integration is core to PROGRAVITY tiering.
 
 ### When NOT to Use
 - N/A — always applicable.
@@ -175,7 +175,7 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 - Restricted file system access
 - Command timeout limits
 
-### GRAVITAS Integration
+### PROGRAVITY Integration
 
 | Pillar | Usage | Integration Point |
 |--------|-------|-------------------|
@@ -210,7 +210,7 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 - Mark tasks as complete
 - Store task metadata
 
-### GRAVITAS Integration
+### PROGRAVITY Integration
 
 | Pillar | Usage | Integration Point |
 |--------|-------|-------------------|
@@ -226,7 +226,7 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 ### Caveats
 - Task tracker is experimental — may not be available in all environments.
 - Task tracker state may not persist across sessions.
-- Task tracker may not support all GRAVITAS metadata.
+- Task tracker may not support all PROGRAVITY metadata.
 
 ### When to Use
 - When available and appropriate for the task.
@@ -245,7 +245,7 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 - External tool integration
 - Custom tool definitions
 
-### GRAVITAS Integration
+### PROGRAVITY Integration
 
 | Pillar | Usage | Integration Point |
 |--------|-------|-------------------|
@@ -259,9 +259,9 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 - Not applicable (MCP servers are external integrations)
 
 ### Caveats
-- MCP servers are external — they may not follow GRAVITAS conventions.
+- MCP servers are external — they may not follow PROGRAVITY conventions.
 - MCP server availability may vary across environments.
-- MCP server output may need interpretation for GRAVITAS evidence.
+- MCP server output may need interpretation for PROGRAVITY evidence.
 
 ### When to Use
 - When standard tools are insufficient for verification.
@@ -279,7 +279,7 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 - Pull specific files into context
 - Reference files without full read
 
-### GRAVITAS Integration
+### PROGRAVITY Integration
 
 | Pillar | Usage | Integration Point |
 |--------|-------|-------------------|
@@ -314,7 +314,7 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 - Run shell commands directly
 - Capture command output
 
-### GRAVITAS Integration
+### PROGRAVITY Integration
 
 | Pillar | Usage | Integration Point |
 |--------|-------|-------------------|
@@ -360,7 +360,7 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 - Exit plan mode to execute
 - Plan review and approval
 
-### GRAVITAS Integration
+### PROGRAVITY Integration
 
 | Pillar | Usage | Integration Point |
 |--------|-------|-------------------|
@@ -375,7 +375,7 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 
 ### Caveats
 - Plan mode may not be available in all environments.
-- Plan mode may not support all GRAVITAS plan format requirements.
+- Plan mode may not support all PROGRAVITY plan format requirements.
 - Plan mode exit may require explicit user action.
 
 ### When to Use
@@ -408,14 +408,14 @@ A detailed mapping of how GRAVITAS pillars interact with Antigravity's features 
 
 ## Summary
 
-GRAVITAS integrates with Antigravity through 10 primary features. The highest-priority integrations are:
+PROGRAVITY integrates with Antigravity through 10 primary features. The highest-priority integrations are:
 1. **`!` Command Execution** — used by Pillars 1, 3, 5 for recon, tiering, and evidence.
 2. **`@` File References** — used by Pillars 1, 2, 5 for recon, planning, and evidence.
-3. **Permission System** — maps GRAVITAS tiers to Antigravity permissions.
+3. **Permission System** — maps PROGRAVITY tiers to Antigravity permissions.
 4. **Browser Subagent** — used by Pillars 5, 9 for visual verification and native strengths.
 
-The integration is designed to be non-intrusive: GRAVITAS uses Antigravity's existing features without requiring custom extensions or modifications.
+The integration is designed to be non-intrusive: PROGRAVITY uses Antigravity's existing features without requiring custom extensions or modifications.
 
 ---
 
-*This integration map is part of the GRAVITAS protocol's research foundation. It documents how GRAVITAS interacts with Antigravity's specific features and informs the implementation of the integration guide (Phase 3.3).*
+*This integration map is part of the PROGRAVITY protocol's research foundation. It documents how PROGRAVITY interacts with Antigravity's specific features and informs the implementation of the integration guide (Phase 3.3).*

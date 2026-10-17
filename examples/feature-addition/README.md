@@ -23,7 +23,7 @@ export function getCached(key: string) {
 
 ---
 
-## GOOD Output (GRAVITAS)
+## GOOD Output (PROGRAVITY)
 
 ### Recon (Explore Agent)
 

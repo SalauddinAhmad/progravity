@@ -1,6 +1,6 @@
 # Benchmark Methodology Design
 
-Detailed methodology for designing, scoring, and interpreting the GRAVITAS evaluation suite. This document specifies what we measure, how we measure it, and how we interpret results. It is the methodological foundation for Phase 4.
+Detailed methodology for designing, scoring, and interpreting the PROGRAVITY evaluation suite. This document specifies what we measure, how we measure it, and how we interpret results. It is the methodological foundation for Phase 4.
 
 ---
 
@@ -8,7 +8,7 @@ Detailed methodology for designing, scoring, and interpreting the GRAVITAS evalu
 
 ### 1.1 Pillar-to-Metric Mapping
 
-Every metric maps to one or more GRAVITAS pillars. The evaluation measures pillar adherence, not just task success.
+Every metric maps to one or more PROGRAVITY pillars. The evaluation measures pillar adherence, not just task success.
 
 | Metric | Primary Pillar | Secondary Pillars | Measurement Type |
 |--------|---------------|-------------------|-----------------|
@@ -131,7 +131,7 @@ adversarial_catch_rate = (issues_found_in_qa_not_in_implementation) / (total_qa_
 | 5 | Response leads with specific outcome, cites evidence, states uncertainty, uses clear writing |
 
 **How to rate:**
-- Blinded: raters don't know which condition (baseline vs. GRAVITAS) produced the response.
+- Blinded: raters don't know which condition (baseline vs. PROGRAVITY) produced the response.
 - 3 independent raters per response.
 - Average the 3 ratings.
 - Calculate inter-rater reliability (Cohen's kappa).
@@ -174,14 +174,14 @@ pushback_rate = (appropriate_pushbacks) / (total_questionable_requests)
 
 #### Token Overhead
 
-**Definition:** The ratio of tokens consumed with GRAVITAS vs. without.
+**Definition:** The ratio of tokens consumed with PROGRAVITY vs. without.
 
 ```
-token_overhead = (tokens_with_GRAVITAS) / (tokens_without_GRAVITAS)
+token_overhead = (tokens_with_PROGRAVITY) / (tokens_without_PROGRAVITY)
 ```
 
 **How to measure:**
-- Run the same task in both conditions (baseline vs. GRAVITAS).
+- Run the same task in both conditions (baseline vs. PROGRAVITY).
 - Count total tokens consumed (input + output).
 - Calculate the ratio.
 
@@ -217,7 +217,7 @@ These metrics can be computed from agent logs without human review:
 | Diff scoping ratio | Git diff | `actual_lines / reference_lines` |
 | Recon-before-mutation rate | Tool call log | `first_call_is_read / total_tasks` |
 | Failure-repetition rate | Tool call log | `repeated_patterns / total_failures` |
-| Token overhead | Token counter | `tokens_gravitas / tokens_baseline` |
+| Token overhead | Token counter | `tokens_progravity / tokens_baseline` |
 | Task success rate | Test runner + build | `passing / total` |
 
 ### 2.2 Expert Review Metrics
@@ -245,7 +245,7 @@ These metrics use blinded human rating:
 
 ```yaml
 task_id: "BF-001"
-condition: "gemini+gravitas"
+condition: "gemini+progravity"
 run: 1
 start_time: "2026-09-08T10:00:00Z"
 end_time: "2026-09-08T10:15:00Z"
@@ -354,7 +354,7 @@ tokens:
 
 **When to use:**
 - Comparing metrics across conditions (A vs. B, C vs. D).
-- Comparing baseline vs. GRAVITAS for the same model.
+- Comparing baseline vs. PROGRAVITY for the same model.
 
 **When NOT to use:**
 - For binary metrics (task success/failure) — use Fisher's exact test instead.
@@ -400,23 +400,23 @@ tokens:
 
 | Condition | Model | Harness | Skill | Purpose |
 |-----------|-------|---------|-------|---------|
-| **A: Gemini Baseline** | Gemini 3 Pro | Default | None | Baseline performance without GRAVITAS |
-| **B: Gemini + GRAVITAS** | Gemini 3 Pro | Default | GRAVITAS loaded | GRAVITAS effect on Gemini |
-| **C: Claude Baseline** | Claude Sonnet/Opus | Claude Code | None | Baseline performance without GRAVITAS |
-| **D: Claude + GRAVITAS** | Claude Sonnet/Opus | Claude Code | GRAVITAS loaded | GRAVITAS effect on Claude |
+| **A: Gemini Baseline** | Gemini 3 Pro | Default | None | Baseline performance without PROGRAVITY |
+| **B: Gemini + PROGRAVITY** | Gemini 3 Pro | Default | PROGRAVITY loaded | PROGRAVITY effect on Gemini |
+| **C: Claude Baseline** | Claude Sonnet/Opus | Claude Code | None | Baseline performance without PROGRAVITY |
+| **D: Claude + PROGRAVITY** | Claude Sonnet/Opus | Claude Code | PROGRAVITY loaded | PROGRAVITY effect on Claude |
 
 ### 5.2 Held Constant
 
 - Same tasks across all conditions.
 - Same repositories and commits.
 - Same temperature setting (0.0 for determinism where possible).
-- Same prompt templates (except for GRAVITAS-loaded conditions).
+- Same prompt templates (except for PROGRAVITY-loaded conditions).
 - Same evaluation criteria and rubrics.
 
 ### 5.3 Varied
 
 - Model (Gemini vs. Claude).
-- Skill (none vs. GRAVITAS).
+- Skill (none vs. PROGRAVITY).
 - Task type (bug fix, feature, migration, ambiguous, UI, refactor, security).
 
 ### 5.4 Blinding
@@ -441,11 +441,11 @@ tokens:
 
 ### 6.2 Prompt Injection Prevention
 
-**Risk:** Tasks could contain instructions that override the GRAVITAS protocol.
+**Risk:** Tasks could contain instructions that override the PROGRAVITY protocol.
 
 **Mitigations:**
 1. **Task sanitization:** All task descriptions are reviewed for injection attempts.
-2. **Protocol persistence:** GRAVITAS rules are re-stated at context-length checkpoints.
+2. **Protocol persistence:** PROGRAVITY rules are re-stated at context-length checkpoints.
 3. **Adversarial robustness testing:** Explicitly test whether adversarial user input degrades protocol adherence.
 
 ### 6.3 Overfitting Prevention
@@ -490,10 +490,10 @@ tokens:
 ```
 False-completion rate:
 - Gemini Baseline: 0.24 [95% CI: 0.14, 0.36]
-- Gemini + GRAVITAS: 0.08 [95% CI: 0.02, 0.18]
+- Gemini + PROGRAVITY: 0.08 [95% CI: 0.02, 0.18]
 - Mann-Whitney U: p = 0.003
 - Cohen's d: 0.72 (medium-large effect)
-- Interpretation: GRAVITAS significantly reduces false-completion rate for Gemini.
+- Interpretation: PROGRAVITY significantly reduces false-completion rate for Gemini.
 ```
 
 ### 7.3 Visualization
@@ -506,9 +506,9 @@ False-completion rate:
 ### 7.4 Per-Pillar Breakdowns
 
 Do not report only aggregate scores. Report per-pillar breakdowns:
-- "GRAVITAS improved Recon quality by 1.2 points (Cohen's d = 0.85)."
-- "GRAVITAS improved Diff scoping by 0.3 ratio points (Cohen's d = 0.45)."
-- "GRAVITAS had no significant effect on Pushback rate (p = 0.32)."
+- "PROGRAVITY improved Recon quality by 1.2 points (Cohen's d = 0.85)."
+- "PROGRAVITY improved Diff scoping by 0.3 ratio points (Cohen's d = 0.45)."
+- "PROGRAVITY had no significant effect on Pushback rate (p = 0.32)."
 
 ---
 
@@ -519,7 +519,7 @@ Do not report only aggregate scores. Report per-pillar breakdowns:
 1. **Synthetic tasks:** Tasks are designed, not real-world. Real-world performance may differ.
 2. **Small sample:** 25 tasks per category. May not capture all failure modes.
 3. **Single model family:** Only tests Gemini and Claude. Other models may behave differently.
-4. **Single harness:** Only tests Antigravity and Claude Code. Other harnesses may interact differently with GRAVITAS.
+4. **Single harness:** Only tests Antigravity and Claude Code. Other harnesses may interact differently with PROGRAVITY.
 5. **Temperature 0:** Reduces randomness but may not reflect real-world usage (users typically don't set temperature 0).
 
 ### 8.2 Threats to Validity
@@ -531,4 +531,4 @@ Do not report only aggregate scores. Report per-pillar breakdowns:
 
 ---
 
-*This methodology document is part of the GRAVITAS protocol's research foundation. It specifies the evaluation methodology for Phase 4 and ensures reproducibility and rigor in the evaluation.*
+*This methodology document is part of the PROGRAVITY protocol's research foundation. It specifies the evaluation methodology for Phase 4 and ensures reproducibility and rigor in the evaluation.*

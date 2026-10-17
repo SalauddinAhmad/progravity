@@ -11,7 +11,7 @@
 - [ ] Phase 14: Prompt-injection and benchmark security (runner isolation)
 - [ ] Phase 22: Claim generation pipeline (results -> markdown/CSV)
 - [ ] Phase 28: CI/Release gates
-- [ ] Phase 29: Reproducibility command (gravitas bench CLI)
+- [ ] Phase 29: Reproducibility command (progravity bench CLI)
 - [ ] Phase 30: Doctor command (diagnostic script)
 - [ ] Phase 31: Update production readiness document
 - [ ] Phase 15 & 16: Pilot and Primary run (Execute as much as environment permits)

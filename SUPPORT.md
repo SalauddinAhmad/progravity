@@ -1,8 +1,8 @@
-# Gravitas Support
+# Progravity Support
 
 ## Getting Help
 
-- **Bugs / unexpected behavior:** Open a [GitHub issue](https://github.com/udaysharmadev/Gravitas/issues) using the appropriate template
+- **Bugs / unexpected behavior:** Open a [GitHub issue](https://github.com/SalauddinAhmad/progravity/issues) using the appropriate template
 - **Benchmark submissions:** Use the "Benchmark submission" issue template
 - **False completion reports:** Use the "False completion report" template
 - **"Reference model solved after primary failed":** Use that specific template — these become future benchmark cases
@@ -17,6 +17,6 @@
 
 Discussions happen in GitHub Issues and the Antigravity community channels. Be respectful and specific.
 
-## Gravitas Challenge
+## Progravity Challenge
 
-If you have a task where the baseline model fails and Gravitas also fails, please submit it. Every documented failure improves the benchmark and the product.
+If you have a task where the baseline model fails and Progravity also fails, please submit it. Every documented failure improves the benchmark and the product.

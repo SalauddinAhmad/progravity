@@ -1,5 +1,5 @@
 {
-  "description": "Gravitas v4 protocol evaluation. Tests whether the agent follows Gravitas behavioral rules when the skill is active.",
+  "description": "Progravity v4 protocol evaluation. Tests whether the agent follows Progravity behavioral rules when the skill is active.",
   "version": "4.0.0",
   "test_cases": [
     {

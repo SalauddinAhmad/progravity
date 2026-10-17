@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-GRAVITAS Evaluation Scorer
+PROGRAVITY Evaluation Scorer
 
-Automated scoring for GRAVITAS evaluation metrics.
+Automated scoring for PROGRAVITY evaluation metrics.
 Parses agent logs, computes metrics, and outputs results.
 
 Usage:
@@ -165,13 +165,13 @@ def compute_failure_repetition_rate(runs: list) -> float:
     return repeated / total_failures if total_failures > 0 else 0.0
 
 
-def compute_token_overhead(baseline_runs: list, gravitas_runs: list) -> float:
+def compute_token_overhead(baseline_runs: list, progravity_runs: list) -> float:
     """Compute token overhead ratio."""
     baseline_tokens = sum(r.tokens_total for r in baseline_runs)
-    gravitas_tokens = sum(r.tokens_total for r in gravitas_runs)
+    progravity_tokens = sum(r.tokens_total for r in progravity_runs)
     if baseline_tokens == 0:
         return 0.0
-    return gravitas_tokens / baseline_tokens
+    return progravity_tokens / baseline_tokens
 
 
 def compute_task_success_rate(runs: list) -> float:
@@ -196,7 +196,7 @@ def compute_pushback_rate(runs: list, questionable_tasks: set) -> float:
 def generate_report(results: dict) -> str:
     """Generate a formatted evaluation report."""
     lines = [
-        "# GRAVITAS Evaluation Results",
+        "# PROGRAVITY Evaluation Results",
         "",
         "## Automated Metrics",
         "",
@@ -305,7 +305,7 @@ def load_task_run(filepath: str) -> TaskRun:
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="GRAVITAS Evaluation Scorer")
+    parser = argparse.ArgumentParser(description="PROGRAVITY Evaluation Scorer")
     parser.add_argument("--log-dir", required=True, help="Directory containing task run logs")
     parser.add_argument("--output", required=True, help="Output file for results")
     parser.add_argument("--reference-diffs", help="JSON file with reference diff sizes")
@@ -358,15 +358,15 @@ def main():
         }
 
     # Compute overhead
-    if "gemini_baseline" in conditions and "gemini_gravitas" in conditions:
-        results["gemini_gravitas"]["token_overhead"] = compute_token_overhead(
+    if "gemini_baseline" in conditions and "gemini_progravity" in conditions:
+        results["gemini_progravity"]["token_overhead"] = compute_token_overhead(
             conditions["gemini_baseline"],
-            conditions["gemini_gravitas"],
+            conditions["gemini_progravity"],
         )
-    if "claude_baseline" in conditions and "claude_gravitas" in conditions:
-        results["claude_gravitas"]["token_overhead"] = compute_token_overhead(
+    if "claude_baseline" in conditions and "claude_progravity" in conditions:
+        results["claude_progravity"]["token_overhead"] = compute_token_overhead(
             conditions["claude_baseline"],
-            conditions["claude_gravitas"],
+            conditions["claude_progravity"],
         )
 
     # Generate report

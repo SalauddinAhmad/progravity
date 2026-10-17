@@ -7,17 +7,17 @@ def hash_conv(conv_id):
 
 def run_smoke():
     print("=== NATIVE PLUGIN SMOKE TEST ===")
-    ws = Path("/tmp/gravitas-smoke")
+    ws = Path("/tmp/progravity-smoke")
     if ws.exists(): shutil.rmtree(ws)
     ws.mkdir(parents=True)
     (ws / "hello.txt").write_text("Hello world")
     
     env = dict(os.environ)
     env["ANTIGRAVITY_APP_DATA_DIR"] = "/Users/uday/.gemini/config"
-    subprocess.run(["/Users/uday/.local/bin/agy", "plugin", "enable", "gravitas"], env=env, check=True, stdout=subprocess.DEVNULL)
+    subprocess.run(["/Users/uday/.local/bin/agy", "plugin", "enable", "progravity"], env=env, check=True, stdout=subprocess.DEVNULL)
     
-    global_skill = Path(os.path.expanduser("~/.gemini/config/skills/gravitas"))
-    global_skill_bak = Path(os.path.expanduser("~/.gemini/config/skills/gravitas.bak"))
+    global_skill = Path(os.path.expanduser("~/.gemini/config/skills/progravity"))
+    global_skill_bak = Path(os.path.expanduser("~/.gemini/config/skills/progravity.bak"))
     if global_skill.exists(): global_skill.rename(global_skill_bak)
     
     prompt = "Read hello.txt. Then use replace_file_content to replace Hello with Goodbye. You will be blocked by pre_tool because you don't have a contract. When you get blocked, DO NOT RETRY OR DO ANYTHING ELSE. Immediately report completion with task_status=COMPLETE."
@@ -43,7 +43,7 @@ def run_smoke():
             
     proc.wait()
             
-    session_dir = Path(os.path.expanduser(f"~/.gemini/config/plugins/gravitas/.gravitas/sessions/conversation-{hash_conv(conv_id)}"))
+    session_dir = Path(os.path.expanduser(f"~/.gemini/config/plugins/progravity/.progravity/sessions/conversation-{hash_conv(conv_id)}"))
     
     pre = 0
     post = 0
@@ -67,30 +67,30 @@ def run_smoke():
         return False
 
 def isolate_config(config, env):
-    global_skill = Path(os.path.expanduser("~/.gemini/config/skills/gravitas"))
-    global_skill_bak = Path(os.path.expanduser("~/.gemini/config/skills/gravitas.bak"))
+    global_skill = Path(os.path.expanduser("~/.gemini/config/skills/progravity"))
+    global_skill_bak = Path(os.path.expanduser("~/.gemini/config/skills/progravity.bak"))
     
-    if config == "GRAVITAS_NATIVE":
-        subprocess.run(["/Users/uday/.local/bin/agy", "plugin", "enable", "gravitas"], env=env, check=True, stdout=subprocess.DEVNULL)
+    if config == "PROGRAVITY_NATIVE":
+        subprocess.run(["/Users/uday/.local/bin/agy", "plugin", "enable", "progravity"], env=env, check=True, stdout=subprocess.DEVNULL)
         if global_skill.exists(): global_skill.rename(global_skill_bak)
-    elif config == "GRAVITAS_CORE":
-        subprocess.run(["/Users/uday/.local/bin/agy", "plugin", "disable", "gravitas"], env=env, check=True, stdout=subprocess.DEVNULL)
+    elif config == "PROGRAVITY_CORE":
+        subprocess.run(["/Users/uday/.local/bin/agy", "plugin", "disable", "progravity"], env=env, check=True, stdout=subprocess.DEVNULL)
         if global_skill_bak.exists(): global_skill_bak.rename(global_skill)
     else: # BASELINE
-        subprocess.run(["/Users/uday/.local/bin/agy", "plugin", "disable", "gravitas"], env=env, check=True, stdout=subprocess.DEVNULL)
+        subprocess.run(["/Users/uday/.local/bin/agy", "plugin", "disable", "progravity"], env=env, check=True, stdout=subprocess.DEVNULL)
         if global_skill.exists(): global_skill.rename(global_skill_bak)
 
 def check_contamination(config):
-    global_skill = Path(os.path.expanduser("~/.gemini/config/skills/gravitas")).exists()
+    global_skill = Path(os.path.expanduser("~/.gemini/config/skills/progravity")).exists()
     plugin_enabled = False
     try:
         cfg = json.loads(Path(os.path.expanduser("~/.gemini/config/config.json")).read_text())
-        plugin_enabled = cfg.get("plugins", {}).get("gravitas", {}).get("enabled", False)
+        plugin_enabled = cfg.get("plugins", {}).get("progravity", {}).get("enabled", False)
     except: pass
     
     if config == "BASELINE": return not global_skill and not plugin_enabled
-    elif config == "GRAVITAS_CORE": return global_skill and not plugin_enabled
-    elif config == "GRAVITAS_NATIVE": return not global_skill and plugin_enabled
+    elif config == "PROGRAVITY_CORE": return global_skill and not plugin_enabled
+    elif config == "PROGRAVITY_NATIVE": return not global_skill and plugin_enabled
     return False
 
 def parse_ndjson(path):
@@ -149,7 +149,7 @@ def parse_ndjson(path):
 
 def get_hook_evidence(conv_id):
     counts = {"pre": 0, "post": 0, "stop": 0, "stop_continue": 0, "stop_allow": 0, "denied_write": 0, "errors": 0}
-    session_dir = Path(os.path.expanduser(f"~/.gemini/config/plugins/gravitas/.gravitas/sessions/conversation-{hash_conv(conv_id)}"))
+    session_dir = Path(os.path.expanduser(f"~/.gemini/config/plugins/progravity/.progravity/sessions/conversation-{hash_conv(conv_id)}"))
     if not session_dir.exists(): return counts
     
     ev_file = session_dir / "evidence.jsonl"
@@ -178,15 +178,15 @@ def run_task():
     env = dict(os.environ)
     env["ANTIGRAVITY_APP_DATA_DIR"] = "/Users/uday/.gemini/config"
     
-    configs = ["BASELINE", "GRAVITAS_CORE", "GRAVITAS_NATIVE"]
+    configs = ["BASELINE", "PROGRAVITY_CORE", "PROGRAVITY_NATIVE"]
     results = {}
     
     for cfg in configs:
         print(f"\nRunning {cfg}...")
-        ws = Path(f"/tmp/gravitasbench/{uuid.uuid4()}/ws")
+        ws = Path(f"/tmp/progravitybench/{uuid.uuid4()}/ws")
         ws.parent.mkdir(parents=True)
         
-        repo_url = "file:///Users/uday/Gravitas/benchmarks/fixtures/l1_bugfix"
+        repo_url = "file:///Users/uday/Progravity/benchmarks/fixtures/l1_bugfix"
         subprocess.run(["git", "clone", repo_url, str(ws.resolve())], capture_output=True)
         
         isolate_config(cfg, env)
@@ -214,8 +214,8 @@ def run_task():
                     data = json.loads(line)
                     if data.get("event") == "init": 
                         conv_id = data.get("conversation_id")
-                        if cfg == "GRAVITAS_NATIVE" and not contract_created:
-                            session_dir = Path(os.path.expanduser(f"~/.gemini/config/plugins/gravitas/.gravitas/sessions/conversation-{hash_conv(conv_id)}"))
+                        if cfg == "PROGRAVITY_NATIVE" and not contract_created:
+                            session_dir = Path(os.path.expanduser(f"~/.gemini/config/plugins/progravity/.progravity/sessions/conversation-{hash_conv(conv_id)}"))
                             session_dir.mkdir(parents=True, exist_ok=True)
                             (session_dir / "contract.json").write_text(json.dumps({"mode": "implement"}))
                             print(f"Injected contract for {cfg} at {session_dir}")
@@ -232,7 +232,7 @@ def run_task():
         telem = parse_ndjson(ndjson_out)
         hooks = get_hook_evidence(telem["conversation_id"])
         
-        if cfg == "GRAVITAS_NATIVE":
+        if cfg == "PROGRAVITY_NATIVE":
             hooks["pre"] = telem["reads"] + telem["writes"] + telem["commands"]
             
         results[cfg] = {
@@ -266,7 +266,7 @@ def run_task():
             "raw_ndjson": str(ndjson_out)
         }
     
-    isolate_config("GRAVITAS_CORE", env)
+    isolate_config("PROGRAVITY_CORE", env)
     
     Path("repaired-canary-v4.json").write_text(json.dumps(results, indent=2))
     print("Done. Wrote repaired-canary-v4.json")

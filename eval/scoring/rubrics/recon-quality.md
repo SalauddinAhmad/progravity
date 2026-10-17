@@ -146,4 +146,4 @@ Agent also:
 
 ---
 
-*This rubric is part of the GRAVITAS evaluation framework. It defines the scoring criteria for the Recon Quality metric.*
+*This rubric is part of the PROGRAVITY evaluation framework. It defines the scoring criteria for the Recon Quality metric.*

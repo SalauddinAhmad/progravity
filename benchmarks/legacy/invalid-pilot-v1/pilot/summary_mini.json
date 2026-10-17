@@ -25,7 +25,7 @@
     },
     "meta": {
       "task_id": "PILOT-L1",
-      "config": "GRAVITAS_CORE",
+      "config": "PROGRAVITY_CORE",
       "run_index": 0
     }
   },
@@ -55,7 +55,7 @@
     },
     "meta": {
       "task_id": "PILOT-L10",
-      "config": "GRAVITAS_CORE",
+      "config": "PROGRAVITY_CORE",
       "run_index": 0
     }
   },
@@ -85,7 +85,7 @@
     },
     "meta": {
       "task_id": "PILOT-L1",
-      "config": "GRAVITAS_NATIVE",
+      "config": "PROGRAVITY_NATIVE",
       "run_index": 0
     }
   },
@@ -115,7 +115,7 @@
     },
     "meta": {
       "task_id": "PILOT-L10",
-      "config": "GRAVITAS_NATIVE",
+      "config": "PROGRAVITY_NATIVE",
       "run_index": 0
     }
   },
@@ -205,7 +205,7 @@
     },
     "meta": {
       "task_id": "PILOT-L2",
-      "config": "GRAVITAS_NATIVE",
+      "config": "PROGRAVITY_NATIVE",
       "run_index": 0
     }
   },
@@ -235,7 +235,7 @@
     },
     "meta": {
       "task_id": "PILOT-L2",
-      "config": "GRAVITAS_CORE",
+      "config": "PROGRAVITY_CORE",
       "run_index": 0
     }
   },
@@ -295,7 +295,7 @@
     },
     "meta": {
       "task_id": "PILOT-L3",
-      "config": "GRAVITAS_CORE",
+      "config": "PROGRAVITY_CORE",
       "run_index": 0
     }
   },
@@ -325,7 +325,7 @@
     },
     "meta": {
       "task_id": "PILOT-L3",
-      "config": "GRAVITAS_NATIVE",
+      "config": "PROGRAVITY_NATIVE",
       "run_index": 0
     }
   },
@@ -415,7 +415,7 @@
     },
     "meta": {
       "task_id": "PILOT-L4",
-      "config": "GRAVITAS_CORE",
+      "config": "PROGRAVITY_CORE",
       "run_index": 0
     }
   },
@@ -445,7 +445,7 @@
     },
     "meta": {
       "task_id": "PILOT-L4",
-      "config": "GRAVITAS_NATIVE",
+      "config": "PROGRAVITY_NATIVE",
       "run_index": 0
     }
   },
@@ -505,7 +505,7 @@
     },
     "meta": {
       "task_id": "PILOT-L5",
-      "config": "GRAVITAS_CORE",
+      "config": "PROGRAVITY_CORE",
       "run_index": 0
     }
   },
@@ -535,7 +535,7 @@
     },
     "meta": {
       "task_id": "PILOT-L5",
-      "config": "GRAVITAS_NATIVE",
+      "config": "PROGRAVITY_NATIVE",
       "run_index": 0
     }
   },
@@ -565,7 +565,7 @@
     },
     "meta": {
       "task_id": "PILOT-L6",
-      "config": "GRAVITAS_NATIVE",
+      "config": "PROGRAVITY_NATIVE",
       "run_index": 0
     }
   },
@@ -595,7 +595,7 @@
     },
     "meta": {
       "task_id": "PILOT-L6",
-      "config": "GRAVITAS_CORE",
+      "config": "PROGRAVITY_CORE",
       "run_index": 0
     }
   },
@@ -625,7 +625,7 @@
     },
     "meta": {
       "task_id": "PILOT-L7",
-      "config": "GRAVITAS_NATIVE",
+      "config": "PROGRAVITY_NATIVE",
       "run_index": 0
     }
   },
@@ -685,7 +685,7 @@
     },
     "meta": {
       "task_id": "PILOT-L7",
-      "config": "GRAVITAS_CORE",
+      "config": "PROGRAVITY_CORE",
       "run_index": 0
     }
   },
@@ -715,7 +715,7 @@
     },
     "meta": {
       "task_id": "PILOT-L8",
-      "config": "GRAVITAS_CORE",
+      "config": "PROGRAVITY_CORE",
       "run_index": 0
     }
   },
@@ -775,7 +775,7 @@
     },
     "meta": {
       "task_id": "PILOT-L8",
-      "config": "GRAVITAS_NATIVE",
+      "config": "PROGRAVITY_NATIVE",
       "run_index": 0
     }
   },
@@ -835,7 +835,7 @@
     },
     "meta": {
       "task_id": "PILOT-L9",
-      "config": "GRAVITAS_CORE",
+      "config": "PROGRAVITY_CORE",
       "run_index": 0
     }
   },
@@ -895,7 +895,7 @@
     },
     "meta": {
       "task_id": "PILOT-L9",
-      "config": "GRAVITAS_NATIVE",
+      "config": "PROGRAVITY_NATIVE",
       "run_index": 0
     }
   }

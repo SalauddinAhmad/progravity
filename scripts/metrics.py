@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-GRAVITAS Metrics Collector
+PROGRAVITY Metrics Collector
 
-Analyzes code quality metrics for GRAVITAS-evaluated outputs.
+Analyzes code quality metrics for PROGRAVITY-evaluated outputs.
 """
 
 import ast
@@ -87,7 +87,7 @@ def analyze_directory(dir_path: str) -> list[dict[str, Any]]:
 def generate_report(metrics: list[dict[str, Any]]) -> str:
     """Generate a metrics report."""
     report = []
-    report.append("# GRAVITAS Code Metrics Report\n")
+    report.append("# PROGRAVITY Code Metrics Report\n")
 
     if not metrics:
         report.append("No files analyzed.")

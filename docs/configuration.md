@@ -13,7 +13,7 @@ everything blindly — depth follows blast radius and uncertainty.
 
 ## OpenCode permission profiles
 
-`gravitas init --host opencode --profile <name>` merges a profile into
+`progravity init --host opencode --profile <name>` merges a profile into
 `opencode.json` without clobbering existing keys. Files that cannot be
 parsed as a JSON object are left untouched (reported under `skipped`
 with a `warnings` entry). A project that uses only `opencode.jsonc`
@@ -26,14 +26,14 @@ never gains a second `opencode.json`; merge the profile manually.
 ## Contracts
 
 Per-task `contract.json` (Antigravity sessions) or
-`.gravitas/opencode-contract.json` (OpenCode workspace): `mode`,
+`.progravity/opencode-contract.json` (OpenCode workspace): `mode`,
 `allowed_write_scope`, `acceptance_criteria`, `validators`, optional
 `policy` dimensions. Legacy `plan-only`/`review-only` modes are accepted
-as aliases (`gravitas migrate` normalizes them).
+as aliases (`progravity migrate` normalizes them).
 
 ## Overrides
 
-- Agent skills load on demand; `gravitas-highstakes` for migrations,
+- Agent skills load on demand; `progravity-highstakes` for migrations,
   deletions, auth, production config.
 - Custom OpenCode agents live in `.opencode/agents/` with their own
   `permission` blocks; they do not inherit parent restrictions unless

@@ -3,7 +3,7 @@ title: "Diagnose an intermittent payment reconciliation failure"
 category: debugging-root-cause
 tier: 2
 pillars_tested: [1, 2, 4, 5, 7, 10]
-repository: "gravitas-debug-fixture"
+repository: "progravity-debug-fixture"
 commit: "debug-fixture-v1"
 description: |
   Nightly reconciliation sometimes records a completed payment twice. The

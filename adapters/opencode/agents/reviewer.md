@@ -20,4 +20,4 @@ Independent scrutiny for risky implementations.
 - Output: issues with file:line, severity (HIGH/MED/LOW), and fix. Never edit files yourself.
 - VERDICT: PASS only when no HIGH issues remain; otherwise VERDICT: FAIL with reasons.
 
-Follow the GRAVITAS invariants in AGENTS.md and the `gravitas` skill when loaded.
+Follow the PROGRAVITY invariants in AGENTS.md and the `progravity` skill when loaded.

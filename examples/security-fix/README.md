@@ -1,10 +1,10 @@
-# Security Fix — Before vs After GRAVITAS
+# Security Fix — Before vs After PROGRAVITY
 
 **Task:** Fix the SQL injection vulnerability in the user search endpoint.
 
 ---
 
-## ❌ Without GRAVITAS (Normal Gemini)
+## ❌ Without PROGRAVITY (Normal Gemini)
 
 ```typescript
 // Added input sanitization
@@ -23,7 +23,7 @@ const sql = `SELECT * FROM users WHERE name = '${query}'`;
 
 ---
 
-## ✅ With GRAVITAS
+## ✅ With PROGRAVITY
 
 **Tier: 2** — security change, high stakes
 

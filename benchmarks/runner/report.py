@@ -42,7 +42,7 @@ def render_markdown(summary, comparisons, meta=None, publish=False):
             "regenerate without --publish or collect more episodes"
         )
 
-    lines = ["# GravitasBench Results", ""]
+    lines = ["# ProgravityBench Results", ""]
     if not ready:
         lines += [
             "> **RESEARCH PREVIEW — NOT PUBLICATION-READY.** This report documents runner ",
@@ -59,7 +59,7 @@ def render_markdown(summary, comparisons, meta=None, publish=False):
         f"- Dataset: {meta.get('dataset', 'unspecified')}",
         f"- Models and effort: {meta.get('models', 'unspecified')}",
         f"- Antigravity version: {meta.get('antigravity_version', 'unspecified')}",
-        f"- Gravitas version: {meta.get('gravitas_version', 'unspecified')}",
+        f"- Progravity version: {meta.get('progravity_version', 'unspecified')}",
         f"- Raw trajectories: {meta.get('raw_trajectories', 'unspecified')}",
         f"- Reproduce: {meta.get('reproduce', 'unspecified')}",
         "",

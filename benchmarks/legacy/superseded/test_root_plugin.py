@@ -11,9 +11,9 @@ ws.mkdir(parents=True)
 repo_root = Path.cwd()
 
 # 1. Setup workspace-local plugin in the ROOT of the workspace!
-inner_plugin = ws / "plugins" / "gravitas-antigravity"
+inner_plugin = ws / "plugins" / "progravity-antigravity"
 inner_plugin.mkdir(parents=True, exist_ok=True)
-shutil.copytree(repo_root / "plugins/gravitas-antigravity", inner_plugin, dirs_exist_ok=True)
+shutil.copytree(repo_root / "plugins/progravity-antigravity", inner_plugin, dirs_exist_ok=True)
 shutil.copy(repo_root / "plugin.json", ws / "plugin.json")
 shutil.copy(repo_root / "hooks.json", ws / "hooks.json")
 
@@ -24,7 +24,7 @@ subprocess.run(cmd, cwd=ws, stdout=open(ndjson_out, "w"), stderr=subprocess.STDO
 
 # Count hooks
 c = 0
-sessions = ws / ".gravitas" / "sessions"
+sessions = ws / ".progravity" / "sessions"
 if sessions.exists():
     for root, dirs, files in os.walk(sessions):
         for f in files:

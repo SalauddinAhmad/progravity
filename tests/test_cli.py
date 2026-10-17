@@ -10,12 +10,12 @@ from pathlib import Path
 ROOT = Path(__file__).parents[1]
 
 sys.path.insert(0, str(ROOT))
-from gravitas_init import detect_hosts
+from progravity_init import detect_hosts
 
 
 def cli(*args, cwd=ROOT):
     result = subprocess.run(
-        [sys.executable, str(ROOT / "gravitas_cli.py"), *args],
+        [sys.executable, str(ROOT / "progravity_cli.py"), *args],
         text=True, capture_output=True, cwd=cwd, check=False)
     return result
 
@@ -44,8 +44,8 @@ class InitAutoTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             output = json.loads(result.stdout)
             self.assertEqual(output["hosts"], ["opencode"])
-            self.assertTrue((Path(tmp) / ".agents" / "skills" / "gravitas" / "SKILL.md").is_file())
-            self.assertTrue((Path(tmp) / ".opencode" / "plugins" / "gravitas.js").is_file())
+            self.assertTrue((Path(tmp) / ".agents" / "skills" / "progravity" / "SKILL.md").is_file())
+            self.assertTrue((Path(tmp) / ".opencode" / "plugins" / "progravity.js").is_file())
 
     def test_explicit_host(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -56,7 +56,7 @@ class InitAutoTests(unittest.TestCase):
 
 class ExplainTests(unittest.TestCase):
     def make_session(self, root):
-        base = Path(root) / ".gravitas" / "sessions" / "s1"
+        base = Path(root) / ".progravity" / "sessions" / "s1"
         base.mkdir(parents=True)
         (base / "contract.json").write_text(json.dumps({
             "mode": "implement", "objective": "fix login",
@@ -95,7 +95,7 @@ class ExplainTests(unittest.TestCase):
 class MigrateTests(unittest.TestCase):
     def test_mode_aliases_migrated(self):
         with tempfile.TemporaryDirectory() as tmp:
-            base = Path(tmp) / ".gravitas" / "sessions" / "old"
+            base = Path(tmp) / ".progravity" / "sessions" / "old"
             base.mkdir(parents=True)
             (base / "contract.json").write_text(json.dumps(
                 {"mode": "plan-only", "objective": "x",
@@ -109,7 +109,7 @@ class MigrateTests(unittest.TestCase):
 
     def test_issues_reported_not_failed(self):
         with tempfile.TemporaryDirectory() as tmp:
-            base = Path(tmp) / ".gravitas" / "sessions" / "odd"
+            base = Path(tmp) / ".progravity" / "sessions" / "odd"
             base.mkdir(parents=True)
             (base / "contract.json").write_text(json.dumps({"mode": "yolo"}))
             result = cli("migrate", "--root", tmp, cwd=ROOT)

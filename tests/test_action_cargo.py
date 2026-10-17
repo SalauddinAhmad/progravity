@@ -4,9 +4,9 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
-sys.path.insert(0, str(ROOT / "plugins/gravitas-antigravity/scripts"))
+sys.path.insert(0, str(ROOT / "plugins/progravity-antigravity/scripts"))
 
-from gravitas_action import classify_shell
+from progravity_action import classify_shell
 
 
 class CargoClassificationTests(unittest.TestCase):

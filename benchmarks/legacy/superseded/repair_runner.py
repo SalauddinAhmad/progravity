@@ -59,19 +59,19 @@ def setup_global_config(config_mode):
     
     repo_root = Path.cwd()
     
-    if config_mode in ["GRAVITAS_CORE", "GRAVITAS_NATIVE"]:
-        tgt_skill = real_config / "skills" / "gravitas"
+    if config_mode in ["PROGRAVITY_CORE", "PROGRAVITY_NATIVE"]:
+        tgt_skill = real_config / "skills" / "progravity"
         tgt_skill.mkdir(parents=True, exist_ok=True)
-        if (repo_root / "skills/gravitas").exists():
-            shutil.copytree(repo_root / "skills/gravitas", tgt_skill, dirs_exist_ok=True)
+        if (repo_root / "skills/progravity").exists():
+            shutil.copytree(repo_root / "skills/progravity", tgt_skill, dirs_exist_ok=True)
             
-    if config_mode == "GRAVITAS_NATIVE":
-        tgt_plugin = real_config / "plugins" / "gravitas"
+    if config_mode == "PROGRAVITY_NATIVE":
+        tgt_plugin = real_config / "plugins" / "progravity"
         tgt_plugin.mkdir(parents=True, exist_ok=True)
 
-        if (repo_root / "plugins/gravitas-antigravity").exists():
-            inner_plugin = tgt_plugin / "plugins" / "gravitas-antigravity"
-            shutil.copytree(repo_root / "plugins/gravitas-antigravity", inner_plugin, dirs_exist_ok=True)
+        if (repo_root / "plugins/progravity-antigravity").exists():
+            inner_plugin = tgt_plugin / "plugins" / "progravity-antigravity"
+            shutil.copytree(repo_root / "plugins/progravity-antigravity", inner_plugin, dirs_exist_ok=True)
 
         if (repo_root / "plugin.json").exists():
             shutil.copy(repo_root / "plugin.json", tgt_plugin / "plugin.json")
@@ -80,19 +80,19 @@ def setup_global_config(config_mode):
 
 def check_contamination(config_mode):
     gem_cfg = Path(os.path.expanduser("~/.gemini/config"))
-    has_skill = (gem_cfg / "skills" / "gravitas").exists()
-    has_plugin = (gem_cfg / "plugins" / "gravitas").exists()
+    has_skill = (gem_cfg / "skills" / "progravity").exists()
+    has_plugin = (gem_cfg / "plugins" / "progravity").exists()
 
     if config_mode == "BASELINE":
         assert not has_skill and not has_plugin, "Baseline contaminated!"
-    elif config_mode == "GRAVITAS_CORE":
+    elif config_mode == "PROGRAVITY_CORE":
         assert has_skill and not has_plugin, "Core contaminated!"
-    elif config_mode == "GRAVITAS_NATIVE":
+    elif config_mode == "PROGRAVITY_NATIVE":
         assert has_skill and has_plugin, "Native contaminated!"
 
 def count_native_hooks():
     c = 0
-    sessions = Path(os.path.expanduser("~/.gemini/config/plugins/gravitas/.gravitas/sessions"))
+    sessions = Path(os.path.expanduser("~/.gemini/config/plugins/progravity/.progravity/sessions"))
     if not sessions.exists():
         return 0
     for root, dirs, files in os.walk(sessions):
@@ -121,7 +121,7 @@ def check_task_status(ndjson_path):
 
 def run_canary_episode(task_yaml, config):
     run_id = str(uuid.uuid4())
-    ws = Path(f"/tmp/gravitasbench/{run_id}/ws")
+    ws = Path(f"/tmp/progravitybench/{run_id}/ws")
     ws.mkdir(parents=True, exist_ok=True)
 
     task = {}
@@ -172,7 +172,7 @@ def run_canary_episode(task_yaml, config):
     # Save evidence outside before it gets deleted!
     if hooks > 0:
         evidence_backup = ws / "native_hooks_evidence"
-        shutil.copytree(Path(os.path.expanduser("~/.gemini/config/plugins/gravitas/.gravitas/sessions")), evidence_backup, dirs_exist_ok=True)
+        shutil.copytree(Path(os.path.expanduser("~/.gemini/config/plugins/progravity/.progravity/sessions")), evidence_backup, dirs_exist_ok=True)
 
     res = {
         "task": task_yaml.name,
@@ -189,7 +189,7 @@ def run_canary_episode(task_yaml, config):
 
 if __name__ == "__main__":
     tasks = [Path("eval/tasks/REPAIR-CANARY-A.yaml"), Path("eval/tasks/REPAIR-CANARY-B.yaml"), Path("eval/tasks/REPAIR-CANARY-C.yaml")]
-    configs = ["BASELINE", "GRAVITAS_CORE", "GRAVITAS_NATIVE"]
+    configs = ["BASELINE", "PROGRAVITY_CORE", "PROGRAVITY_NATIVE"]
     
     results = []
     for t in tasks:

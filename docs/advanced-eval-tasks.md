@@ -171,7 +171,7 @@ Integration tasks are scored on:
 ### 8.2 Phase 2: Advanced Tasks (26 tasks)
 
 - Define tasks based on this document
-- Execute under conditions B and D only (GRAVITAS active)
+- Execute under conditions B and D only (PROGRAVITY active)
 - Compare to initial benchmark results
 
 ### 8.3 Phase 3: Comprehensive Analysis
@@ -182,4 +182,4 @@ Integration tasks are scored on:
 
 ---
 
-*This document is part of the GRAVITAS advanced research phase. It defines advanced evaluation tasks beyond the initial 25-task benchmark.*
+*This document is part of the PROGRAVITY advanced research phase. It defines advanced evaluation tasks beyond the initial 25-task benchmark.*

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic statistics helpers for GravitasBench.
+"""Deterministic statistics helpers for ProgravityBench.
 
 Pure standard library: no external statistics packages are required.  The
 Mann-Whitney U test uses the normal approximation with tie and continuity

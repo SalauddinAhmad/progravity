@@ -12,7 +12,7 @@ from jsonschema import Draft7Validator, ValidationError
 
 
 ROOT = Path(__file__).parents[1]
-SCRIPTS = ROOT / "plugins/gravitas-antigravity/scripts"
+SCRIPTS = ROOT / "plugins/progravity-antigravity/scripts"
 
 
 def run_script(name, payload=None, *args, cwd):
@@ -94,7 +94,7 @@ class RuntimeTests(unittest.TestCase):
         )
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("unknown mode", result.stderr)
-        self.assertFalse((self.cwd / ".gravitas" / "sessions" / "invalid-mode").exists())
+        self.assertFalse((self.cwd / ".progravity" / "sessions" / "invalid-mode").exists())
 
     def test_pre_tool_denies_unknown_mode_contract(self):
         session = self.init({"mode": "implement", "objective": "x"})
@@ -246,7 +246,7 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0)
         ledger = session / "evidence.jsonl"
         ledger.write_text(ledger.read_text().replace('"exit_code":0', '"exit_code":1'))
-        cli = subprocess.run([sys.executable, str(ROOT / "gravitas_cli.py"), "verify", "--session-dir", str(session)], text=True, capture_output=True, cwd=self.cwd, check=False)
+        cli = subprocess.run([sys.executable, str(ROOT / "progravity_cli.py"), "verify", "--session-dir", str(session)], text=True, capture_output=True, cwd=self.cwd, check=False)
         self.assertNotEqual(cli.returncode, 0)
 
     def test_validator_runner_rejects_undeclared_criterion_or_command(self):

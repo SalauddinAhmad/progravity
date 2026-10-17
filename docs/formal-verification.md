@@ -1,6 +1,6 @@
 # Formal Verification
 
-Approach to formally verify GRAVITAS pillar adherence.
+Approach to formally verify PROGRAVITY pillar adherence.
 
 ---
 
@@ -8,7 +8,7 @@ Approach to formally verify GRAVITAS pillar adherence.
 
 ### 1.1 What Is Formal Verification
 
-Formal verification uses mathematical proofs to verify that a system behaves correctly. For GRAVITAS, this means proving that the agent follows the 10 pillars under all conditions.
+Formal verification uses mathematical proofs to verify that a system behaves correctly. For PROGRAVITY, this means proving that the agent follows the 10 pillars under all conditions.
 
 ### 1.2 Why Formal Verification
 
@@ -20,7 +20,7 @@ Formal verification uses mathematical proofs to verify that a system behaves cor
 
 ### 1.3 Scope
 
-GRAVITAS formal verification focuses on:
+PROGRAVITY formal verification focuses on:
 1. **Pillar adherence** — does the agent follow each pillar?
 2. **Pillar interaction** — do pillars work together correctly?
 3. **Edge case coverage** — are all edge cases handled?
@@ -268,7 +268,7 @@ def test_plan_before_execution(data):
 1. **Automated theorem proving** — reduce manual effort
 2. **Scalable model checking** — handle larger state spaces
 3. **Runtime verification** — verify properties at runtime with minimal overhead
-4. **Formal specification** — create formal specification of GRAVITAS
+4. **Formal specification** — create formal specification of PROGRAVITY
 
 ---
 
@@ -290,4 +290,4 @@ def test_plan_before_execution(data):
 
 ---
 
-*This document is part of the GRAVITAS advanced research phase. It defines the approach to formal verification of the protocol.*
+*This document is part of the PROGRAVITY advanced research phase. It defines the approach to formal verification of the protocol.*

@@ -1,4 +1,4 @@
-"""Workspace isolation and verification for GravitasBench."""
+"""Workspace isolation and verification for ProgravityBench."""
 import os
 import shutil
 from pathlib import Path
@@ -14,20 +14,20 @@ def create_isolated_workspace(base_repo: Path, target_dir: Path, config: str) ->
     
     # Apply configuration
     if config == "BASELINE" or config == "CLAUDE_REFERENCE":
-        # Remove any Gravitas skills or hooks to prevent contamination
-        remove_gravitas(target_dir)
-    elif config == "GRAVITAS_CORE":
+        # Remove any Progravity skills or hooks to prevent contamination
+        remove_progravity(target_dir)
+    elif config == "PROGRAVITY_CORE":
         # Keep portable skill, remove native hooks
         remove_native_hooks(target_dir)
-    elif config == "GRAVITAS_NATIVE":
+    elif config == "PROGRAVITY_NATIVE":
         # Keep everything
         pass
         
     return target_dir
 
-def remove_gravitas(workspace: Path):
-    """Remove all Gravitas traces from the workspace."""
-    for path in ["skills/gravitas", ".agents/skills/gravitas", "plugins/gravitas-antigravity", ".github/workflows/gravitas.yml", "plugin.json"]:
+def remove_progravity(workspace: Path):
+    """Remove all Progravity traces from the workspace."""
+    for path in ["skills/progravity", ".agents/skills/progravity", "plugins/progravity-antigravity", ".github/workflows/progravity.yml", "plugin.json"]:
         p = workspace / path
         if p.exists():
             if p.is_dir():
@@ -37,7 +37,7 @@ def remove_gravitas(workspace: Path):
 
 def remove_native_hooks(workspace: Path):
     """Remove native hooks but keep portable skill."""
-    for path in ["plugins/gravitas-antigravity", "plugin.json"]:
+    for path in ["plugins/progravity-antigravity", "plugin.json"]:
         p = workspace / path
         if p.exists():
             if p.is_dir():
@@ -47,17 +47,17 @@ def remove_native_hooks(workspace: Path):
 
 def verify_isolation(workspace: Path, config: str) -> bool:
     """Verify that the workspace matches the expected isolation level."""
-    gravitas_exists = (workspace / "skills/gravitas").exists() or (workspace / ".agents/skills/gravitas").exists()
-    native_exists = (workspace / "plugins/gravitas-antigravity").exists() or (workspace / "plugin.json").exists()
+    progravity_exists = (workspace / "skills/progravity").exists() or (workspace / ".agents/skills/progravity").exists()
+    native_exists = (workspace / "plugins/progravity-antigravity").exists() or (workspace / "plugin.json").exists()
     
     if config == "BASELINE" or config == "CLAUDE_REFERENCE":
-        if gravitas_exists or native_exists:
+        if progravity_exists or native_exists:
             return False
-    elif config == "GRAVITAS_CORE":
-        if not gravitas_exists or native_exists:
+    elif config == "PROGRAVITY_CORE":
+        if not progravity_exists or native_exists:
             return False
-    elif config == "GRAVITAS_NATIVE":
-        if not gravitas_exists or not native_exists:
+    elif config == "PROGRAVITY_NATIVE":
+        if not progravity_exists or not native_exists:
             return False
             
     return True

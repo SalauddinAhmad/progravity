@@ -8,7 +8,7 @@ README = (ROOT / "README.md").read_text(encoding="utf-8")
 
 required = [
     "Research preview: comparative performance is not yet measured.",
-    "GRAVITAS changes the engineering process, not model weights.",
+    "PROGRAVITY changes the engineering process, not model weights.",
     "30 registered task specifications across 10 planned lanes",
 ]
 for phrase in required:

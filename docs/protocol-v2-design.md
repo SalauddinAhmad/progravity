@@ -238,8 +238,8 @@ v2 provides a formal foundation for:
 ### 6.2 Formal Specification
 
 ```latex
-\begin{definition}[GRAVITAS Protocol]
-A GRAVITAS protocol is a tuple $P = (S, T, R, V)$ where:
+\begin{definition}[PROGRAVITY Protocol]
+A PROGRAVITY protocol is a tuple $P = (S, T, R, V)$ where:
 \begin{itemize}
 \item $S$ is a set of states
 \item $T$ is a set of transitions
@@ -335,4 +335,4 @@ For all tasks $\tau$: protocol $P$ eventually produces a report for $\tau$
 
 ---
 
-*This document is part of the GRAVITAS advanced research phase. It defines the design considerations for a hypothetical v2 of the protocol.*
+*This document is part of the PROGRAVITY advanced research phase. It defines the design considerations for a hypothetical v2 of the protocol.*

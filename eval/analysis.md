@@ -1,6 +1,6 @@
 # Results Analysis Framework
 
-Framework for analyzing, interpreting, and reporting GRAVITAS evaluation results.
+Framework for analyzing, interpreting, and reporting PROGRAVITY evaluation results.
 
 ---
 
@@ -75,7 +75,7 @@ adjusted_alpha = alpha / K
 - X-axis: Conditions (A, B, C, D)
 - Y-axis: Metric value
 - Error bars: 95% CI
-- Color: Condition (blue for baseline, green for GRAVITAS)
+- Color: Condition (blue for baseline, green for PROGRAVITY)
 
 **One chart per metric.**
 
@@ -134,10 +134,10 @@ reference_delta = (A_score - B_score) / (A_score - C_score) * 100%
 
 Where:
 - A_score = treatment-model baseline
-- B_score = treatment model + GRAVITAS
+- B_score = treatment model + PROGRAVITY
 - C_score = independent reference-model baseline (exact revision pinned)
 
-**Interpretation:** 100% = the Gravitas-enabled run matches the reference run
+**Interpretation:** 100% = the Progravity-enabled run matches the reference run
 on this suite. Report only alongside absolute metrics, CIs, and the exact
 reference revision. Never the product's headline metric.
 
@@ -163,10 +163,10 @@ reference revision. Never the product's headline metric.
 ```
 False-completion rate:
 - Gemini Baseline: 0.24 [95% CI: 0.14, 0.36]
-- Gemini + GRAVITAS: 0.08 [95% CI: 0.02, 0.18]
+- Gemini + PROGRAVITY: 0.08 [95% CI: 0.02, 0.18]
 - Mann-Whitney U: p = 0.003 (statistically significant)
 - Cohen's d: 0.72 (medium-large effect)
-- Interpretation: GRAVITAS significantly reduces false-completion rate for Gemini.
+- Interpretation: PROGRAVITY significantly reduces false-completion rate for Gemini.
 ```
 
 ### 4.2 Confidence Intervals
@@ -184,12 +184,12 @@ False-completion rate:
 **Do not report only aggregate scores.** Report per-pillar breakdowns:
 
 ```
-GRAVITAS improved:
+PROGRAVITY improved:
 - Recon quality by 1.2 points (d = 0.85, large effect)
 - Diff scoping by 0.3 ratio points (d = 0.45, medium effect)
 - False-completion rate by 0.16 (d = 0.72, medium-large effect)
 
-GRAVITAS had no significant effect on:
+PROGRAVITY had no significant effect on:
 - Pushback rate (p = 0.32)
 - Failure-repetition rate (p = 0.18)
 ```
@@ -200,10 +200,10 @@ GRAVITAS had no significant effect on:
 
 | Comparison | Key Finding | Effect Size | Interpretation |
 |-----------|-------------|-------------|----------------|
-| A vs. B | GRAVITAS improves treatment model | d = 0.72 | Medium-large practical significance |
-| C vs. D | GRAVITAS improves reference-family model | d = 0.35 | Small-medium practical significance |
+| A vs. B | PROGRAVITY improves treatment model | d = 0.72 | Medium-large practical significance |
+| C vs. D | PROGRAVITY improves reference-family model | d = 0.35 | Small-medium practical significance |
 | A vs. C | Baseline difference between families | d = 0.55 | Medium effect |
-| B vs. D | Cross-family delta after Gravitas | d = 0.15 | Small effect |
+| B vs. D | Cross-family delta after Progravity | d = 0.15 | Small effect |
 
 ---
 
@@ -256,4 +256,4 @@ GRAVITAS had no significant effect on:
 
 ---
 
-*This analysis framework is part of the GRAVITAS evaluation framework. It ensures rigorous, reproducible analysis of evaluation results.*
+*This analysis framework is part of the PROGRAVITY evaluation framework. It ensures rigorous, reproducible analysis of evaluation results.*

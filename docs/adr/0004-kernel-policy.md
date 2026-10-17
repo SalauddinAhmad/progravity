@@ -23,7 +23,7 @@ invariants with procedures.
    accepted as aliases, schema widened additively, contract gains an
    optional `policy` dimensions object. Absent dimensions mean unknown.
 4. `decide()` emits planning/context/verification/delegation + reason codes
-   from explicit rules (no weights); exposed as `gravitas decide`.
+   from explicit rules (no weights); exposed as `progravity decide`.
    Delegation defaults to none; investigator/reviewer/impact-auditor only on
    explicit signals.
 5. SKILL.md shrunk 259 -> ~185 lines: 6 invariants, policy record, modes,

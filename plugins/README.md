@@ -1,7 +1,7 @@
 # Plugin System
 
-Community extensions for GRAVITAS. Each plugin is a self-contained skill
-that loads on top of the base GRAVITAS protocol.
+Community extensions for PROGRAVITY. Each plugin is a self-contained skill
+that loads on top of the base PROGRAVITY protocol.
 
 ---
 
@@ -9,10 +9,10 @@ that loads on top of the base GRAVITAS protocol.
 
 | Plugin | Purpose | Load When |
 |--------|---------|-----------|
-| [gravitas-security](./gravitas-security/SKILL.md) | Deep security review mode | Working on auth, input, db, API |
-| [gravitas-perf](./gravitas-perf/SKILL.md) | Performance analysis mode | Optimizing hot paths, benchmarking |
-| [gravitas-typescript](../skills/gravitas-typescript/SKILL.md) | TypeScript patterns | Any TypeScript project |
-| [gravitas-python](../skills/gravitas-python/SKILL.md) | Python patterns | Any Python project |
+| [progravity-security](./progravity-security/SKILL.md) | Deep security review mode | Working on auth, input, db, API |
+| [progravity-perf](./progravity-perf/SKILL.md) | Performance analysis mode | Optimizing hot paths, benchmarking |
+| [progravity-typescript](../skills/progravity-typescript/SKILL.md) | TypeScript patterns | Any TypeScript project |
+| [progravity-python](../skills/progravity-python/SKILL.md) | Python patterns | Any Python project |
 
 ---
 
@@ -21,36 +21,36 @@ that loads on top of the base GRAVITAS protocol.
 Add to your `GEMINI.md` or `AGENTS.md`:
 
 ```
-When executing coding tasks, follow GRAVITAS from skills/gravitas/SKILL.md.
-For security-related tasks, also load plugins/gravitas-security/SKILL.md.
+When executing coding tasks, follow PROGRAVITY from skills/progravity/SKILL.md.
+For security-related tasks, also load plugins/progravity-security/SKILL.md.
 ```
 
 Or reference directly in your task:
 
 ```
 Review this auth module for security issues.
-Load: skills/gravitas/SKILL.md + plugins/gravitas-security/SKILL.md
+Load: skills/progravity/SKILL.md + plugins/progravity-security/SKILL.md
 ```
 
 ---
 
 ## Build Your Own Plugin
 
-A GRAVITAS plugin is any markdown file with YAML frontmatter:
+A PROGRAVITY plugin is any markdown file with YAML frontmatter:
 
 ```markdown
 ---
-name: gravitas-[your-domain]
+name: progravity-[your-domain]
 description: One-line description of what this plugin adds.
 triggers:
   - keyword1
   - keyword2
 ---
 
-# GRAVITAS — [Domain] Extension
+# PROGRAVITY — [Domain] Extension
 
-Extends base GRAVITAS with [domain]-specific patterns.
-Load `skills/gravitas/SKILL.md` first, then this file.
+Extends base PROGRAVITY with [domain]-specific patterns.
+Load `skills/progravity/SKILL.md` first, then this file.
 
 ## [Domain] Recon Additions
 [what to check beyond standard recon]
@@ -66,7 +66,7 @@ Load `skills/gravitas/SKILL.md` first, then this file.
 ```
 
 ### Plugin Rules
-1. Plugins extend — never override — base GRAVITAS rules
+1. Plugins extend — never override — base PROGRAVITY rules
 2. All 5 core rules still apply
 3. Tier classification still applies
 4. VERDICT: PASS/FAIL still required
@@ -74,7 +74,7 @@ Load `skills/gravitas/SKILL.md` first, then this file.
 
 ### Submitting a Plugin
 
-1. Create `plugins/gravitas-[name]/SKILL.md`
+1. Create `plugins/progravity-[name]/SKILL.md`
 2. Test it on 3+ real tasks (include evidence in PR)
 3. Add to the table in this README
 4. PR with `VERDICT: PASS` in description
@@ -83,11 +83,11 @@ Load `skills/gravitas/SKILL.md` first, then this file.
 
 ## Plugin Ideas (open for contribution)
 
-- `gravitas-go` — Go-specific patterns (goroutines, channels, defer)
-- `gravitas-rust` — Rust patterns (lifetimes, ownership, unsafe)
-- `gravitas-react` — React patterns (hooks, state, effect cleanup)
-- `gravitas-sql` — Schema migration and query optimization
-- `gravitas-docker` — Container and orchestration patterns
-- `gravitas-api` — REST/GraphQL API design patterns
-- `gravitas-mobile` — React Native / Flutter patterns
-- `gravitas-ml` — ML/AI model training and evaluation patterns
+- `progravity-go` — Go-specific patterns (goroutines, channels, defer)
+- `progravity-rust` — Rust patterns (lifetimes, ownership, unsafe)
+- `progravity-react` — React patterns (hooks, state, effect cleanup)
+- `progravity-sql` — Schema migration and query optimization
+- `progravity-docker` — Container and orchestration patterns
+- `progravity-api` — REST/GraphQL API design patterns
+- `progravity-mobile` — React Native / Flutter patterns
+- `progravity-ml` — ML/AI model training and evaluation patterns

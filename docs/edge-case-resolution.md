@@ -1,7 +1,7 @@
 # Edge Case Resolution
 
 > Research archive. Tier vocabulary maps to policy records
-> (`direct/compact/deep`) per `skills/gravitas/SKILL.md`.
+> (`direct/compact/deep`) per `skills/progravity/SKILL.md`.
 
 Resolution status for all 100+ edge cases documented in `docs/edge-cases.md`. For each edge case: is the current protocol sufficient? If not, what addition is needed?
 
@@ -352,4 +352,4 @@ All 10 edge cases are resolved by existing protocol. No additions needed.
 
 ---
 
-*This document is part of the GRAVITAS production hardening phase. It resolves all 105 edge cases documented in `docs/edge-cases.md`.*
+*This document is part of the PROGRAVITY production hardening phase. It resolves all 105 edge cases documented in `docs/edge-cases.md`.*

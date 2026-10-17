@@ -1,5 +1,5 @@
-// GRAVITAS Calculator — no eval(), state machine parser
-// Built by Antigravity following the GRAVITAS protocol
+// PROGRAVITY Calculator — no eval(), state machine parser
+// Built by Antigravity following the PROGRAVITY protocol
 
 (function() {
     'use strict';

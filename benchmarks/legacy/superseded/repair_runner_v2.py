@@ -23,7 +23,7 @@ def dump_manifest(config_mode):
     for s in (gem_cfg / "skills").glob("*"):
         manifest["skills"][s.name] = "exists"
     
-    # Read config.json to see if gravitas is disabled
+    # Read config.json to see if progravity is disabled
     try:
         with open(gem_cfg / "config.json") as f:
             c = json.load(f)
@@ -36,7 +36,7 @@ def dump_manifest(config_mode):
 def isolate_config(config_mode):
     gem_cfg = Path(os.path.expanduser("~/.gemini/config"))
     # 1. Handle skills
-    skills = ["gravitas", "gravitas-python", "gravitas-typescript"]
+    skills = ["progravity", "progravity-python", "progravity-typescript"]
     if config_mode == "BASELINE":
         for s in skills:
             p = gem_cfg / "skills" / s
@@ -46,20 +46,20 @@ def isolate_config(config_mode):
         pass
         
     # 2. Handle plugin (disable in config.json)
-    if config_mode in ["BASELINE", "GRAVITAS_CORE"]:
+    if config_mode in ["BASELINE", "PROGRAVITY_CORE"]:
         c = {}
         if (gem_cfg / "config.json").exists():
             with open(gem_cfg / "config.json") as f:
                 c = json.load(f)
         if "plugins" not in c: c["plugins"] = {}
-        if "gravitas" not in c["plugins"]: c["plugins"]["gravitas"] = {}
-        c["plugins"]["gravitas"]["enabled"] = False
+        if "progravity" not in c["plugins"]: c["plugins"]["progravity"] = {}
+        c["plugins"]["progravity"]["enabled"] = False
         with open(gem_cfg / "config.json", "w") as f:
             json.dump(c, f, indent=2)
 
 def restore_config(config_mode):
     gem_cfg = Path(os.path.expanduser("~/.gemini/config"))
-    skills = ["gravitas", "gravitas-python", "gravitas-typescript"]
+    skills = ["progravity", "progravity-python", "progravity-typescript"]
     if config_mode == "BASELINE":
         for s in skills:
             bak = gem_cfg / "skills" / (s + ".bak")
@@ -68,28 +68,28 @@ def restore_config(config_mode):
                 if orig.exists(): shutil.rmtree(orig)
                 os.rename(bak, orig)
                 
-    if config_mode in ["BASELINE", "GRAVITAS_CORE"]:
+    if config_mode in ["BASELINE", "PROGRAVITY_CORE"]:
         if (gem_cfg / "config.json").exists():
             with open(gem_cfg / "config.json") as f:
                 c = json.load(f)
-            if "plugins" in c and "gravitas" in c["plugins"]:
-                c["plugins"]["gravitas"]["enabled"] = True
+            if "plugins" in c and "progravity" in c["plugins"]:
+                c["plugins"]["progravity"]["enabled"] = True
             with open(gem_cfg / "config.json", "w") as f:
                 json.dump(c, f, indent=2)
 
 def check_contamination(manifest, config_mode):
-    # Baseline must have gravitas skill as .bak or missing, and plugin disabled
+    # Baseline must have progravity skill as .bak or missing, and plugin disabled
     if config_mode == "BASELINE":
-        assert "gravitas" not in manifest["skills"], "Baseline has active skill"
-        plug_cfg = manifest["config_plugins"].get("gravitas", {})
+        assert "progravity" not in manifest["skills"], "Baseline has active skill"
+        plug_cfg = manifest["config_plugins"].get("progravity", {})
         assert plug_cfg.get("enabled", True) == False, "Baseline has active plugin"
-    elif config_mode == "GRAVITAS_CORE":
-        assert "gravitas" in manifest["skills"], "Core missing skill"
-        plug_cfg = manifest["config_plugins"].get("gravitas", {})
+    elif config_mode == "PROGRAVITY_CORE":
+        assert "progravity" in manifest["skills"], "Core missing skill"
+        plug_cfg = manifest["config_plugins"].get("progravity", {})
         assert plug_cfg.get("enabled", True) == False, "Core has active plugin"
-    elif config_mode == "GRAVITAS_NATIVE":
-        assert "gravitas" in manifest["skills"], "Native missing skill"
-        plug_cfg = manifest["config_plugins"].get("gravitas", {})
+    elif config_mode == "PROGRAVITY_NATIVE":
+        assert "progravity" in manifest["skills"], "Native missing skill"
+        plug_cfg = manifest["config_plugins"].get("progravity", {})
         assert plug_cfg.get("enabled", True) == True, "Native missing active plugin"
 
 def parse_ndjson(path):
@@ -163,11 +163,11 @@ def count_hooks(sessions_dir):
 def run_canary_episode(config):
     task_yaml = Path("eval/tasks/REPAIR-CANARY-A.yaml")
     run_id = str(uuid.uuid4())
-    ws = Path(f"/tmp/gravitasbench/{run_id}/ws")
+    ws = Path(f"/tmp/progravitybench/{run_id}/ws")
     ws.mkdir(parents=True, exist_ok=True)
     
     # Extract git url
-    repo_url = "https://github.com/udaysharmadev/Gravitas.git" # we use the local bundle
+    repo_url = "https://github.com/SalauddinAhmad/progravity.git" # we use the local bundle
     for line in task_yaml.read_text().split('\n'):
         if 'repository_url:' in line:
             repo_url = line.split(':', 1)[1].strip().strip('"').strip("'").replace('file://', '')
@@ -176,7 +176,7 @@ def run_canary_episode(config):
     subprocess.run(["git", "clone", repo_url, str(ws.resolve())], capture_output=True)
     
     # Capture hooks before
-    plugin_sessions = Path(os.path.expanduser("~/.gemini/config/plugins/gravitas/.gravitas/sessions"))
+    plugin_sessions = Path(os.path.expanduser("~/.gemini/config/plugins/progravity/.progravity/sessions"))
     if plugin_sessions.exists():
         shutil.rmtree(plugin_sessions)
         
@@ -222,7 +222,7 @@ def run_canary_episode(config):
     return r
 
 if __name__ == "__main__":
-    configs = ["BASELINE", "GRAVITAS_CORE", "GRAVITAS_NATIVE"]
+    configs = ["BASELINE", "PROGRAVITY_CORE", "PROGRAVITY_NATIVE"]
     results = []
     try:
         for c in configs:

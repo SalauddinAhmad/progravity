@@ -4,7 +4,7 @@ Date: 2026-10-07 · Status: proposed (phases 2+)
 
 ## Context
 
-GRAVITAS is currently rule-heavy prompt prose plus a thin hook layer. Prompt
+PROGRAVITY is currently rule-heavy prompt prose plus a thin hook layer. Prompt
 rules do not enforce; hooks do not understand policy. The system must grow
 into a runtime without becoming twelve giant abstractions.
 
@@ -16,7 +16,7 @@ into a runtime without becoming twelve giant abstractions.
    progressive-disclosure skills.
 2. Split risk from effort: policy dimensions (action risk, reversibility,
    uncertainty, blast radius, verification depth) instead of one tier
-   number; explicit rules first, calibration from GravitasBench data later.
+   number; explicit rules first, calibration from ProgravityBench data later.
 3. Planning becomes conditional (direct / compact / deep / replan) with a
    machine-readable policy record; no universal "2+ files means full plan".
 4. Context, verification, evidence, recovery, delegation, and host adapters

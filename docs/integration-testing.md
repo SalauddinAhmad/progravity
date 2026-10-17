@@ -3,7 +3,7 @@
 > Research archive (pre-policy-engine test plan). Normative verification:
 > `tests/` suite, `docs/adr/0006-verification.md`, `docs/benchmark.md`.
 
-End-to-end testing of GRAVITAS within Antigravity. Covers skill activation, pillar behavior, tool integration, and multi-agent coordination.
+End-to-end testing of PROGRAVITY within Antigravity. Covers skill activation, pillar behavior, tool integration, and multi-agent coordination.
 
 ---
 
@@ -13,19 +13,19 @@ End-to-end testing of GRAVITAS within Antigravity. Covers skill activation, pill
 
 | Test | Input | Expected |
 |------|-------|----------|
-| Trigger match | "Fix the bug in handler.ts" | GRAVITAS loaded |
-| Trigger match | "Add a new feature" | GRAVITAS loaded |
-| Trigger match | "Refactor the auth module" | GRAVITAS loaded |
-| No trigger match | "What is 2+2?" | GRAVITAS not loaded |
-| No trigger match | "Explain this code" | GRAVITAS not loaded |
-| Edge case | "Create and test a new function" | GRAVITAS loaded (multiple triggers) |
-| Edge case | "Update the README" | GRAVITAS loaded ("update" trigger) |
+| Trigger match | "Fix the bug in handler.ts" | PROGRAVITY loaded |
+| Trigger match | "Add a new feature" | PROGRAVITY loaded |
+| Trigger match | "Refactor the auth module" | PROGRAVITY loaded |
+| No trigger match | "What is 2+2?" | PROGRAVITY not loaded |
+| No trigger match | "Explain this code" | PROGRAVITY not loaded |
+| Edge case | "Create and test a new function" | PROGRAVITY loaded (multiple triggers) |
+| Edge case | "Update the README" | PROGRAVITY loaded ("update" trigger) |
 
 ### 1.2 Verification
 
-1. Send task with trigger word → confirm GRAVITAS loaded (check context)
-2. Send task without trigger word → confirm GRAVITAS not loaded
-3. Send task with multiple triggers → confirm GRAVITAS loaded once (not duplicated)
+1. Send task with trigger word → confirm PROGRAVITY loaded (check context)
+2. Send task without trigger word → confirm PROGRAVITY not loaded
+3. Send task with multiple triggers → confirm PROGRAVITY loaded once (not duplicated)
 
 ---
 
@@ -261,4 +261,4 @@ End-to-end testing of GRAVITAS within Antigravity. Covers skill activation, pill
 
 ---
 
-*This document is part of the GRAVITAS production hardening phase. It defines the end-to-end integration testing methodology.*
+*This document is part of the PROGRAVITY production hardening phase. It defines the end-to-end integration testing methodology.*

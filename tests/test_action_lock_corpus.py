@@ -36,7 +36,7 @@ class ActionLockCorpusTests(unittest.TestCase):
             "--task-id", "test-task", "--contract-json", json.dumps(contract), cwd=self.cwd,
         )
         self.assertEqual(result.returncode, 0, result.stderr)
-        return self.cwd / ".gravitas/sessions/test-task"
+        return self.cwd / ".progravity/sessions/test-task"
 
     def test_100_plan_only_mutation_cases_are_blocked(self):
         cases = [(mode, mutation) for mode in READ_ONLY_MODES for mutation in MUTATIONS]

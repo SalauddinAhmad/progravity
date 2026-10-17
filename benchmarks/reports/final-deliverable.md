@@ -1,20 +1,20 @@
-# GRAVITAS Benchmark Project - Final Technical Report
+# PROGRAVITY Benchmark Project - Final Technical Report
 
 ## 1. Current repo problems found
 * `benchmarks/benchmark.py` was a legacy v3 text-response scorer and presented itself as the official runner.
-* Benchmark Data Model in `schemas/episode.schema.json` conflated model effort with Gravitas effort, and lacked quota/host isolation telemetry.
+* Benchmark Data Model in `schemas/episode.schema.json` conflated model effort with Progravity effort, and lacked quota/host isolation telemetry.
 * Task corpus lacked Stratum A/B distinction and deterministic requirement mapping.
 * Environment lacked Antigravity CLI (`agy`), meaning runner could not execute.
 
 ## 2. Problems fixed
 * Moved `benchmarks/benchmark.py` to `benchmarks/legacy/`.
-* Updated `schemas/episode.schema.json` with strict fields for `model`, `model_effort`, `gravitas`, `host`, `execution`, `usage`, `quota`, and `outcome`.
+* Updated `schemas/episode.schema.json` with strict fields for `model`, `model_effort`, `progravity`, `host`, `execution`, `usage`, `quota`, and `outcome`.
 * Created `benchmarks/runner/isolation.py` to handle strict baseline/treatment isolation.
 * Defined Stratum A task schema `eval/tasks/STRATUM-A-EXAMPLE.yaml`.
-* Verified `skills/gravitas/SKILL.md` is canonically identical to `.agents/`.
+* Verified `skills/progravity/SKILL.md` is canonically identical to `.agents/`.
 
 ## 3. Architecture changes
-* `benchmarks/cli.py` introduced as the unified reproducibility entrypoint (`gravitas bench ...`).
+* `benchmarks/cli.py` introduced as the unified reproducibility entrypoint (`progravity bench ...`).
 * Subprocess execution added to `benchmarks/runner/antigravity.py` to capture headless stream-json from `agy`.
 * Metrics pipeline isolated in `benchmarks/runner/metrics.py`.
 
@@ -45,10 +45,10 @@
 ## 12. Quota findings
 * NOT MEASURED.
 
-## 13. Gravitas overhead
+## 13. Progravity overhead
 * NOT MEASURED.
 
-## 14. Gravitas reliability improvement or regression
+## 14. Progravity reliability improvement or regression
 * NOT MEASURED.
 
 ## 15. Claude-gap comparison
@@ -81,7 +81,7 @@
 ./benchmarks/cli.py doctor
 ./benchmarks/cli.py pilot
 ./benchmarks/cli.py run --dataset v1 --config baseline-flash --runs 5
-./benchmarks/cli.py run --dataset v1 --config gravitas-native-flash --runs 5
+./benchmarks/cli.py run --dataset v1 --config progravity-native-flash --runs 5
 ./benchmarks/cli.py report --dataset v1
 ```
 

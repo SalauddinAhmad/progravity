@@ -12,12 +12,12 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
-SCRIPTS = ROOT / "plugins/gravitas-antigravity/scripts"
+SCRIPTS = ROOT / "plugins/progravity-antigravity/scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 import test_runtime
-from gravitas_action import antigravity_envelope, classify_shell, normalize
-from gravitas_policy import (
+from progravity_action import antigravity_envelope, classify_shell, normalize
+from progravity_policy import (
     FAIL_CLOSED_MODE,
     MODE_ALIASES,
     READ_ONLY_MODES,
@@ -321,7 +321,7 @@ class EvaluateActionTests(unittest.TestCase):
 class DecideCliTests(unittest.TestCase):
     def test_decide_command_emits_record(self):
         result = subprocess.run(
-            [sys.executable, str(ROOT / "gravitas_cli.py"), "decide",
+            [sys.executable, str(ROOT / "progravity_cli.py"), "decide",
              "--signals", json.dumps({"dependent_files": True, "files": 3})],
             text=True, capture_output=True, cwd=ROOT, check=False)
         self.assertEqual(result.returncode, 0, result.stderr)
@@ -331,7 +331,7 @@ class DecideCliTests(unittest.TestCase):
 
     def test_decide_rejects_non_object_signals(self):
         result = subprocess.run(
-            [sys.executable, str(ROOT / "gravitas_cli.py"), "decide",
+            [sys.executable, str(ROOT / "progravity_cli.py"), "decide",
              "--signals", "[1,2]"],
             text=True, capture_output=True, cwd=ROOT, check=False)
         self.assertNotEqual(result.returncode, 0)

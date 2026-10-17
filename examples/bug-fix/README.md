@@ -1,10 +1,10 @@
-# Bug Fix — Before vs After GRAVITAS
+# Bug Fix — Before vs After PROGRAVITY
 
 **Task:** Fix the session timeout bug. Users are being logged out after 5 seconds.
 
 ---
 
-## ❌ Without GRAVITAS (Normal Gemini)
+## ❌ Without PROGRAVITY (Normal Gemini)
 
 ```typescript
 // Increased the timeout value
@@ -22,7 +22,7 @@ const SESSION_TIMEOUT = 30000; // was 5000
 
 ---
 
-## ✅ With GRAVITAS
+## ✅ With PROGRAVITY
 
 **Recon** (parallel, one round-trip):
 ```

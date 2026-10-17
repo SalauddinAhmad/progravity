@@ -1,6 +1,6 @@
 """Disposable deterministic fixtures for implementation-episode plumbing.
 
-These fixtures test the runner, not the product claims of GravitasBench.  Each
+These fixtures test the runner, not the product claims of ProgravityBench.  Each
 task gets an isolated worktree and a task-specific acceptance test; real,
 licensed repositories can replace this factory without changing the runner.
 

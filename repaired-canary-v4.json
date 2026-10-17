@@ -38,9 +38,9 @@
       "errors": 0
     },
     "contamination_result": "PASS",
-    "raw_ndjson": "/tmp/gravitasbench/2e734e10-23c5-426a-907e-752f52166f2a/ws/out.ndjson"
+    "raw_ndjson": "/tmp/progravitybench/2e734e10-23c5-426a-907e-752f52166f2a/ws/out.ndjson"
   },
-  "GRAVITAS_CORE": {
+  "PROGRAVITY_CORE": {
     "conversation_id": "dc4f1851-a567-4a11-8a4e-1ffadf591a32",
     "model": "gemini-3.8-flash-medium",
     "effort": "medium",
@@ -81,9 +81,9 @@
       "errors": 0
     },
     "contamination_result": "PASS",
-    "raw_ndjson": "/tmp/gravitasbench/a2f6d608-b3ea-4982-99ed-982b72c1303c/ws/out.ndjson"
+    "raw_ndjson": "/tmp/progravitybench/a2f6d608-b3ea-4982-99ed-982b72c1303c/ws/out.ndjson"
   },
-  "GRAVITAS_NATIVE": {
+  "PROGRAVITY_NATIVE": {
     "conversation_id": "bf002ffd-a428-41b0-a7f1-77c629abea0a",
     "model": "gemini-3.8-flash-medium",
     "effort": "medium",
@@ -124,6 +124,6 @@
       "errors": 0
     },
     "contamination_result": "PASS",
-    "raw_ndjson": "/tmp/gravitasbench/12ce13f6-497e-4ff3-8c4f-003ff9917025/ws/out.ndjson"
+    "raw_ndjson": "/tmp/progravitybench/12ce13f6-497e-4ff3-8c4f-003ff9917025/ws/out.ndjson"
   }
 }

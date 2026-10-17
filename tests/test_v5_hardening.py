@@ -8,18 +8,18 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
-SCRIPTS = ROOT / "plugins/gravitas-antigravity/scripts"
+SCRIPTS = ROOT / "plugins/progravity-antigravity/scripts"
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(SCRIPTS))
 
 import test_runtime
-from gravitas_action import classify_shell
-from gravitas_init import _copy_tree, init_opencode
+from progravity_action import classify_shell
+from progravity_init import _copy_tree, init_opencode
 
 
 def guard(*args):
     result = subprocess.run(
-        [sys.executable, str(ROOT / "gravitas_cli.py"), "guard", *args],
+        [sys.executable, str(ROOT / "progravity_cli.py"), "guard", *args],
         text=True, capture_output=True, cwd=ROOT, check=False)
     return result.returncode, json.loads(result.stdout)
 
@@ -80,7 +80,7 @@ class GuardPolicyStateTests(unittest.TestCase):
 
 
 class ShimHookTests(unittest.TestCase):
-    SHIM = ROOT / "adapters" / "opencode" / "plugin" / "gravitas.js"
+    SHIM = ROOT / "adapters" / "opencode" / "plugin" / "progravity.js"
 
     def node(self, script):
         if shutil.which("node") is None:
@@ -93,7 +93,7 @@ class ShimHookTests(unittest.TestCase):
     def test_hook_denies_missing_mutating_args_without_guard(self):
         out = self.node(
             f"import('{self.SHIM.as_uri()}').then(async m => {{"
-            "  const hook = (await m.GravitasPlugin({directory: '/tmp'}))['tool.execute.before'];"
+            "  const hook = (await m.ProgravityPlugin({directory: '/tmp'}))['tool.execute.before'];"
             "  try { await hook({tool:'bash',sessionID:'s',callID:'c'}, {args:{}});"
             "    console.log('ALLOWED'); }"
             "  catch (e) { console.log('DENIED:' + e.message.slice(0, 60)); }"
@@ -103,7 +103,7 @@ class ShimHookTests(unittest.TestCase):
     def test_hook_denies_missing_tool(self):
         out = self.node(
             f"import('{self.SHIM.as_uri()}').then(async m => {{"
-            "  const hook = (await m.GravitasPlugin({directory: '/tmp'}))['tool.execute.before'];"
+            "  const hook = (await m.ProgravityPlugin({directory: '/tmp'}))['tool.execute.before'];"
             "  try { await hook({}, {args:{}}); console.log('ALLOWED'); }"
             "  catch (e) { console.log('DENIED'); }"
             "});")
@@ -112,7 +112,7 @@ class ShimHookTests(unittest.TestCase):
     def test_hook_denies_unreachable_guard(self):
         out = self.node(
             f"import('{self.SHIM.as_uri()}').then(async m => {{"
-            "  const hook = (await m.GravitasPlugin({directory: '/nonexistent-xyz'}))['tool.execute.before'];"
+            "  const hook = (await m.ProgravityPlugin({directory: '/nonexistent-xyz'}))['tool.execute.before'];"
             "  try { await hook({tool:'bash',sessionID:'s',callID:'c'}, {args:{command:'ls'}});"
             "    console.log('ALLOWED'); }"
             "  catch (e) { console.log('DENIED'); }"
@@ -170,7 +170,7 @@ class EvidenceV5Tests(unittest.TestCase):
             "init_session.py", None, "--task-id", "t",
             "--contract-json", json.dumps(contract), cwd=self.cwd)
         self.assertEqual(result.returncode, 0, result.stderr)
-        return self.cwd / ".gravitas" / "sessions" / "t"
+        return self.cwd / ".progravity" / "sessions" / "t"
 
     def test_stale_completed_not_retained(self):
         from post_invocation import update_state_from_evidence
@@ -234,18 +234,18 @@ class InitV5Tests(unittest.TestCase):
 
     def test_copy_tree_missing_source_is_noop(self):
         installed, skipped = [], []
-        _copy_tree(Path("/nonexistent-xyz"), Path(tempfile.gettempdir()) / "gravitas-noop", installed, skipped)
+        _copy_tree(Path("/nonexistent-xyz"), Path(tempfile.gettempdir()) / "progravity-noop", installed, skipped)
         self.assertEqual((installed, skipped), ([], []))
 
 
 class PackagingV5Tests(unittest.TestCase):
     def test_wheel_manifest_ships_all_skills_and_rules(self):
         text = (ROOT / "pyproject.toml").read_text()
-        for needle in ("gravitas-highstakes", "SESSION_FAILURES", "rules"):
+        for needle in ("progravity-highstakes", "SESSION_FAILURES", "rules"):
             self.assertIn(needle, text)
 
     def test_doctor_reports_hardened_checks(self):
-        result = subprocess.run([sys.executable, str(ROOT / "gravitas_cli.py"), "doctor"],
+        result = subprocess.run([sys.executable, str(ROOT / "progravity_cli.py"), "doctor"],
                                 text=True, capture_output=True, cwd=ROOT, check=False)
         self.assertEqual(result.returncode, 0, result.stdout)
         checks = json.loads(result.stdout)

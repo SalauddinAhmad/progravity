@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate GravitasBench schemas, task registry, and trigger-eval dataset."""
+"""Validate ProgravityBench schemas, task registry, and trigger-eval dataset."""
 import json
 from pathlib import Path
 
@@ -17,8 +17,8 @@ def audit():
             Draft7Validator.check_schema(json.loads(schema_path.read_text()))
         except Exception as error:
             errors.append(f"invalid schema {schema_path.name}: {error}")
-    if (ROOT / "plugins/gravitas-antigravity/hooks/hooks.json").exists():
-        errors.append("legacy plugins/gravitas-antigravity/hooks/hooks.json must be removed (duplicate manifest)")
+    if (ROOT / "plugins/progravity-antigravity/hooks/hooks.json").exists():
+        errors.append("legacy plugins/progravity-antigravity/hooks/hooks.json must be removed (duplicate manifest)")
     manifest = yaml.safe_load((ROOT / "benchmarks/manifest.yaml").read_text())
     lanes = manifest.get("lanes", {})
     task_ids = [task_id for lane in lanes.values() for task_id in lane.get("tasks", [])]
@@ -36,7 +36,7 @@ def audit():
     if not intended or not unintended or not all(item.get("expect") is True for item in intended) or not all(item.get("expect") is False for item in unintended):
         errors.append("trigger evaluation must contain intended and non-activation cases with explicit expectations")
 
-    native_plugin_root = ROOT / "plugins/gravitas-antigravity"
+    native_plugin_root = ROOT / "plugins/progravity-antigravity"
     plugin = json.loads((native_plugin_root / "plugin.json").read_text())
     allowed_plugin_fields = {"$schema", "name", "description"}
     if set(plugin) - allowed_plugin_fields:
@@ -45,7 +45,7 @@ def audit():
         errors.append("plugin.json must use the official Antigravity schema")
 
     hooks = json.loads((native_plugin_root / "hooks.json").read_text())
-    runtime = hooks.get("gravitas-runtime", {})
+    runtime = hooks.get("progravity-runtime", {})
     expected_hooks = {
         "PreToolUse": "pre_tool.py",
         "PostToolUse": "post_tool.py",
@@ -55,7 +55,7 @@ def audit():
     for event, script in expected_hooks.items():
         entries = runtime.get(event)
         if not isinstance(entries, list) or not entries:
-            errors.append(f"hooks.json is missing gravitas-runtime.{event}")
+            errors.append(f"hooks.json is missing progravity-runtime.{event}")
             continue
         hook_groups = entries[0].get("hooks", []) if event.endswith("ToolUse") else entries
         if not isinstance(hook_groups, list) or not hook_groups:
@@ -69,7 +69,7 @@ def audit():
         if not (native_plugin_root / "scripts" / script).is_file():
             errors.append(f"missing hook script: {script}")
 
-    canonical_root = ROOT / "skills/gravitas"
+    canonical_root = ROOT / "skills/progravity"
     native_plugin = native_plugin_root
     for relative in ("plugin.json", "hooks.json", "scripts/pre_tool.py", "scripts/stop_gate.py"):
         if not (native_plugin / relative).is_file():
@@ -82,7 +82,7 @@ def audit():
         "94.7%": "unpublished benchmark result",
         "+52.6%": "unpublished benchmark result",
     }
-    for relative in ("README.md", "docs/FAQ.md", "plugins/gravitas-antigravity/plugin.json", "skills/gravitas/SKILL.md"):
+    for relative in ("README.md", "docs/FAQ.md", "plugins/progravity-antigravity/plugin.json", "skills/progravity/SKILL.md"):
         text = (ROOT / relative).read_text()
         for phrase, reason in prohibited.items():
             if phrase in text:

@@ -1,17 +1,17 @@
-# GRAVITAS — Claude Code Integration
+# PROGRAVITY — Claude Code Integration
 
-When executing coding tasks, follow the GRAVITAS protocol defined below.
-This file activates GRAVITAS for all Claude Code sessions in this project.
+When executing coding tasks, follow the PROGRAVITY protocol defined below.
+This file activates PROGRAVITY for all Claude Code sessions in this project.
 
 ---
 
 ## Core Protocol
 
-GRAVITAS enforces 6 invariants (canonical: `skills/gravitas/SKILL.md`):
+PROGRAVITY enforces 6 invariants (canonical: `skills/progravity/SKILL.md`):
 
 1. **Ground before mutating** — read the target file + imports + tests before any edit
 2. **Stay in declared scope** — writes outside `allowed_write_scope` are denied
-3. **Completion needs evidence** — fresh Gravitas-owned validator PASS only
+3. **Completion needs evidence** — fresh Progravity-owned validator PASS only
 4. **Never exact-retry a failure** — change diagnosis, context, or strategy first
 5. **Satisfy the contract** — acceptance criteria + required validators gate completion
 6. **Say what you can't verify** — mark uncertain claims explicitly
@@ -24,9 +24,9 @@ If you did not check, say you did not check.
 
 ## Tier Classification
 
-Planning is conditional (`gravitas decide --signals '{...}'`):
+Planning is conditional (`progravity decide --signals '{...}'`):
 `direct` / `compact` / `deep` / `replan`. Classify UP when uncertain.
-Full policy: `skills/gravitas/SKILL.md` (canonical).
+Full policy: `skills/progravity/SKILL.md` (canonical).
 
 ---
 
@@ -46,7 +46,7 @@ Run in parallel:
 
 ## Memory
 
-Use `GRAVITAS_MEMORY.md` for cross-session context:
+Use `PROGRAVITY_MEMORY.md` for cross-session context:
 
 ```markdown
 ---
@@ -138,4 +138,4 @@ Batch independent spawns in parallel. Never sequential when parallel is possible
 
 ---
 
-*Full Gravitas skill: `skills/gravitas/SKILL.md`*
+*Full Progravity skill: `skills/progravity/SKILL.md`*

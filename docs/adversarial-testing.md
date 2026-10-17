@@ -1,6 +1,6 @@
 # Adversarial Robustness Testing
 
-Testing GRAVITAS's resistance to adversarial conditions: long-context degradation, adversarial user input, complex multi-step tasks, and conflicting instructions.
+Testing PROGRAVITY's resistance to adversarial conditions: long-context degradation, adversarial user input, complex multi-step tasks, and conflicting instructions.
 
 ---
 
@@ -8,7 +8,7 @@ Testing GRAVITAS's resistance to adversarial conditions: long-context degradatio
 
 ### 1.1 Test Design
 
-**Hypothesis:** GRAVITAS pillar adherence degrades as context length increases.
+**Hypothesis:** PROGRAVITY pillar adherence degrades as context length increases.
 
 **Test procedure:**
 1. Run the same task at different context lengths (10K, 50K, 100K, 150K, 200K tokens).
@@ -53,7 +53,7 @@ At 50K tokens, re-state:
 
 ### 2.1 Test Design
 
-**Hypothesis:** GRAVITAS pillars resist adversarial user attempts to bypass protocol.
+**Hypothesis:** PROGRAVITY pillars resist adversarial user attempts to bypass protocol.
 
 **Test cases:**
 
@@ -92,7 +92,7 @@ For each adversarial input:
 
 ### 3.1 Test Design
 
-**Hypothesis:** GRAVITAS maintains discipline on tasks with 10+ steps.
+**Hypothesis:** PROGRAVITY maintains discipline on tasks with 10+ steps.
 
 **Test procedure:**
 1. Run tasks with 10, 15, 20, 25 steps.
@@ -132,7 +132,7 @@ For each adversarial input:
 
 ### 4.1 Test Design
 
-**Hypothesis:** GRAVITAS correctly handles conflicting instructions.
+**Hypothesis:** PROGRAVITY correctly handles conflicting instructions.
 
 **Test cases:**
 
@@ -227,4 +227,4 @@ robustness_score = (
 
 ---
 
-*This document is part of the GRAVITAS production hardening phase. It defines the adversarial robustness testing methodology.*
+*This document is part of the PROGRAVITY production hardening phase. It defines the adversarial robustness testing methodology.*

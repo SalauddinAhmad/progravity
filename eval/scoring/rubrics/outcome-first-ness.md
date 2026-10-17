@@ -165,4 +165,4 @@ require authentication. Tests pass. I also added a test for the new behavior.
 
 ---
 
-*This rubric is part of the GRAVITAS evaluation framework. It defines the scoring criteria for the Outcome-First-ness metric.*
+*This rubric is part of the PROGRAVITY evaluation framework. It defines the scoring criteria for the Outcome-First-ness metric.*

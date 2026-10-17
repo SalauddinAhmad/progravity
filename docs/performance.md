@@ -2,9 +2,9 @@
 
 > **Status: methodology only — no performance results are published.** Earlier
 > numerical tables in this file were planning assumptions, not observations from
-> a registered experiment. They must not be quoted as Gravitas results.
+> a registered experiment. They must not be quoted as Progravity results.
 
-This protocol measures the cost and possible benefit of using Gravitas against a
+This protocol measures the cost and possible benefit of using Progravity against a
 pre-registered control condition. It exists so a future release can make useful
 claims without turning intuition into marketing.
 
@@ -39,7 +39,7 @@ tool calls, changed files, validator results, and human rubric judgments.
 
 ## Reporting template
 
-| Task family | Control | Gravitas | Delta | Uncertainty | Runs |
+| Task family | Control | Progravity | Delta | Uncertainty | Runs |
 |---|---:|---:|---:|---:|---:|
 | Bug fix | — | — | — | — | — |
 | Feature | — | — | — | — | — |
@@ -69,5 +69,5 @@ rates.
 
 Public performance claims require the benchmark acceptance gates in
 [production-readiness.md](production-readiness.md), including a reproducible
-paired dataset and independent scoring. Until then, Gravitas is a research
+paired dataset and independent scoring. Until then, Progravity is a research
 preview.

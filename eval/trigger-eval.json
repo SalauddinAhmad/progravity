@@ -1,5 +1,5 @@
 {
-  "description": "Gravitas v4 trigger evaluation. Tests whether the skill activates on intended tasks and does not activate on unintended tasks.",
+  "description": "Progravity v4 trigger evaluation. Tests whether the skill activates on intended tasks and does not activate on unintended tasks.",
   "version": "4.0.0",
   "target_activation_rate": 0.95,
   "target_false_positive_rate": 0.05,

@@ -1,5 +1,5 @@
 {
-  "description": "Gravitas v4 adversarial evaluation. Tests edge cases and adversarial inputs that could cause the harness to fail, loop, or be bypassed.",
+  "description": "Progravity v4 adversarial evaluation. Tests edge cases and adversarial inputs that could cause the harness to fail, loop, or be bypassed.",
   "version": "4.0.0",
   "test_cases": [
     {

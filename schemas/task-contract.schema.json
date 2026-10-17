@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Gravitas Task Contract",
-  "description": "Machine-readable task contract for Gravitas v4. Defines mode, objective, acceptance criteria, scope and budget.",
+  "title": "Progravity Task Contract",
+  "description": "Machine-readable task contract for Progravity v4. Defines mode, objective, acceptance criteria, scope and budget.",
   "type": "object",
   "required": ["mode", "objective"],
   "properties": {
@@ -64,7 +64,7 @@
       "type": "array",
       "items": {"type": "string", "minLength": 1},
       "default": [],
-      "description": "Legacy command-fragment migration field. Prefer named validators, which bind completion to Gravitas-owned exit-code records."
+      "description": "Legacy command-fragment migration field. Prefer named validators, which bind completion to Progravity-owned exit-code records."
     },
     "validators": {
       "type": "array",
@@ -79,7 +79,7 @@
         "additionalProperties": false
       },
       "default": [],
-      "description": "Named validators for Gravitas-owned execution. Completion accepts only their captured exit-code records."
+      "description": "Named validators for Progravity-owned execution. Completion accepts only their captured exit-code records."
     },
     "task_id": {
       "type": "string",

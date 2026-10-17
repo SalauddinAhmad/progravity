@@ -1,6 +1,6 @@
 # Multi-Agent Coordination
 
-How GRAVITAS handles multiple agents working on the same codebase simultaneously.
+How PROGRAVITY handles multiple agents working on the same codebase simultaneously.
 
 ---
 
@@ -255,4 +255,4 @@ Messages are routed through:
 
 ---
 
-*This document is part of the GRAVITAS advanced research phase. It defines the multi-agent coordination model.*
+*This document is part of the PROGRAVITY advanced research phase. It defines the multi-agent coordination model.*

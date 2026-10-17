@@ -1,15 +1,15 @@
-# GravitasBench
+# ProgravityBench
 
 > Status: benchmark infrastructure verified; comparative results pending
 > Research-preview benchmark design · September 2026
 
-GravitasBench is a trajectory-level benchmark for measuring the reliability impact of the Gravitas harness across models and hosts. The initial supported configuration is Gemini models in Antigravity; OpenCode support is in progress.
+ProgravityBench is a trajectory-level benchmark for measuring the reliability impact of the Progravity harness across models and hosts. The initial supported configuration is Gemini models in Antigravity; OpenCode support is in progress.
 
-## What GravitasBench Measures
+## What ProgravityBench Measures
 
-GravitasBench does not measure answers. It measures episodes: complete task trajectories including all tool calls, agent decisions, quota consumption, git diffs, and deterministic validator outputs.
+ProgravityBench does not measure answers. It measures episodes: complete task trajectories including all tool calls, agent decisions, quota consumption, git diffs, and deterministic validator outputs.
 
-**Why trajectory-level?** Harness-Bench (2026) found that trusting agent final messages is insufficient -- you need the full trajectory and final repository state. GravitasBench follows that methodology.
+**Why trajectory-level?** Harness-Bench (2026) found that trusting agent final messages is insufficient -- you need the full trajectory and final repository state. ProgravityBench follows that methodology.
 
 ## Metrics
 
@@ -27,32 +27,32 @@ GravitasBench does not measure answers. It measures episodes: complete task traj
 
 ## Cross-Model Reference (exploratory, not the primary metric)
 
-The primary GravitasBench comparison is within-model: baseline vs. Gravitas
+The primary ProgravityBench comparison is within-model: baseline vs. Progravity
 on the same model and task suite. Cross-model reference configurations may
 be included in a neutral matrix when scientifically useful, but competitor
 gap closure is not the product's success criterion.
 
 For a task suite, an exploratory reference delta may be reported as:
 ```
-Reference delta = (Gravitas FSR - Baseline FSR) / (Reference-model FSR - Baseline FSR) x 100
+Reference delta = (Progravity FSR - Baseline FSR) / (Reference-model FSR - Baseline FSR) x 100
 ```
 
-This describes where a Gravitas-enabled run sits relative to an independent
+This describes where a Progravity-enabled run sits relative to an independent
 reference run on the same suite. It is not a claim about models, and it must
 always be published alongside absolute metrics, confidence intervals, and
 the exact reference model revision.
 
 ## Configuration Matrix
 
-| Configuration | Model | Gravitas | Status |
+| Configuration | Model | Progravity | Status |
 |--------------|-------|----------|--------|
 | baseline-flash | Gemini 3.8 Flash | None | Pending |
-| gravitas-core-flash | Gemini 3.8 Flash | SKILL.md only | Pending |
-| gravitas-native-flash | Gemini 3.8 Flash | Full (hooks + skill) | Pending |
+| progravity-core-flash | Gemini 3.8 Flash | SKILL.md only | Pending |
+| progravity-native-flash | Gemini 3.8 Flash | Full (hooks + skill) | Pending |
 | baseline-flash-37 | Gemini 3.7 Flash | None | Pending |
-| gravitas-flash-37 | Gemini 3.7 Flash | Full | Pending |
+| progravity-flash-37 | Gemini 3.7 Flash | Full | Pending |
 | baseline-pro | Gemini 3.1 Pro | None | Pending |
-| gravitas-pro | Gemini 3.1 Pro | Full | Pending |
+| progravity-pro | Gemini 3.1 Pro | Full | Pending |
 | reference-sonnet | Sonnet 4.6 | None | Pending |
 | reference-opus | Opus 4.6 | None | Pending |
 
@@ -89,7 +89,7 @@ All published results must include:
 
 ```bash
 # 1. Clone the repository at the published commit
-git clone https://github.com/udaysharmadev/Gravitas
+git clone https://github.com/SalauddinAhmad/progravity
 git checkout <results-commit>
 
 # 2. Create an isolated environment and install dependencies
@@ -112,7 +112,7 @@ python3 -m venv .venv
 .venv/bin/python benchmarks/runner/compare.py \
   --episodes benchmarks/results/ \
   --baseline baseline-flash \
-  --treatment gravitas-native-flash
+  --treatment progravity-native-flash
 
 # 7. Audit schemas, registry cardinality, and trigger-eval data
 .venv/bin/python benchmarks/runner/audit.py
@@ -136,7 +136,7 @@ never be presented as model-comparison results.
 
 When comparative results are published, this section will include:
 - N tasks, runs per config
-- Antigravity version and Gravitas version
+- Antigravity version and Progravity version
 - Date
 - 95% CI for all primary metrics
 - Link to raw episode data

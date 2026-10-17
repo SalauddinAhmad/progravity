@@ -9,12 +9,12 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
-SCRIPTS = ROOT / "plugins/gravitas-antigravity/scripts"
+SCRIPTS = ROOT / "plugins/progravity-antigravity/scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 import test_runtime
-from gravitas_context import elide_output, summarize_session
-from gravitas_repo import context_for, get_index, rank_related
+from progravity_context import elide_output, summarize_session
+from progravity_repo import context_for, get_index, rank_related
 
 MODULE = "def connect(dsn):\n    return dsn\n"
 CONSUMER = "from module import connect\nconnect('x')\n"
@@ -125,7 +125,7 @@ class SummaryTests(unittest.TestCase):
             "init_session.py", None, "--task-id", "t",
             "--contract-json", json.dumps(contract), cwd=cwd)
         self.assertEqual(result.returncode, 0, result.stderr)
-        return cwd / ".gravitas/sessions/t"
+        return cwd / ".progravity/sessions/t"
 
     def test_summary_preserves_identifiers(self):
         temp = tempfile.TemporaryDirectory()
@@ -175,7 +175,7 @@ class SummaryTests(unittest.TestCase):
         cwd = Path(temp.name)
         session = self.init(cwd, {"mode": "implement", "objective": "cli-check"})
         result = subprocess.run(
-            [sys.executable, str(ROOT / "gravitas_cli.py"), "summarize",
+            [sys.executable, str(ROOT / "progravity_cli.py"), "summarize",
              "--session-dir", str(session)],
             text=True, capture_output=True, cwd=cwd, check=False)
         self.assertEqual(result.returncode, 0, result.stderr)
@@ -185,7 +185,7 @@ class SummaryTests(unittest.TestCase):
         temp, root = make_repo()
         self.addCleanup(temp.cleanup)
         result = subprocess.run(
-            [sys.executable, str(ROOT / "gravitas_cli.py"), "context",
+            [sys.executable, str(ROOT / "progravity_cli.py"), "context",
              "--root", str(root), "--changed", "module.py", "--depth", "dependency"],
             text=True, capture_output=True, cwd=root, check=False)
         self.assertEqual(result.returncode, 0, result.stderr)

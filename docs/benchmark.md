@@ -1,6 +1,6 @@
 # Benchmark Methodology
 
-GravitasBench measures episodes (full trajectories + final repo state),
+ProgravityBench measures episodes (full trajectories + final repo state),
 never final messages. Full protocol: `benchmarks/README.md`.
 
 ## What is measured

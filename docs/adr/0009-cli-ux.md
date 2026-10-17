@@ -4,7 +4,7 @@ Date: 2026-10-07 · Status: accepted
 
 ## Context
 
-`gravitas explain/migrate/update` were named in the UX plan but missing;
+`progravity explain/migrate/update` were named in the UX plan but missing;
 `init` required an explicit host; `doctor` said nothing about project
 scaffolding; CI never proved the wheel outside the checkout.
 
@@ -22,5 +22,5 @@ scaffolding; CI never proved the wheel outside the checkout.
    contract, installed skill); the required set stays runtime-only so
    project state can never fail an install check.
 4. CI builds wheel+sdist via `build`, force-reinstalls the wheel, and
-   smokes `doctor` + `decide` + `gravitas_init` import from outside any
+   smokes `doctor` + `decide` + `progravity_init` import from outside any
    checkout. No command was added without implementation and tests.

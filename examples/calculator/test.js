@@ -1,4 +1,4 @@
-// GRAVITAS Calculator Tests — Pillar 5: Evidence Before Claims
+// PROGRAVITY Calculator Tests — Pillar 5: Evidence Before Claims
 // Run: node test.js
 
 (function() {
@@ -39,7 +39,7 @@
         }
     }
 
-    console.log('\nGRAVITAS Calculator — Test Suite\n');
+    console.log('\nPROGRAVITY Calculator — Test Suite\n');
 
     // Basic operations
     console.log('Basic operations:');

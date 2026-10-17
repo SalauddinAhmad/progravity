@@ -1,6 +1,6 @@
 # Formal Literature Review
 
-An annotated bibliography of research informing the GRAVITAS protocol. Each entry maps findings to specific pillars and rates evidence strength.
+An annotated bibliography of research informing the PROGRAVITY protocol. Each entry maps findings to specific pillars and rates evidence strength.
 
 ---
 
@@ -74,7 +74,7 @@ An annotated bibliography of research informing the GRAVITAS protocol. Each entr
 
 **Evidence Strength:** Strong
 
-**Limitations:** Self-evaluation can be biased — models may rate their own outputs favorably. GRAVITAS addresses this by requiring *structurally separate* QA passes (Pillar 6) rather than inline self-critique.
+**Limitations:** Self-evaluation can be biased — models may rate their own outputs favorably. PROGRAVITY addresses this by requiring *structurally separate* QA passes (Pillar 6) rather than inline self-critique.
 
 ---
 
@@ -88,7 +88,7 @@ An annotated bibliography of research informing the GRAVITAS protocol. Each entr
 
 **Evidence Strength:** Strong
 
-**Limitations:** Reflexion requires multiple episodes/attempts. In coding, each attempt may have side effects (file modifications). GRAVITAS adapts this to single-session use by logging failures to prevent repetition, without requiring full re-execution.
+**Limitations:** Reflexion requires multiple episodes/attempts. In coding, each attempt may have side effects (file modifications). PROGRAVITY adapts this to single-session use by logging failures to prevent repetition, without requiring full re-execution.
 
 ---
 
@@ -132,7 +132,7 @@ An annotated bibliography of research informing the GRAVITAS protocol. Each entr
 
 **Evidence Strength:** Strong
 
-**Limitations:** Constitutional AI is a training-time technique. GRAVITAS applies the same principle at inference-time: a fixed rubric (the 10 pillars) guides self-critique during task execution. The parallel is direct but the implementation context differs.
+**Limitations:** Constitutional AI is a training-time technique. PROGRAVITY applies the same principle at inference-time: a fixed rubric (the 10 pillars) guides self-critique during task execution. The parallel is direct but the implementation context differs.
 
 ---
 
@@ -148,7 +148,7 @@ An annotated bibliography of research informing the GRAVITAS protocol. Each entr
 
 **Evidence Strength:** Strong
 
-**Limitations:** Focused on security/red-teaming contexts. GRAVITAS adapts the three-axis model (reversibility × scope × privilege) to general coding tasks, not just adversarial scenarios. The core insight — that severity is multi-dimensional — directly informs GRAVITAS's 5-tier expansion.
+**Limitations:** Focused on security/red-teaming contexts. PROGRAVITY adapts the three-axis model (reversibility × scope × privilege) to general coding tasks, not just adversarial scenarios. The core insight — that severity is multi-dimensional — directly informs PROGRAVITY's 5-tier expansion.
 
 ---
 
@@ -160,7 +160,7 @@ An annotated bibliography of research informing the GRAVITAS protocol. Each entr
 
 **Key Finding:** Identifies 14 failure modes in multi-agent systems across four categories: grounding failures, planning failures, coordination failures, and execution failures. Each failure mode has distinct causes and requires targeted mitigation.
 
-**Pillars Informed:** Maps to all 10 pillars — each pillar addresses specific failure modes. The taxonomy validates GRAVITAS's pillar structure as covering the major failure categories.
+**Pillars Informed:** Maps to all 10 pillars — each pillar addresses specific failure modes. The taxonomy validates PROGRAVITY's pillar structure as covering the major failure categories.
 
 **Evidence Strength:** Moderate
 
@@ -178,7 +178,7 @@ An annotated bibliography of research informing the GRAVITAS protocol. Each entr
 
 **Evidence Strength:** Moderate
 
-**Limitations:** Benchmark results vary by model and task type. The finding that structured feedback outperforms unstructured retry validates GRAVITAS's emphasis on specific verification checklists.
+**Limitations:** Benchmark results vary by model and task type. The finding that structured feedback outperforms unstructured retry validates PROGRAVITY's emphasis on specific verification checklists.
 
 ---
 
@@ -190,7 +190,7 @@ An annotated bibliography of research informing the GRAVITAS protocol. Each entr
 
 **Evidence Strength:** Moderate
 
-**Limitations:** Specific thresholds depend on model and task type. The general finding — that longer tasks need more structure — validates GRAVITAS's tiered approach.
+**Limitations:** Specific thresholds depend on model and task type. The general finding — that longer tasks need more structure — validates PROGRAVITY's tiered approach.
 
 ---
 
@@ -200,11 +200,11 @@ An annotated bibliography of research informing the GRAVITAS protocol. Each entr
 
 **Key Finding:** A survey of 20 prompting techniques reveals that behavioral framing (treating prompts as behavioral specifications rather than instructions) improves consistency and reduces failure rates. Techniques that structure agent behavior (checklists, rubrics, protocols) outperform freeform instructions.
 
-**Pillars Informed:** All pillars — GRAVITAS is fundamentally a behavioral engineering framework applied via prompting.
+**Pillars Informed:** All pillars — PROGRAVITY is fundamentally a behavioral engineering framework applied via prompting.
 
 **Evidence Strength:** Moderate
 
-**Limitations:** The survey is broad; specific technique effectiveness varies by model. The general principle — structured behavioral specifications outperform freeform — is the foundational hypothesis of GRAVITAS.
+**Limitations:** The survey is broad; specific technique effectiveness varies by model. The general principle — structured behavioral specifications outperform freeform — is the foundational hypothesis of PROGRAVITY.
 
 ---
 
@@ -216,7 +216,7 @@ An annotated bibliography of research informing the GRAVITAS protocol. Each entr
 
 **Evidence Strength:** Moderate
 
-**Limitations:** Self-reflection adds token overhead. The benefit must outweigh the cost, which GRAVITAS addresses through tier-based calibration (Tier 0 skips reflection).
+**Limitations:** Self-reflection adds token overhead. The benefit must outweigh the cost, which PROGRAVITY addresses through tier-based calibration (Tier 0 skips reflection).
 
 ---
 
@@ -228,11 +228,11 @@ An annotated bibliography of research informing the GRAVITAS protocol. Each entr
 
 **Evidence Strength:** Moderate
 
-**Limitations:** Requires fine-tuning. GRAVITAS operates at the prompting level without model modification, so the training-time findings don't directly transfer. However, they validate the principle that verification + correction is more effective than either alone.
+**Limitations:** Requires fine-tuning. PROGRAVITY operates at the prompting level without model modification, so the training-time findings don't directly transfer. However, they validate the principle that verification + correction is more effective than either alone.
 
 ---
 
-## Summary: Research Foundation for GRAVITAS
+## Summary: Research Foundation for PROGRAVITY
 
 ### Core Insights
 
@@ -249,7 +249,7 @@ An annotated bibliography of research informing the GRAVITAS protocol. Each entr
 
 ### Identified Gaps
 
-1. **Escalation chains** — No paper addresses the case where individually safe steps compound to harm. GRAVITAS Pillar 3 needs explicit escalation chain detection.
+1. **Escalation chains** — No paper addresses the case where individually safe steps compound to harm. PROGRAVITY Pillar 3 needs explicit escalation chain detection.
 2. **Self-conditioning** — Errors in context making subsequent errors more likely. Pillar 8 needs reinforcement against this.
 3. **Context loss in long sessions** — Models forget earlier instructions. Pillar 8 needs context-refresh mechanisms.
 4. **Coding-specific failure modes** — Most research focuses on QA/reasoning tasks. Coding-specific failure patterns (wrong file edited, broken import, cascading type errors) need dedicated study.

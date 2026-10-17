@@ -31,7 +31,7 @@ def api_key():
         return os.environ["GEMINI_API_KEY"]
     if sys.platform == "darwin":
         result = subprocess.run(
-            ["security", "find-generic-password", "-a", "gravitas-bench", "-s", "GravitasGeminiApiKey", "-w"],
+            ["security", "find-generic-password", "-a", "progravity-bench", "-s", "ProgravityGeminiApiKey", "-w"],
             capture_output=True,
             text=True,
             check=False,
@@ -108,7 +108,7 @@ def build_episode(task, model, configuration, response, tokens, duration, error=
         "model": model,
         "effort": "eco",
         "configuration": configuration,
-        "gravitas_version": "4.0",
+        "progravity_version": "4.0",
         "run_index": 1,
         "contract": {"mode": "plan-only", "allowed_write_scope": []},
         "trajectory": [{"kind": "prompt", "mode": "plan-only"}, {"kind": "response", "text": response}],

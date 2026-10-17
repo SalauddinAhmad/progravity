@@ -1,6 +1,6 @@
 # Execution Plan
 
-Step-by-step plan for executing the GRAVITAS evaluation suite.
+Step-by-step plan for executing the PROGRAVITY evaluation suite.
 
 ---
 
@@ -10,7 +10,7 @@ Step-by-step plan for executing the GRAVITAS evaluation suite.
 
 | Task | Owner | Duration | Dependencies |
 |------|-------|----------|-------------|
-| Install GRAVITAS in test Antigravity workspace | Eval lead | 1 day | None |
+| Install PROGRAVITY in test Antigravity workspace | Eval lead | 1 day | None |
 | Prepare task repositories at specified commits | Eval lead | 2 days | None |
 | Set up logging to capture all tool calls | Eval lead | 1 day | None |
 | Configure token counting | Eval lead | 1 day | None |
@@ -46,11 +46,11 @@ For each of the 25 tasks:
 | Collect logs | Ongoing | Auto-collect during execution |
 | Verify logs complete | 0.5 days | Check for missing data |
 
-### 2.2 Condition B: Gemini + GRAVITAS
+### 2.2 Condition B: Gemini + PROGRAVITY
 
 | Task | Duration | Notes |
 |------|----------|-------|
-| Install GRAVITAS skill | 0.5 days | Load into workspace |
+| Install PROGRAVITY skill | 0.5 days | Load into workspace |
 | Run 25 tasks × 3 runs | 3 days | 15 min per task, sequential |
 | Collect logs | Ongoing | Auto-collect during execution |
 | Verify logs complete | 0.5 days | Check for missing data |
@@ -64,11 +64,11 @@ For each of the 25 tasks:
 | Collect logs | Ongoing | Auto-collect during execution |
 | Verify logs complete | 0.5 days | Check for missing data |
 
-### 2.4 Condition D: Claude + GRAVITAS
+### 2.4 Condition D: Claude + PROGRAVITY
 
 | Task | Duration | Notes |
 |------|----------|-------|
-| Install GRAVITAS skill | 0.5 days | Load into Claude Code |
+| Install PROGRAVITY skill | 0.5 days | Load into Claude Code |
 | Run 25 tasks × 3 runs | 3 days | 15 min per task, sequential |
 | Collect logs | Ongoing | Auto-collect during execution |
 | Verify logs complete | 0.5 days | Check for missing data |
@@ -172,7 +172,7 @@ For each of the 25 tasks:
 | Model API changes during eval | Medium | High | Pin versions, run in compressed timeframe |
 | Insufficient task diversity | Medium | Medium | 7 categories, 25 tasks |
 | Rater fatigue | Medium | Medium | Limit to 20 tasks per rater, provide breaks |
-| GRAVITAS token overhead too high | Low | High | Monitor during pilot, optimize if needed |
+| PROGRAVITY token overhead too high | Low | High | Monitor during pilot, optimize if needed |
 | Flaky tests in task repos | Medium | Medium | Pre-verify stability, exclude flaky tests |
 | Scorer bugs | Low | Medium | Test on known data, manual verification |
 
@@ -195,4 +195,4 @@ After analysis, check:
 
 ---
 
-*This execution plan is part of the GRAVITAS evaluation framework. It provides a detailed timeline and procedure for executing the evaluation.*
+*This execution plan is part of the PROGRAVITY evaluation framework. It provides a detailed timeline and procedure for executing the evaluation.*

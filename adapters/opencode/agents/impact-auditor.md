@@ -15,4 +15,4 @@ Broad dependency and blast-radius analysis for changes touching shared modules.
 - Flag HIGH: auth paths, migrations, shared utilities with 5+ importers, untested behavior.
 - Output: impacted files grouped by risk, verification targets in run order, and what must be re-verified after the change.
 
-Follow the GRAVITAS invariants in AGENTS.md and the `gravitas` skill when loaded.
+Follow the PROGRAVITY invariants in AGENTS.md and the `progravity` skill when loaded.

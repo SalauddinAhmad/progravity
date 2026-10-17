@@ -1,17 +1,17 @@
-# GRAVITAS with Google Antigravity
+# PROGRAVITY with Google Antigravity
 
 Use [the installation guide](install.md) for current commands. This page records
 the product boundary that matters in day-to-day use.
 
 - **Antigravity IDE** and **Antigravity CLI (`agy`)** are distinct surfaces.
-- **Core** is installed project-locally at `.agents/skills/gravitas/` by the
+- **Core** is installed project-locally at `.agents/skills/progravity/` by the
   skills CLI command documented in this repository.
-- **Native** is a separate `gravitas-native` plugin built from
-  `dist/gravitas-antigravity` and installed with `agy plugin install`.
+- **Native** is a separate `progravity-native` plugin built from
+  `dist/progravity-antigravity` and installed with `agy plugin install`.
 - Open a new CLI session and use `/hooks` to inspect active hook registration.
 
 Antigravity’s current IDE and CLI documentation use different global skill and
-plugin locations across releases. GRAVITAS deliberately documents the tested
+plugin locations across releases. PROGRAVITY deliberately documents the tested
 project-local Core path and local `agy` plugin path instead of asking users to
 copy files into a global directory.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Antigravity CLI harness execution for GravitasBench."""
+"""Antigravity CLI harness execution for ProgravityBench."""
 import json
 import subprocess
 import time

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-GRAVITAS Benchmark Runner
+PROGRAVITY Benchmark Runner
 
-Runs coding tasks through GRAVITAS protocol and measures quality metrics.
-Compares Gemini output with/without GRAVITAS against Claude baseline.
+Runs coding tasks through PROGRAVITY protocol and measures quality metrics.
+Compares Gemini output with/without PROGRAVITY against Claude baseline.
 """
 
 import json
@@ -88,7 +88,7 @@ def load_task(task_path: str) -> dict[str, Any]:
 
 
 def score_response(response: str, tool_calls: list[dict]) -> dict[str, int]:
-    """Score a GRAVITAS response against rubrics."""
+    """Score a PROGRAVITY response against rubrics."""
     scores = {}
 
     # Recon quality — check if read was called before edit/write
@@ -190,7 +190,7 @@ def run_benchmark(task_path: str, model: str = "gemini-2.5-pro") -> dict:
 def generate_report(results: list[dict]) -> str:
     """Generate a benchmark report."""
     report = []
-    report.append("# GRAVITAS Benchmark Report")
+    report.append("# PROGRAVITY Benchmark Report")
     report.append(f"\nGenerated: {datetime.now().isoformat()}")
     report.append(f"\nTasks evaluated: {len(results)}")
 

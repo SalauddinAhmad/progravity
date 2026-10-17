@@ -10,7 +10,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in Gravitas:
+If you discover a security vulnerability in Progravity:
 
 1. **Do not open a public GitHub issue.**
 2. Email the maintainer at the address on the GitHub profile.
@@ -24,13 +24,13 @@ Security-relevant issues include:
 - The task contract or evidence ledger could be manipulated to produce false verification
 - Session state files contain sensitive repository information that should not be committed
 
-## .gravitas/ Is Not for Committing
+## .progravity/ Is Not for Committing
 
-The .gravitas/ directory contains runtime session state. It must be in .gitignore. Never commit .gravitas/ to a repository.
+The .progravity/ directory contains runtime session state. It must be in .gitignore. Never commit .progravity/ to a repository.
 
-## What Gravitas Enforces (and What It Does Not)
+## What Progravity Enforces (and What It Does Not)
 
-Gravitas hooks are an advisory policy layer inside the host's tool flow.
+Progravity hooks are an advisory policy layer inside the host's tool flow.
 They are **not a sandbox**. Treat every guarantee below as what the
 runtime checks, not as containment.
 
@@ -56,11 +56,11 @@ runtime checks, not as containment.
 - TOCTOU safety. A path checked safe can be swapped before execution.
   Hooks narrow the window; they do not close it.
 - Plan-only non-mutation against a hostile or compromised host tool.
-  If the host executes outside the hook flow, Gravitas cannot see it.
+  If the host executes outside the hook flow, Progravity cannot see it.
 - Secret safety of files the agent legitimately reads (`.env` contents
   still enter model context; only ledger persistence is redacted/flagged).
 - Ledger tamper-proofing. The hash chain is tamper-*evident*
-  (`gravitas verify` detects edits); anyone with filesystem access can
+  (`progravity verify` detects edits); anyone with filesystem access can
   rewrite history and the rewrite will show.
 
 ## Threat Model (tested)

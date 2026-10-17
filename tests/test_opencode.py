@@ -12,7 +12,7 @@ ROOT = Path(__file__).parents[1]
 ADAPTER = ROOT / "adapters" / "opencode"
 
 sys.path.insert(0, str(ROOT))
-from gravitas_init import init_antigravity, init_opencode
+from progravity_init import init_antigravity, init_opencode
 
 
 def frontmatter(path: Path) -> dict:
@@ -63,16 +63,16 @@ class InitTests(unittest.TestCase):
             result = init_opencode(Path(tmp), profile="balanced", source_root=ROOT)
             self.assertTrue(result["ok"], result)
             root = Path(tmp)
-            self.assertTrue((root / ".agents" / "skills" / "gravitas" / "SKILL.md").is_file())
-            self.assertTrue((root / ".agents" / "skills" / "gravitas-highstakes" / "SKILL.md").is_file())
+            self.assertTrue((root / ".agents" / "skills" / "progravity" / "SKILL.md").is_file())
+            self.assertTrue((root / ".agents" / "skills" / "progravity-highstakes" / "SKILL.md").is_file())
             for agent in ("investigator", "reviewer", "impact-auditor", "test-adversary"):
                 self.assertTrue((root / ".opencode" / "agents" / f"{agent}.md").is_file(), agent)
-            self.assertTrue((root / ".opencode" / "plugins" / "gravitas.js").is_file())
+            self.assertTrue((root / ".opencode" / "plugins" / "progravity.js").is_file())
             config = json.loads((root / "opencode.json").read_text())
             self.assertIn("permission", config)
             agents_md = (root / "AGENTS.md").read_text()
-            self.assertIn("GRAVITAS-OPENCODE-START", agents_md)
-            contract = json.loads((root / ".gravitas" / "opencode-contract.json").read_text())
+            self.assertIn("PROGRAVITY-OPENCODE-START", agents_md)
+            contract = json.loads((root / ".progravity" / "opencode-contract.json").read_text())
             self.assertEqual(contract["mode"], "implement")
 
     def test_init_is_idempotent_and_non_clobbering(self):
@@ -88,19 +88,19 @@ class InitTests(unittest.TestCase):
             self.assertTrue(second["ok"])
             self.assertTrue(second["skipped"], "rerun must report skips, not rewrites")
             agents_md = (root / "AGENTS.md").read_text()
-            self.assertEqual(agents_md.count("GRAVITAS-OPENCODE-START"), 1)
+            self.assertEqual(agents_md.count("PROGRAVITY-OPENCODE-START"), 1)
 
     def test_init_antigravity_skills(self):
         with tempfile.TemporaryDirectory() as tmp:
             result = init_antigravity(Path(tmp), source_root=ROOT)
             self.assertTrue(result["ok"])
-            self.assertTrue((Path(tmp) / ".agents" / "skills" / "gravitas" / "SKILL.md").is_file())
+            self.assertTrue((Path(tmp) / ".agents" / "skills" / "progravity" / "SKILL.md").is_file())
             self.assertIn("agy plugin install", result["next"])
 
     def test_init_cli_end_to_end(self):
         with tempfile.TemporaryDirectory() as tmp:
             result = subprocess.run(
-                [sys.executable, str(ROOT / "gravitas_cli.py"), "init",
+                [sys.executable, str(ROOT / "progravity_cli.py"), "init",
                  "--host", "opencode", "--profile", "fast", "--root", tmp],
                 text=True, capture_output=True, cwd=ROOT, check=False)
             self.assertEqual(result.returncode, 0, result.stderr)
@@ -135,7 +135,7 @@ class GuardTests(unittest.TestCase):
             contract_path = work / "contract.json"
             contract_path.write_text(json.dumps(contract))
             result = subprocess.run(
-                [sys.executable, str(ROOT / "gravitas_cli.py"), "guard",
+                [sys.executable, str(ROOT / "progravity_cli.py"), "guard",
                  "--contract", str(contract_path),
                  "--envelope", json.dumps({"tool": tool, "args": args,
                                             "workspace_roots": [str(work)],
@@ -166,7 +166,7 @@ class GuardTests(unittest.TestCase):
 
     def test_garbage_envelope_fails_closed(self):
         result = subprocess.run(
-            [sys.executable, str(ROOT / "gravitas_cli.py"), "guard",
+            [sys.executable, str(ROOT / "progravity_cli.py"), "guard",
              "--envelope", "not-json"],
             text=True, capture_output=True, cwd=ROOT, check=False)
         self.assertEqual(json.loads(result.stdout)["decision"], "deny")
@@ -176,7 +176,7 @@ class ShimMappingTests(unittest.TestCase):
     def test_to_envelope_mapping(self):
         if shutil.which("node") is None:
             self.skipTest("node not available")
-        shim = ADAPTER / "plugin" / "gravitas.js"
+        shim = ADAPTER / "plugin" / "progravity.js"
         script = (
             f"import('{shim.as_uri()}').then(m => {{"
             "  const dir = '/repo';"

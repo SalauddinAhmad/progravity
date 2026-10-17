@@ -101,7 +101,7 @@ def run_hidden_validation(worktree, task_id):
 
 
 def run_episode(task, model, configuration, max_steps=12):
-    worktree = Path(tempfile.mkdtemp(prefix=f"gravitas-{task['task_id']}-"))
+    worktree = Path(tempfile.mkdtemp(prefix=f"progravity-{task['task_id']}-"))
     fixture = materialize(task["task_id"], worktree)
     trajectory, tool_calls, tokens = [], [], {"input": 0, "output": 0, "total": 0, "cache_read": 0}
     last_result, scope_violation, error, final = "Begin by inspecting the fixture.", False, None, ""
@@ -145,7 +145,7 @@ def run_episode(task, model, configuration, max_steps=12):
     return {
         "task_id": task["task_id"], "task_lane": LANE_BY_TASK[task["task_id"]],
         "repo_commit": task["commit"], "model": model, "effort": "eco", "configuration": configuration,
-        "gravitas_version": "4.0", "run_index": 1,
+        "progravity_version": "4.0", "run_index": 1,
         "contract": {"mode": "implement", "allowed_write_scope": fixture["allowed_write_scope"]},
         "trajectory": trajectory, "tool_calls": tool_calls, "subagents_spawned": 0,
         "duration_seconds": round(time.monotonic() - started, 3),

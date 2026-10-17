@@ -279,11 +279,11 @@ Users can create custom extensions by following this template:
 
 Place custom extensions in:
 ```
-~/.agents/skills/gravitas/extensions/custom-[name].md
+~/.agents/skills/progravity/extensions/custom-[name].md
 ```
 
 They will be loaded alongside core extensions when triggered.
 
 ---
 
-*This document is part of the GRAVITAS advanced research phase. It defines optional protocol extensions for specialized task types.*
+*This document is part of the PROGRAVITY advanced research phase. It defines optional protocol extensions for specialized task types.*

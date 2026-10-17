@@ -5,12 +5,12 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
-SCRIPTS = ROOT / "plugins" / "gravitas-antigravity" / "scripts"
+SCRIPTS = ROOT / "plugins" / "progravity-antigravity" / "scripts"
 
 import sys
 sys.path.insert(0, str(SCRIPTS))
 
-from gravitas_action import antigravity_envelope, canonical_tool, normalize
+from progravity_action import antigravity_envelope, canonical_tool, normalize
 
 FIXTURES = ROOT / "tests" / "fixtures" / "antigravity"
 SKILL_NAME = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
@@ -72,7 +72,7 @@ class AliasTests(unittest.TestCase):
 
 class BundleSurfaceTests(unittest.TestCase):
     def plugin(self):
-        return ROOT / "plugins" / "gravitas-antigravity"
+        return ROOT / "plugins" / "progravity-antigravity"
 
     def test_plugin_manifest_valid(self):
         manifest = json.loads((self.plugin() / "plugin.json").read_text())
@@ -91,7 +91,7 @@ class BundleSurfaceTests(unittest.TestCase):
                          "legacy workflows must be migrated to skills")
 
     def test_skill_frontmatter(self):
-        for skill in ("gravitas", "gravitas-highstakes"):
+        for skill in ("progravity", "progravity-highstakes"):
             text = (ROOT / "skills" / skill / "SKILL.md").read_text()
             self.assertTrue(text.startswith("---\n"), skill)
             frontmatter = text[4:].partition("\n---\n")[0]

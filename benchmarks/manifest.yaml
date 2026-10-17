@@ -1,4 +1,4 @@
-# GravitasBench Task Manifest
+# ProgravityBench Task Manifest
 # Version: 1.0
 # Status: registry-only -- fixture repositories and hidden validators pending
 
@@ -75,55 +75,55 @@ configurations:
   - id: baseline-flash
     model: gemini-3.8-flash
     effort: balanced
-    gravitas: none
+    progravity: none
     label: Baseline (Gemini 3.8 Flash)
 
-  - id: gravitas-core-flash
+  - id: progravity-core-flash
     model: gemini-3.8-flash
     effort: balanced
-    gravitas: skill-only
-    label: Gravitas Core (SKILL.md only)
+    progravity: skill-only
+    label: Progravity Core (SKILL.md only)
 
-  - id: gravitas-native-flash
+  - id: progravity-native-flash
     model: gemini-3.8-flash
     effort: balanced
-    gravitas: full
-    label: Gravitas Native (hooks + skill)
+    progravity: full
+    label: Progravity Native (hooks + skill)
 
   - id: baseline-flash-37
     model: gemini-3.7-flash
     effort: balanced
-    gravitas: none
+    progravity: none
     label: Baseline (Gemini 3.7 Flash)
 
-  - id: gravitas-flash-37
+  - id: progravity-flash-37
     model: gemini-3.7-flash
     effort: balanced
-    gravitas: full
-    label: Gravitas (Gemini 3.7 Flash)
+    progravity: full
+    label: Progravity (Gemini 3.7 Flash)
 
   - id: baseline-pro
     model: gemini-3.1-pro
     effort: high
-    gravitas: none
+    progravity: none
     label: Baseline (Gemini 3.1 Pro)
 
-  - id: gravitas-pro
+  - id: progravity-pro
     model: gemini-3.1-pro
     effort: high
-    gravitas: full
-    label: Gravitas (Gemini 3.1 Pro)
+    progravity: full
+    label: Progravity (Gemini 3.1 Pro)
 
   - id: reference-sonnet
     model: sonnet-4.6
     effort: thinking
-    gravitas: none
+    progravity: none
     label: Reference (Sonnet 4.6)
 
   - id: reference-opus
     model: opus-4.6
     effort: thinking
-    gravitas: none
+    progravity: none
     label: Reference (Opus 4.6)
 
 # Holdout: final-evaluation tasks excluded from dev runs unless the runner
@@ -136,27 +136,27 @@ holdout:
 
 # Ablations: matched harness variations isolating component contributions.
 # Primary ablations compare bare model / Core-only / enforcement-only /
-# context / verification / full Gravitas on the SAME model (section U).
+# context / verification / full Progravity on the SAME model (section U).
 # Reference configs above stay exploratory, never the success criterion.
 configurations-ablation:
-  - id: gravitas-enforcement-flash
+  - id: progravity-enforcement-flash
     model: gemini-3.8-flash
     effort: balanced
-    gravitas: enforcement-only
-    ablation_of: gravitas-native-flash
+    progravity: enforcement-only
+    ablation_of: progravity-native-flash
     varies: hooks without SKILL.md (runtime enforcement, no instructions)
     label: Ablation, enforcement only (no skill)
-  - id: gravitas-context-flash
+  - id: progravity-context-flash
     model: gemini-3.8-flash
     effort: balanced
-    gravitas: context-only
-    ablation_of: gravitas-native-flash
+    progravity: context-only
+    ablation_of: progravity-native-flash
     varies: skill with Context Engine, hooks disabled (no enforcement)
     label: Ablation, context only (no hooks)
-  - id: gravitas-verification-flash
+  - id: progravity-verification-flash
     model: gemini-3.8-flash
     effort: balanced
-    gravitas: verification-only
-    ablation_of: gravitas-native-flash
+    progravity: verification-only
+    ablation_of: progravity-native-flash
     varies: skill with Verification Engine, read-only hooks (no write gating)
     label: Ablation, verification only (no write gating)

@@ -15,7 +15,7 @@
 
 ## Subsystem Classifications
 * **Benchmark Runner (`benchmarks/benchmark.py`):** LEGACY (is a legacy v3 text-response scorer, needs archiving)
-* **Skill Source of Truth:** PASS (`skills/gravitas/SKILL.md` and `.agents/skills/gravitas/SKILL.md` are identical. Canonical chosen: `skills/gravitas/`)
+* **Skill Source of Truth:** PASS (`skills/progravity/SKILL.md` and `.agents/skills/progravity/SKILL.md` are identical. Canonical chosen: `skills/progravity/`)
 * **Benchmark Data Model:** PARTIAL (Schemas exist but need separating `effort`, `model`, etc.)
 * **Task Corpus:** UNVERIFIED (Tasks exist in `eval/tasks/` but need to be updated to executable Stratum A/B model)
 * **Host Telemetry (Quota/Tokens):** BLOCKED (Antigravity CLI not available to test `agy models` or quota)

@@ -1,8 +1,8 @@
 # Frequently Asked Questions
 
-## Does Gravitas make Gemini equal to another model?
+## Does Progravity make Gemini equal to another model?
 
-No. Gravitas does not change model weights and has not demonstrated parity with another model. It aims to reproduce observable engineering disciplines—reconnaissance, scoped execution, deterministic verification, and honest reporting—and its comparative effect remains to be measured.
+No. Progravity does not change model weights and has not demonstrated parity with another model. It aims to reproduce observable engineering disciplines—reconnaissance, scoped execution, deterministic verification, and honest reporting—and its comparative effect remains to be measured.
 
 ## Does it consume less quota?
 
@@ -14,8 +14,8 @@ The tested PreToolUse prototype denies native file edits and a 100-case corpus o
 
 ## What survives a context reset?
 
-The local `.gravitas/sessions/<task-id>/` contract, state, coverage matrix, evidence ledger, failure ledger, impact graph, and verification targets. The directory is gitignored.
+The local `.progravity/sessions/<task-id>/` contract, state, coverage matrix, evidence ledger, failure ledger, impact graph, and verification targets. The directory is gitignored.
 
-## Is GravitasBench published?
+## Is ProgravityBench published?
 
 No. The repository contains a 30-task registry, synthetic runner fixtures, and benchmark tooling. It does not yet publish eligible paired model-comparison episodes. See `benchmarks/results/README.md`.

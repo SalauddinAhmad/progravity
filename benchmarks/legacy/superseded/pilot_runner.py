@@ -7,7 +7,7 @@ from pathlib import Path
 import shutil
 import concurrent.futures
 
-from benchmarks.runner.isolation import remove_gravitas, remove_native_hooks
+from benchmarks.runner.isolation import remove_progravity, remove_native_hooks
 from benchmarks.runner.antigravity import run_episode
 
 random.seed(42)
@@ -52,8 +52,8 @@ def prepare_task_workspace(task, config_mode, run_idx):
         shutil.copytree(repo_root / "plugins", ws / "plugins", dirs_exist_ok=True)
         
     if config_mode == "BASELINE":
-        remove_gravitas(ws)
-    elif config_mode == "GRAVITAS_CORE":
+        remove_progravity(ws)
+    elif config_mode == "PROGRAVITY_CORE":
         remove_native_hooks(ws)
         
     return ws
@@ -109,7 +109,7 @@ def run_single_episode(task, config, r_idx):
     return res
 
 def run_pilot(tasks_to_run, runs_per_task=1, out_file="summary.json"):
-    configs = ["BASELINE", "GRAVITAS_CORE", "GRAVITAS_NATIVE"]
+    configs = ["BASELINE", "PROGRAVITY_CORE", "PROGRAVITY_NATIVE"]
     
     schedule = []
     for t in tasks_to_run:

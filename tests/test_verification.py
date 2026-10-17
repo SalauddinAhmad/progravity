@@ -9,12 +9,12 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
-SCRIPTS = ROOT / "plugins/gravitas-antigravity/scripts"
+SCRIPTS = ROOT / "plugins/progravity-antigravity/scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 import test_runtime
-from gravitas_evidence import criterion_states, evidence_deficit
-from gravitas_verify import discover_validators, escalation_plan, expand_cases
+from progravity_evidence import criterion_states, evidence_deficit
+from progravity_verify import discover_validators, escalation_plan, expand_cases
 
 
 def make_bin(tmp: Path, name: str) -> None:
@@ -142,7 +142,7 @@ class EvidenceStateTests(unittest.TestCase):
         self.assertEqual(states["AC-2"]["status"], "SUPPORTED")
         deficit = evidence_deficit(self.contract(), states)
         self.assertEqual([d["criterion"] for d in deficit], ["AC-2"])
-        self.assertIn("Gravitas-owned validator", deficit[0]["needed"])
+        self.assertIn("Progravity-owned validator", deficit[0]["needed"])
 
     def test_stale_pass_blocks(self):
         states = criterion_states(self.contract(), [
@@ -207,7 +207,7 @@ class ReproRunnerTests(unittest.TestCase):
             "init_session.py", None, "--task-id", "t",
             "--contract-json", json.dumps(contract), cwd=self.cwd)
         self.assertEqual(result.returncode, 0, result.stderr)
-        return self.cwd / ".gravitas/sessions/t"
+        return self.cwd / ".progravity/sessions/t"
 
     def repro(self, session, criterion, phase, *cmd, unreproducible=False, reason=""):
         args = ["--session-dir", str(session), "--criterion-id", criterion,

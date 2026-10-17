@@ -6,20 +6,20 @@ def hash_conv(conv_id):
 
 def setup_plugin_state(config, env):
     # We use agy plugin disable/enable, and we enforce ANTIGRAVITY_APP_DATA_DIR
-    if config == "GRAVITAS_NATIVE":
-        subprocess.run(["/Users/uday/.local/bin/agy", "plugin", "enable", "gravitas"], env=env, check=True)
+    if config == "PROGRAVITY_NATIVE":
+        subprocess.run(["/Users/uday/.local/bin/agy", "plugin", "enable", "progravity"], env=env, check=True)
     else:
-        subprocess.run(["/Users/uday/.local/bin/agy", "plugin", "disable", "gravitas"], env=env, check=True)
+        subprocess.run(["/Users/uday/.local/bin/agy", "plugin", "disable", "progravity"], env=env, check=True)
 
     # Handle global skills deduplication
-    global_skill = Path(os.path.expanduser("~/.gemini/config/skills/gravitas"))
-    global_skill_bak = Path(os.path.expanduser("~/.gemini/config/skills/gravitas.bak"))
+    global_skill = Path(os.path.expanduser("~/.gemini/config/skills/progravity"))
+    global_skill_bak = Path(os.path.expanduser("~/.gemini/config/skills/progravity.bak"))
     
-    if config == "GRAVITAS_NATIVE":
+    if config == "PROGRAVITY_NATIVE":
         # Native uses plugin's skill, hide global
         if global_skill.exists():
             global_skill.rename(global_skill_bak)
-    elif config == "GRAVITAS_CORE":
+    elif config == "PROGRAVITY_CORE":
         # Core uses global skill, restore if hidden
         if global_skill_bak.exists():
             global_skill_bak.rename(global_skill)
@@ -30,21 +30,21 @@ def setup_plugin_state(config, env):
 
 def run_smoke_test(env):
     print("Running NATIVE PLUGIN SMOKE TEST...")
-    ws = Path("/tmp/gravitas-smoke")
+    ws = Path("/tmp/progravity-smoke")
     if ws.exists(): shutil.rmtree(ws)
     ws.mkdir(parents=True)
     (ws / "hello.txt").write_text("Hello world")
     
     conv_id = str(uuid.uuid4())
     # Create contract so it doesn't fail closed!
-    session_dir = Path(os.path.expanduser(f"~/.gemini/config/plugins/gravitas/.gravitas/sessions/conversation-{hash_conv(conv_id)}"))
+    session_dir = Path(os.path.expanduser(f"~/.gemini/config/plugins/progravity/.progravity/sessions/conversation-{hash_conv(conv_id)}"))
     session_dir.mkdir(parents=True, exist_ok=True)
     (session_dir / "contract.json").write_text(json.dumps({
         "mode": "implement",
         "allowed_write_scope": ["hello.txt"]
     }))
     
-    setup_plugin_state("GRAVITAS_NATIVE", env)
+    setup_plugin_state("PROGRAVITY_NATIVE", env)
     
     prompt = "Read hello.txt, replace Hello with Goodbye, and report completion using structured JSON output with task_status=COMPLETE."
     
@@ -53,7 +53,7 @@ def run_smoke_test(env):
         "--output-format", "stream-json", 
         "--dangerously-skip-permissions", 
         "--conversation", conv_id,
-        "--json-schema", "/Users/uday/Gravitas/schemas/benchmark_output.json",
+        "--json-schema", "/Users/uday/Progravity/schemas/benchmark_output.json",
         "--print", prompt
     ]
     

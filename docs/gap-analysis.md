@@ -1,6 +1,6 @@
 # Empirical Gap Analysis
 
-A systematic comparison of what the research literature says vs. what GRAVITAS currently implements vs. what's missing. For each pillar: research basis, current spec, gaps, proposed additions, and evidence strength.
+A systematic comparison of what the research literature says vs. what PROGRAVITY currently implements vs. what's missing. For each pillar: research basis, current spec, gaps, proposed additions, and evidence strength.
 
 ---
 
@@ -10,7 +10,7 @@ A systematic comparison of what the research literature says vs. what GRAVITAS c
 - **ReAct (Yao et al., 2022):** Interleaving reasoning with environment interaction reduces hallucination. Grounding in actual file state prevents acting on stale assumptions.
 - **METR Time Horizons (2026):** Agent performance degrades when operating on assumed vs. observed state. Recon before mutation is the single most impactful behavioral intervention.
 
-### Current GRAVITAS Spec
+### Current PROGRAVITY Spec
 - Mandatory read-only pass before any mutation.
 - Convention detection procedure (naming, style, imports, tests, types).
 - File-state verification (re-read before editing).
@@ -40,7 +40,7 @@ Moderate — supported by decomposition research but not specifically tested in 
 - **Tree of Thoughts (Yao et al., 2023):** Branching exploration with self-evaluation improves strategic planning.
 - **Constitutional AI (Bai et al., 2022):** Fixed rubric self-critique shapes behavior.
 
-### Current GRAVITAS Spec
+### Current PROGRAVITY Spec
 - Two-step plan: Step A (produce plan), Step B (adversarial critique), Step C (revise).
 - Plan format: numbered steps with files, risk, evidence, reversibility.
 - Adversarial critique: 6 structured questions (blast radius, weakest assumption, worst case, boundary, critical steps, skeptic's view).
@@ -69,7 +69,7 @@ Strong — decomposition and self-critique are well-established. Branching is su
 - **OWASP AI Agent Security:** Tiered governance for agent actions.
 - **MindStudio Framework:** 4-tier classification system.
 
-### Current GRAVITAS Spec
+### Current PROGRAVITY Spec
 - 5-tier system (0-4) with axis-based classification (reversibility × scope × privilege).
 - Decision tree for tier assignment.
 - Escalation chain detection (cumulative tier calculation).
@@ -99,7 +99,7 @@ Strong — the 5-tier system is well-supported by multiple frameworks. Continuou
 - **Code Review Research:** Mixed functional + formatting diffs increase review time and reduce trust.
 - **Refactoring Literature:** Atomic refactoring steps reduce regression risk.
 
-### Current GRAVITAS Spec
+### Current PROGRAVITY Spec
 - Diff size heuristics (bug fix <20 lines, feature <50 lines, config <10 lines, refactor <30 lines per step).
 - Scope discipline rules ("while I'm in here," no mixed changes, import discipline, no opportunistic improvements).
 - Diff attribution (every hunk maps to a plan step).
@@ -129,7 +129,7 @@ Moderate — scoped edits are well-established, but automated diff quality asses
 - **CorrectBench (2025):** Self-correction benchmark shows models overestimate their own correctness.
 - **S2R (2025):** RL-trained self-correction: 51% → 81.6% improvement.
 
-### Current GRAVITAS Spec
+### Current PROGRAVITY Spec
 - Evidence hierarchy: tests > type checks > lint > build > re-read > manual check.
 - Evidence collection procedure: run verification after every edit.
 - Verification tool mapping per language.
@@ -158,7 +158,7 @@ Strong — independent verification is well-established (CoVe). Calibrated confi
 - **Self-Refine (Madaan et al., 2023):** Iterative self-critique improves quality but has confirmation bias.
 - **Chain-of-Thought Monitoring:** Models fail to recognize their own compounding errors.
 
-### Current GRAVITAS Spec
+### Current PROGRAVITY Spec
 - Structured QA prompts (input attacks, boundaries, state, security).
 - Structurally separate QA pass ("skeptical reviewer, not author").
 - QA depth by tier (Tier 0: 30s sanity; Tier 1: 2-5 min; Tier 2: full + adversarial).
@@ -186,7 +186,7 @@ Strong — independent verification is well-established. Scope and escalation ar
 - **Evidence-first reporting (industry practice):** "Report what actually happened, not what you intended." Evidence-based claims, failure-first reporting.
 - **Communication Research:** Presentation quality affects trust independently of correctness.
 
-### Current GRAVITAS Spec
+### Current PROGRAVITY Spec
 - Response template: Status → What Changed → Verified → Needs Input → Details.
 - Communication style rules: lead with outcomes, be specific, cite evidence, state uncertainty.
 - Reporting by task type (bug fix, feature, refactor, config).
@@ -215,7 +215,7 @@ Moderate — outcome-first is well-established, but adaptive complexity and mult
 - **MAST Taxonomy:** Self-conditioning and step repetition are recognized failure modes.
 - **METR Time Horizons:** Context loss in long sessions degrades performance.
 
-### Current GRAVITAS Spec
+### Current PROGRAVITY Spec
 - Failure log format: attempt, result, root cause, "do not retry."
 - When to log: test fails, build fails, user rejects, wrong result.
 - When to check the log: before re-attempting, before new approach, at start of sub-task.
@@ -244,7 +244,7 @@ Strong — Reflexion is well-established. Cross-session learning is moderate (pr
 - **Large Context Research:** Context window utilization strategies affect performance.
 - **Multimodal Research:** Visual verification improves UI task accuracy.
 
-### Current GRAVITAS Spec
+### Current PROGRAVITY Spec
 - Context window strategy: load entire modules vs. selective grep.
 - Multimodal verification: browser screenshots, PDF/image reading.
 - Browser as verification tool: before/after screenshots, DOM reading.
@@ -273,7 +273,7 @@ Moderate — tool selection optimization is preliminary. Context utilization is 
 - **Alignment Literature:** Sycophancy is a known failure mode across models.
 - **Sycophancy research:** Honesty about limitations is more valuable than false confidence.
 
-### Current GRAVITAS Spec
+### Current PROGRAVITY Spec
 - Pushback decision criteria (when to push back, when NOT to).
 - Pushback format: Concern → Why → Alternative → Your call.
 - Anti-sycophancy rules: no "great question!", no unnecessary praise, direct and evidence-based.
@@ -301,39 +301,39 @@ Moderate — anti-sycophancy is well-established, but effectiveness tracking and
 
 **What the research says:** Meta-reasoning research suggests agents should be able to detect when their own protocol is failing and adapt.
 
-**Current GRAVITAS:** The protocol assumes the agent follows it correctly. There's no mechanism to detect when the protocol itself is producing bad outcomes.
+**Current PROGRAVITY:** The protocol assumes the agent follows it correctly. There's no mechanism to detect when the protocol itself is producing bad outcomes.
 
 **Proposed addition:** Add a meta-monitoring layer: "If the protocol is producing worse outcomes than no protocol, escalate to the user."
 
 ### Gap 2: No Multi-Session Learning
 
-**What the research says:** Reflexion shows that persisting failure patterns across sessions improves performance. Current GRAVITAS is single-session only.
+**What the research says:** Reflexion shows that persisting failure patterns across sessions improves performance. Current PROGRAVITY is single-session only.
 
-**Current GRAVITAS:** Failure log is session-scoped. Patterns are not persisted across sessions.
+**Current PROGRAVITY:** Failure log is session-scoped. Patterns are not persisted across sessions.
 
-**Proposed addition:** Add project-level failure persistence (`GRAVITAS_FAILURES.md`) that survives session boundaries. Sanitize PII/secrets. Share anonymized patterns across users (Phase 7).
+**Proposed addition:** Add project-level failure persistence (`PROGRAVITY_FAILURES.md`) that survives session boundaries. Sanitize PII/secrets. Share anonymized patterns across users (Phase 7).
 
 ### Gap 3: No Adaptive Protocol Selection
 
 **What the research says:** Not all pillars are equally valuable for all tasks. Research suggests adapting pillar emphasis based on task characteristics.
 
-**Current GRAVITAS:** All pillars apply to all tasks (with tier-based scaling). No adaptation based on task type.
+**Current PROGRAVITY:** All pillars apply to all tasks (with tier-based scaling). No adaptation based on task type.
 
 **Proposed addition:** Add task-type → pillar mapping: "For bug fixes, emphasize Pillars 1, 4, 5, 6. For refactors, emphasize Pillars 1, 4, 5. For security, emphasize Pillars 3, 6, 10."
 
 ### Gap 4: No Quantitative Cost-Benefit Analysis
 
-**What the research says:** The cost of behavioral protocols (token overhead, time overhead) must be justified by the benefit (improved outcomes). No current analysis exists for GRAVITAS.
+**What the research says:** The cost of behavioral protocols (token overhead, time overhead) must be justified by the benefit (improved outcomes). No current analysis exists for PROGRAVITY.
 
-**Current GRAVITAS:** No measurement of token overhead, time overhead, or outcome improvement.
+**Current PROGRAVITY:** No measurement of token overhead, time overhead, or outcome improvement.
 
 **Proposed addition:** Add measurement framework (Phase 5): track tokens per pillar, time per pillar, outcome improvement per pillar. Calculate break-even point.
 
 ### Gap 5: No Adversarial Robustness Testing
 
-**What the research says:** Adversarial user input ("just say it works," "skip the planning") can degrade protocol adherence. No testing exists for GRAVITAS under adversarial conditions.
+**What the research says:** Adversarial user input ("just say it works," "skip the planning") can degrade protocol adherence. No testing exists for PROGRAVITY under adversarial conditions.
 
-**Current GRAVITAS:** No adversarial robustness testing protocol.
+**Current PROGRAVITY:** No adversarial robustness testing protocol.
 
 **Proposed addition:** Add adversarial testing suite (Phase 5): test each pillar's resistance to adversarial user input. Measure degradation thresholds.
 
@@ -378,4 +378,4 @@ Moderate — anti-sycophancy is well-established, but effectiveness tracking and
 
 ---
 
-*This analysis is part of the GRAVITAS protocol's research foundation. It informs the implementation roadmap and identifies areas where the protocol can be strengthened based on empirical evidence.*
+*This analysis is part of the PROGRAVITY protocol's research foundation. It informs the implementation roadmap and identifies areas where the protocol can be strengthened based on empirical evidence.*

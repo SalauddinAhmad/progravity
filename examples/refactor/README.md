@@ -1,10 +1,10 @@
-# Multi-File Refactor — Before vs After GRAVITAS
+# Multi-File Refactor — Before vs After PROGRAVITY
 
 **Task:** Extract the repeated auth check from all route handlers into shared middleware.
 
 ---
 
-## ❌ Without GRAVITAS (Normal Gemini)
+## ❌ Without PROGRAVITY (Normal Gemini)
 
 ```typescript
 // Created auth middleware
@@ -23,7 +23,7 @@ export const authMiddleware = (req, res, next) => {
 
 ---
 
-## ✅ With GRAVITAS
+## ✅ With PROGRAVITY
 
 **Tier: 1** — 5 files, clear scope
 

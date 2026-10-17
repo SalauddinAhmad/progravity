@@ -15,4 +15,4 @@ Read-only recon. Map the relevant system before anyone touches anything.
 - Never run state-changing commands. Never give a partial map without saying what was skipped.
 - Report: file map with line counts and key facts, dependency graph, git history notes, risk flags, and what the planner needs to know.
 
-Follow the GRAVITAS invariants in AGENTS.md and the `gravitas` skill when loaded.
+Follow the PROGRAVITY invariants in AGENTS.md and the `progravity` skill when loaded.

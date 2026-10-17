@@ -21,10 +21,10 @@ argv), ablations did not exist, and holdout discipline was unenforced.
    training data (generated per task), but the pipeline is exercised now
    so real fixtures inherit it.
 3. Ablation configs (`configurations-ablation`) isolate enforcement /
-   context / verification against full Gravitas on the same model.
+   context / verification against full Progravity on the same model.
    Reference configs stay exploratory.
 4. `benchmarks/cli.py` rewritten as a real surface (doctor/build-corpus/
-   run/report) with argv respected; the fake pilot stub removed. `gravitas
+   run/report) with argv respected; the fake pilot stub removed. `progravity
    bench` delegation fixed accordingly.
 5. Held-out runner work (metrics Wilson CIs, benchstats Mann-Whitney,
    randomize block design, claim-gated report) reviewed and committed;

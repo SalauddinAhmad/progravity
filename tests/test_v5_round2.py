@@ -8,11 +8,11 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
-SCRIPTS = ROOT / "plugins/gravitas-antigravity/scripts"
+SCRIPTS = ROOT / "plugins/progravity-antigravity/scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 import test_runtime
-from gravitas_policy import decide
+from progravity_policy import decide
 
 
 class DecideBorderlineTests(unittest.TestCase):
@@ -46,7 +46,7 @@ class FailureRecoveryTests(unittest.TestCase):
             "init_session.py", None, "--task-id", "t",
             "--contract-json", json.dumps(contract), cwd=self.cwd)
         self.assertEqual(result.returncode, 0, result.stderr)
-        return self.cwd / ".gravitas" / "sessions" / "t"
+        return self.cwd / ".progravity" / "sessions" / "t"
 
     def pre_tool(self, payload):
         return json.loads(test_runtime.run_script("pre_tool.py", payload, cwd=self.cwd).stdout)
@@ -54,7 +54,7 @@ class FailureRecoveryTests(unittest.TestCase):
     def test_resolved_failure_rearms_exact_action(self):
         session = self.init({"mode": "implement", "objective": "x",
                              "allowed_write_scope": ["."]})
-        from gravitas_policy import action_fingerprint
+        from progravity_policy import action_fingerprint
         fp = action_fingerprint("write_to_file", {"TargetFile": "new.txt"})
         (session / "failures.jsonl").write_text(json.dumps({
             "tool": "write_to_file", "fingerprint": fp, "cause": "flaky env"}) + "\n")
@@ -62,7 +62,7 @@ class FailureRecoveryTests(unittest.TestCase):
                                 "tool_input": {"TargetFile": "new.txt"}})
         self.assertEqual(denied["decision"], "deny")
         result = subprocess.run(
-            [sys.executable, str(ROOT / "gravitas_cli.py"), "resolve-failure",
+            [sys.executable, str(ROOT / "progravity_cli.py"), "resolve-failure",
              "--session-dir", str(session), "--fingerprint", fp,
              "--reason", "transient outage over"],
             text=True, capture_output=True, cwd=ROOT, check=False)
@@ -75,7 +75,7 @@ class FailureRecoveryTests(unittest.TestCase):
     def test_unresolved_failure_still_bans(self):
         session = self.init({"mode": "implement", "objective": "x",
                              "allowed_write_scope": ["."]})
-        from gravitas_policy import action_fingerprint
+        from progravity_policy import action_fingerprint
         fp = action_fingerprint("write_to_file", {"TargetFile": "other.txt"})
         (session / "failures.jsonl").write_text(json.dumps({
             "tool": "write_to_file", "fingerprint": fp, "cause": "real bug"}) + "\n")
@@ -90,15 +90,15 @@ class SkillReferenceTests(unittest.TestCase):
             import tomllib
         except ModuleNotFoundError:
             import tomli as tomllib
-        text = (ROOT / "skills/gravitas/SKILL.md").read_text()
+        text = (ROOT / "skills/progravity/SKILL.md").read_text()
         refs = sorted(set(re.findall(r"(?:references|resources)/[\w.-]+\.md", text)))
         self.assertTrue(refs, "SKILL.md should link task references")
         pyproject = tomllib.loads((ROOT / "pyproject.toml").read_text())
         patterns = [p for g in pyproject["tool"]["setuptools"]["data-files"].values() for p in g]
         shipped = {str(p.relative_to(ROOT)) for pat in patterns for p in ROOT.glob(pat)}
         for ref in refs:
-            self.assertTrue((ROOT / "skills/gravitas" / ref).is_file(), ref)
-            self.assertIn(f"skills/gravitas/{ref}", shipped, f"wheel omits {ref}")
+            self.assertTrue((ROOT / "skills/progravity" / ref).is_file(), ref)
+            self.assertIn(f"skills/progravity/{ref}", shipped, f"wheel omits {ref}")
 
 
 if __name__ == "__main__":

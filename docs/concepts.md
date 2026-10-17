@@ -9,7 +9,7 @@ policy and completion. Amend it instead of routing around it.
 
 ## Policy
 
-`gravitas decide --signals '{...}'` emits
+`progravity decide --signals '{...}'` emits
 `{planning, context_depth, verification_depth, delegation, reason_codes}`.
 Levels: `direct` (trivial/localized), `compact` (dependent changes),
 `deep` (architecture/security/migration/fanout), `replan` (evidence
@@ -26,10 +26,10 @@ Deterministic first; no vector database, no whole-repo dumps.
 ## Evidence
 
 Every criterion is PENDING, SUPPORTED, PASS, FAIL, BLOCKED, or
-UNVERIFIABLE. Only **fresh** Gravitas-owned validator evidence (timestamp
+UNVERIFIABLE. Only **fresh** Progravity-owned validator evidence (timestamp
 after the final mutation) satisfies the finish gate. Generic test output
-and self-review never count. `gravitas summarize` shows the matrix;
-`gravitas explain` narrates the deficit.
+and self-review never count. `progravity summarize` shows the matrix;
+`progravity explain` narrates the deficit.
 
 ## Action policy
 
@@ -43,11 +43,11 @@ not a sandbox — see `SECURITY.md`.
 
 Validator discovery (project config + binaries, never language
 stereotypes) feeds escalation: targeted → impact → suite → full.
-Reproduction-first debugging (`gravitas repro --phase before/after`);
+Reproduction-first debugging (`progravity repro --phase before/after`);
 deterministic edge-case expansion for strict/security work.
 
 ## Recovery
 
 Append-only evidence/failure ledgers rebuild durable state: objective,
 criteria, scope, decisions, failed approaches with causes, validators,
-risks, next action (`gravitas summarize`, `resume_session.py`).
+risks, next action (`progravity summarize`, `resume_session.py`).

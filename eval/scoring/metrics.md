@@ -1,6 +1,6 @@
 # Metrics Definitions
 
-Operational definitions for all metrics in the GRAVITAS evaluation suite.
+Operational definitions for all metrics in the PROGRAVITY evaluation suite.
 
 ---
 
@@ -69,10 +69,10 @@ failure_repetition_rate = failed_approaches_retried_without_change / total_faile
 
 ### Token Overhead
 
-**Definition:** Ratio of tokens consumed with GRAVITAS vs. without.
+**Definition:** Ratio of tokens consumed with PROGRAVITY vs. without.
 
 ```
-token_overhead = tokens_with_GRAVITAS / tokens_without_GRAVITAS
+token_overhead = tokens_with_PROGRAVITY / tokens_without_PROGRAVITY
 ```
 
 **Data source:** Token counter (API response metadata).
@@ -231,4 +231,4 @@ pushback_rate = appropriate_pushbacks / total_questionable_requests
 
 ---
 
-*This document is part of the GRAVITAS evaluation framework. It defines the operational metrics for Phase 4.*
+*This document is part of the PROGRAVITY evaluation framework. It defines the operational metrics for Phase 4.*

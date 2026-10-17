@@ -5,8 +5,8 @@ Date: 2026-10-07 · Status: accepted · Commit: 793fe98
 ## Context
 
 `git submodule status` failed (`no submodule mapping for benchmarks/legacy/L1`);
-`gravitas doctor` failed on main (checked root `plugin.json`/`hooks.json` that
-never existed there); the wheel shipped only `gravitas_cli.py`, so the
+`progravity doctor` failed on main (checked root `plugin.json`/`hooks.json` that
+never existed there); the wheel shipped only `progravity_cli.py`, so the
 installed CLI crashed on `from evidence_chain import verify_chain`.
 
 ## Decisions
@@ -15,7 +15,7 @@ installed CLI crashed on `from evidence_chain import verify_chain`.
    Rejected adding `.gitmodules`: the fixtures are single-commit calculator
    tasks; submodules are the wrong tool. `.bundle` exports preserve history.
 2. CLI resolves assets as checkout (cwd, then module dir), then installed
-   (`sys.prefix/share/gravitas`, mirroring repo layout), and imports
+   (`sys.prefix/share/progravity`, mirroring repo layout), and imports
    `evidence_chain` lazily so `--help`/`doctor` never crash on import.
 3. Wheel ships plugin manifests, hook scripts, agents, skill, and schemas via
    `data-files`. Rejected repackaging scripts as a Python package in Phase 0
@@ -27,4 +27,4 @@ installed CLI crashed on `from evidence_chain import verify_chain`.
 ## Verification
 
 40 unit tests OK; wheel inspected (57 files); isolated-venv install +
-`gravitas doctor` outside a checkout returns `mode: installed`, exit 0.
+`progravity doctor` outside a checkout returns `mode: installed`, exit 0.

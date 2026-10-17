@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
-sys.path.insert(0, str(ROOT / "plugins/gravitas-antigravity/scripts"))
+sys.path.insert(0, str(ROOT / "plugins/progravity-antigravity/scripts"))
 
 from stop_gate import legacy_requirement_met
 
@@ -37,7 +37,7 @@ class LegacyRequirementMatchTests(unittest.TestCase):
 
 def run_script(name, payload, *args, cwd):
     return subprocess.run(
-        [sys.executable, str(ROOT / "plugins/gravitas-antigravity/scripts" / name), *args],
+        [sys.executable, str(ROOT / "plugins/progravity-antigravity/scripts" / name), *args],
         input=json.dumps(payload) if payload is not None else None,
         text=True, capture_output=True, cwd=cwd, check=False,
     )

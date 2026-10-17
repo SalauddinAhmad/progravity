@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Gravitas Task Contract v1",
+  "title": "Progravity Task Contract v1",
   "type": "object",
   "properties": {
     "task_id": { "type": "string" },
