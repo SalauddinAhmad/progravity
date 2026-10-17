@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Minimal dependency-free validation for the portable Gravitas skill in CI."""
+"""Minimal dependency-free validation for the portable Progravity skill in CI."""
 from pathlib import Path
 
 
